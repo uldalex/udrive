@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+<html class="page" lang="ru">
+    <!--head-->
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="format-detection" content="date=no">
+        <meta name="format-detection" content="address=no">
+        <meta name="format-detection" content="email=no">
+        <meta content="notranslate" name="google">
+        <title>Заготовка</title>
+        <link rel="stylesheet" href="css/main.css">
+    </head>
+    <body>
+        <!--шапка-->
+        <header>
+            <div class="container">
+                <div class="row">
+                    <!--логотип-->
+                    <a href="#" class="logo" aria-label="Юдрайв">
+                        <img width="87" height="19" src="img/logo.svg">
+                    </a>
+                    <!--юзерпанель-->
+                    <div  class="user">
+                        <span>Владелец:</span><a  href="#" class="user__name icon" aria-label="Личный кабинет">Александр Иванов</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!--контентная часть-->
+        <div class="page__inner">
+            <!--сайтбар-->
+            <aside>
+                <div class="sitebar">
+                    <h3>Разделы</h3>
+                    <ul id="main-menu" class="main-menu" role="menu">
+                        <li class="main-menu__item">
+                            <a href="#" class="main-menu__link" aria-label="Организации">Организации</a>
+                        </li>
+                        <li class="main-menu__item">
+                            <a href="#" class="main-menu__link" aria-label="Договора">Договора</a>
+                        </li>
+                        <li class="main-menu__item">
+                            <a href="#" class="main-menu__link" aria-label="Водители">Водители</a>
+                        </li>
+                        <li class="main-menu__item">
+                            <a href="#" class="main-menu__link" aria-label="Сотрудники">Сотрудники</a>
+                        </li>
+                        <li class="main-menu__item">
+                            <a href="#" class="main-menu__link" aria-label="Транспорт">Транспорт</a>
+                        </li>
+                        <li class="main-menu__item">
+                            <a href="#" class="main-menu__link" aria-label="Прицепы">Прицепы</a>
+                        </li>
+                        <li class="main-menu__item">
+                            <a href="#" class="main-menu__link" aria-label="Карточка фрахтовщика">Карточка фрахтовщика</a>
+                        </li>
+                        <li class="main-menu__item">
+                            <!--у ссылки модификатор active -->
+                            <a href="#" class="main-menu__link main-menu__link--active" aria-label="Путевая документация">Путевая документация</a>
+                        </li>
+                        <li class="main-menu__item">
+                            <a href="#" class="main-menu__link" aria-label="БДД">БДД</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </aside>
+            <main>
+                <!--шапка в main-->
+                <div class="main-header">
+                    <ul class="main-header__list">
+                        <!--Внимание! Модификатор класса --active и у ссылки и у li-->
+                        <li class="main-header__item main-header__item--active">
+                            <a href="#" class="main-header__link main-header__link--active">Первая вкладка</a>
+                        </li>
+                        <li class="main-header__item">
+                            <a href="#" class="main-header__link main-header__link--close icon">Вторая и последующие вкладки</a>
+                        </li>
+                    </ul>
+                    <div class="main-header__title">
+                        <h1>Заголовок H1</h1>
+                        <div class="main-header__btns">
+                            <a href="#" class="btn btn--yellow" aria-label="Создать группу" role="button">Кнопка</a>
+                            <a href="#" class="btn btn--yellow disabled" aria-label="Создать"  role="button">Еще кнопка</a>
+                        </div>
+                    </div>
+                </div>
+                <!--динамический контент в main-->
+                <div class="main-content">
+                    <div class="content">
+                        <!--Здесь все, что будет динамического-->
+                    </div>
+                </div>
+            </main>
+        </div>
+        <!--подвал-->
+        <footer>
+        </footer>
+        <script type="text/javascript" src="js/jquery-3.6.1.min.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
+    </body>
+</html>

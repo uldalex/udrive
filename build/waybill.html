@@ -1,0 +1,163 @@
+
+<!DOCTYPE html>
+<html class="page" lang="ru">
+    <!--head-->
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="format-detection" content="date=no">
+        <meta name="format-detection" content="address=no">
+        <meta name="format-detection" content="email=no">
+        <meta content="notranslate" name="google">
+        <title>Путевые листы</title>
+        <link rel="stylesheet" href="css/main.css">
+    </head>
+    <body>
+        <!--шапка-->
+        <header>
+            <div class="container">
+                <div class="row">
+                    <!--логотип-->
+                    <a href="#" class="logo" aria-label="Юдрайв">
+                        <img width="87" height="19" src="img/logo.svg">
+                    </a>
+                    <!--юзерпанель-->
+                    <div  class="user">
+                        <span>Владелец:</span><a  href="#" class="user__name icon" aria-label="Личный кабинет">Александр Иванов</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!--контентная часть-->
+        <div class="page__inner">
+            <!--сайтбар-->
+            <aside>
+                <div class="sitebar">
+                    <h3>Разделы</h3>
+                    <ul id="main-menu" class="main-menu" role="menu">
+                        <li class="main-menu__item">
+                            <a href="#" class="main-menu__link" aria-label="Организации">Организации</a>
+                        </li>
+                        <li class="main-menu__item">
+                            <a href="#" class="main-menu__link" aria-label="Договора">Договора</a>
+                        </li>
+                        <li class="main-menu__item">
+                            <a href="#" class="main-menu__link" aria-label="Водители">Водители</a>
+                        </li>
+                        <li class="main-menu__item">
+                            <a href="#" class="main-menu__link" aria-label="Сотрудники">Сотрудники</a>
+                        </li>
+                        <li class="main-menu__item">
+                            <a href="#" class="main-menu__link" aria-label="Транспорт">Транспорт</a>
+                        </li>
+                        <li class="main-menu__item">
+                            <a href="#" class="main-menu__link" aria-label="Прицепы">Прицепы</a>
+                        </li>
+                        <li class="main-menu__item">
+                            <a href="#" class="main-menu__link" aria-label="Карточка фрахтовщика">Карточка фрахтовщика</a>
+                        </li>
+                        <li class="main-menu__item">
+                            <!--у ссылки модификатор active -->
+                            <a href="#" class="main-menu__link main-menu__link--active" aria-label="Путевая документация">Путевая документация</a>
+                        </li>
+                        <li class="main-menu__item">
+                            <a href="#" class="main-menu__link" aria-label="БДД">БДД</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </aside>
+            <main>
+                <!--шапка в main-->
+                <div class="main-header">
+                    <ul class="main-header__list">
+                        <!--Внимание! Модификатор класса --active и у ссылки и у li-->
+                        <li class="main-header__item main-header__item--active">
+                            <a href="#" class="main-header__link main-header__link--active">Путевые листы</a>
+                        </li>
+                    </ul>
+                    <div class="main-header__title">
+                        <h1>Путевые листы</h1>
+                        <div class="main-header__btns">
+                            <a href="#" class="btn btn--yellow" aria-label="Создать группу" role="button">Создать группу</a>
+                            <a href="#" class="btn btn--yellow" aria-label="Создать" role="button">Создать</a>
+                        </div>
+                    </div>
+                </div>
+                <!--динамический контент в main-->
+                <div class="main-content">
+                    <div class="content__wrapper">
+                        <!--шапка контента-->
+                        <div class="content__header">
+                            <form action="#" role="" class="form-head">
+                                <input type="search" placeholder="Поиск" aria-label="Поиск">
+                                <input type="submit" class=" btn btn--light" value="Найти" aria-label="Поиск">
+                            </form>
+                            <div class="content-header__btns">
+                                <a href="#" class="btn btn--light disabled" aria-label="Печать путевых листов" role="button">Печать путевых листов</a>
+                                <a href="#" class="btn btn--light" aria-label="Печать журналов" role="button">Печать журналов</a>
+                                <a href="#" class="content__header__icon icon-list icon" aria-label="Создать группу" role="button"></a>
+                                <a href="#" class="content__header__icon icon-settings icon" aria-label="Создать" role="button"></a>
+                            </div>
+                        </div>
+                        <!--тело контента-->
+                        <div class="content">
+                            <div class="content-table">
+                                <div class="content-table__header">
+                                        <div><label for="all-checkbox" class="checkbox-label"></label><input type="checkbox" name="all-checkbox" id="all-checkbox" class="all-checkbox checkbox"></div>
+                                        <div>Номер</div>
+                                        <div>Номер документа</div>
+                                        <div>Дата</div>
+                                        <div>Владелец</div>
+                                        <div>Водитель</div>
+                                        <div>Организация</div>
+                                        <div>Транспортное средство</div>
+                                        <div>Тип автопарка</div>
+                                </div>
+                                <div class="content-table__row">
+                                        <div><label  for="checkbox1" class="checkbox-label"><input type="checkbox"  name="checkbox1" id="checkbox1" class="checkbox"></label></div>
+                                        <div>Г-7-52</div>
+                                        <div>545 725</div>
+                                        <div>18.05.2021</div>
+                                        <div>Степанов Федор Алексеевич</div>
+                                        <div>Иванов Алексанр Иванович</div>
+                                        <div>ИП Иванов Александр Иванович</div>
+                                        <div>T874AO199 Skoda Octavia</div>
+                                        <div>Автопарк</div>
+                                </div>
+                                <div class="content-table__row">
+                                        <div><label for="checkbox2" class="checkbox-label"><input type="checkbox" name="checkbox2" id="checkbox2" class="checkbox"></label></div>
+                                        <div>Г-7-52</div>
+                                        <div>545 725</div>
+                                        <div>18.05.2021</div>
+                                        <div>Степанов Федор Алексеевич</div>
+                                        <div>Иванов Алексанр Иванович</div>
+                                        <div>ИП Иванов Александр Иванович</div>
+                                        <div>T874AO199 Skoda Octavia</div>
+                                        <div>Автопарк</div>
+                                </div>
+                                <div class="content-table__row">
+                                        <div><label for="checkbox3" class="checkbox-label"><input type="checkbox" name="checkbox3" id="checkbox3" class="checkbox"></label></div>
+                                        <div>Г-7-52</div>
+                                        <div>545 725</div>
+                                        <div>18.05.2021</div>
+                                        <div>Степанов Федор Алексеевич</div>
+                                        <div>Иванов Алексанр Иванович</div>
+                                        <div>ИП Иванов Александр Иванович</div>
+                                        <div>T874AO199 Skoda Octavia</div>
+                                        <div>Автопарк</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+        <!--подвал-->
+        <footer>
+        </footer>
+        <script type="text/javascript" src="js/jquery-3.6.1.min.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
+    </body>
+</html>
