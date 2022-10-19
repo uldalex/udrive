@@ -105,18 +105,55 @@
                         <div class="content">
                             <div class="content-table">
                                 <div class="content-table__header">
-                                        <div><label for="all-checkbox" class="checkbox-label"></label><input type="checkbox" name="all-checkbox" id="all-checkbox" class="all-checkbox checkbox"></div>
+                                        <div>
+                                            <label for="all-checkbox" id="all-checkbox-label" class="checkbox-label">
+                                                <input type="checkbox" name="all-checkbox" id="all-checkbox" class="all-checkbox ">
+                                                <!--спаны в label нужны для стилизации чекбокса, не удалять!-->
+                                                <span></span>
+                                            </label>
+                                        </div>
                                         <div>Номер</div>
-                                        <div>Номер документа</div>
-                                        <div>Дата</div>
-                                        <div>Владелец</div>
-                                        <div>Водитель</div>
-                                        <div>Организация</div>
-                                        <div>Транспортное средство</div>
-                                        <div>Тип автопарка</div>
+                                        <div>№ документа</div>
+                                        <div>
+                                            <span>Дата</span> 
+                                            <a href="#" class="sort" aria-label="Сортировать по возрастанию"></a>
+                                            <!--Внимание! модификатор класса --down для фильтрации по убыванию. Для фильтрации по возрастанию модификатор меняется на --up-->
+                                            <a href="#" class="sort-arrow sort-arrow--down" aria-label="Отсортировано по возрастанию"></a>
+                                        </div>
+                                        <div>
+                                            <span>Владелец</span>
+                                            <!--Внимание! модификатор класса --active для активного фильтра-->
+                                            <a href="#" class="sort sort--active" aria-label="Сортировать по возрастанию"></a>
+                                        </div>
+                                        <div>
+                                            <span>Водитель</span>
+                                            <a href="#" class="sort" aria-label="Сортировать по возрастанию"></a>
+                                        </div>
+                                        <div>
+                                            <span>Организация</span>
+                                            <a href="#" class="sort" aria-label="Сортировать по возрастанию"></a>
+                                        </div>
+                                        <div>
+                                            </span>Транспортное средство</span>
+                                            <a href="#" class="sort" aria-label="Сортировать по возрастанию"></a>
+                                        </div>
+                                        <div>
+                                            <span>Тип автопарка</span>
+                                            <a href="#" class="sort" aria-label="Сортировать по возрастанию"></a>
+                                        </div>
                                 </div>
-                                <div class="content-table__row">
-                                        <div><label  for="checkbox1" class="checkbox-label"><input type="checkbox"  name="checkbox1" id="checkbox1" class="checkbox"></label></div>
+                                <div class="content-table__wrapper">
+                                    <div class="content-table__row">
+                                        <div>
+                                            <label for="checkbox21" class="checkbox-label">
+                                                <input type="checkbox"  name="checkbox21" id="checkbox21" class="checkbox">
+                                                <span></span>
+                                            </label>
+                                        </div>
+                                        <div>
+                                            <!--Открываем редактирование формы модификатор класса --open для открытой формы-->
+                                             <a href="#" class="edit-entry" aria-label="Открыть форму"></a>
+                                        </div>
                                         <div>Г-7-52</div>
                                         <div>545 725</div>
                                         <div>18.05.2021</div>
@@ -125,9 +162,66 @@
                                         <div>ИП Иванов Александр Иванович</div>
                                         <div>T874AO199 Skoda Octavia</div>
                                         <div>Автопарк</div>
+                                        <div><a href="#" class="edit"></a></div>
+                                        <div><a href="#" class="delite"></a></div>
+                                    </div>
+                                    <!--разворачивающийся блок. модификатор --open -->
+                                    <div class="content-table__more">
+                                        <div class="content-more">
+                                            <p>Медицинский контроль</p>
+                                            <p>ООО “МедТех клиника”</p>
+                                            <p>Марка топлива</p>
+                                            <p>Sell</p>
+                                            <p>Медик</p>
+                                            <p>Петрова Ольга Александровна</p>
+                                            <p>Выдано топлива</p>
+                                            <p>24 л.</p>
+                                            <p>Технический контроль</p>
+                                            <p>ООО “Самоделкин и Ко”</p>
+                                            <p>Адрес подачи</p>
+                                            <p>Москва, ул. Беломорская 125, офис 33</p>
+                                            <p>Ответственный</p>
+                                            <p>Сидоров Александр Александрович</p>
+                                            <p>Адрес</p>
+                                            <p>Москва, ул. Беломорская 125, офис 33</p>
+                                            <p>Вид перевозки</p>
+                                            <p>Легковой автомобиль</p>
+                                            <p>Дата и время</p>
+                                            <p>26.07.2021 в 10:21</p>
+                                            <p>Вид сообщения</p>
+                                            <p>Город</p>
+                                            <p>Послерейсовый контроль</p>
+                                            <p>Сидоров Петр Иванович</p>
+                                            <p>Выезд с парковки</p>
+                                            <p>09:30</p>
+                                            <p>Адрес</p>
+                                            <p>Москва, ул. Беломорская 125, офис 33</p>
+                                            <p>Возвращение на парковку</p>
+                                            <p>18:30</p>
+                                            <p>Дата и время</p>
+                                            <p>26.07.2021 в 19:21</p>
+                                            <p>Категория груза</p>
+                                            <p>Международный</p>
+                                            <p>Организация</p>
+                                            <p>ООО “Гермес”</p>
+                                            <p>В распоряжение</p>
+                                            <p>Текст</p>
+                                            <div class="content-more__footer"><a href="#" class="btn btn--yellow" aria-label="Печать">Печать</a></div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="content-table__row">
-                                        <div><label for="checkbox2" class="checkbox-label"><input type="checkbox" name="checkbox2" id="checkbox2" class="checkbox"></label></div>
+                                <div class="content-table__wrapper">
+                                    <div class="content-table__row">
+                                        <div>
+                                            <label for="checkbox2" class="checkbox-label">
+                                                <input type="checkbox"  name="checkbox2" id="checkbox2" class="checkbox">
+                                                <span></span>
+                                            </label>
+                                        </div>
+                                        <div>
+                                            <!--Открываем редактирование формы модификатор класса --open для открытой формы-->
+                                             <a href="#" class="edit-entry" aria-label="Открыть форму"></a>
+                                        </div>
                                         <div>Г-7-52</div>
                                         <div>545 725</div>
                                         <div>18.05.2021</div>
@@ -136,9 +230,22 @@
                                         <div>ИП Иванов Александр Иванович</div>
                                         <div>T874AO199 Skoda Octavia</div>
                                         <div>Автопарк</div>
+                                        <div><a href="#" class="edit"></a></div>
+                                        <div><a href="#" class="delite"></a></div>
+                                    </div>
                                 </div>
-                                <div class="content-table__row">
-                                        <div><label for="checkbox3" class="checkbox-label"><input type="checkbox" name="checkbox3" id="checkbox3" class="checkbox"></label></div>
+                                <div class="content-table__wrapper">
+                                    <div class="content-table__row">
+                                        <div>
+                                            <label for="checkbox3" class="checkbox-label">
+                                                <input type="checkbox"  name="checkbox3" id="checkbox3" class="checkbox">
+                                                <span></span>
+                                            </label>
+                                        </div>
+                                        <div>
+                                            <!--Открываем редактирование формы модификатор класса --open для открытой формы-->
+                                             <a href="#" class="edit-entry" aria-label="Открыть форму"></a>
+                                        </div>
                                         <div>Г-7-52</div>
                                         <div>545 725</div>
                                         <div>18.05.2021</div>
@@ -147,7 +254,421 @@
                                         <div>ИП Иванов Александр Иванович</div>
                                         <div>T874AO199 Skoda Octavia</div>
                                         <div>Автопарк</div>
+                                        <div><a href="#" class="edit"></a></div>
+                                        <div><a href="#" class="delite"></a></div>
+                                    </div>
                                 </div>
+                                <div class="content-table__wrapper">
+                                    <div class="content-table__row">
+                                        <div>
+                                            <label for="checkbox4" class="checkbox-label">
+                                                <input type="checkbox"  name="checkbox4" id="checkbox4" class="checkbox">
+                                                <span></span>
+                                            </label>
+                                        </div>
+                                        <div>
+                                            <!--Открываем редактирование формы модификатор класса --open для открытой формы-->
+                                             <a href="#" class="edit-entry" aria-label="Открыть форму"></a>
+                                        </div>
+                                        <div>Г-7-52</div>
+                                        <div>545 725</div>
+                                        <div>18.05.2021</div>
+                                        <div>Степанов Федор Алексеевич</div>
+                                        <div>Иванов Алексанр Иванович</div>
+                                        <div>ИП Иванов Александр Иванович</div>
+                                        <div>T874AO199 Skoda Octavia</div>
+                                        <div>Автопарк</div>
+                                        <div><a href="#" class="edit"></a></div>
+                                        <div><a href="#" class="delite"></a></div>
+                                    </div>
+                                </div>
+                                <div class="content-table__wrapper">
+                                    <div class="content-table__row">
+                                        <div>
+                                            <label for="checkbox5" class="checkbox-label">
+                                                <input type="checkbox"  name="checkbox5" id="checkbox5" class="checkbox">
+                                                <span></span>
+                                            </label>
+                                        </div>
+                                        <div>
+                                            <!--Открываем редактирование формы модификатор класса --open для открытой формы-->
+                                             <a href="#" class="edit-entry" aria-label="Открыть форму"></a>
+                                        </div>
+                                        <div>Г-7-52</div>
+                                        <div>545 725</div>
+                                        <div>18.05.2021</div>
+                                        <div>Степанов Федор Алексеевич</div>
+                                        <div>Иванов Алексанр Иванович</div>
+                                        <div>ИП Иванов Александр Иванович</div>
+                                        <div>T874AO199 Skoda Octavia</div>
+                                        <div>Автопарк</div>
+                                        <div><a href="#" class="edit"></a></div>
+                                        <div><a href="#" class="delite"></a></div>
+                                    </div>
+                                </div>
+                                <div class="content-table__wrapper">
+                                    <div class="content-table__row">
+                                        <div>
+                                            <label for="checkbox6" class="checkbox-label">
+                                                <input type="checkbox"  name="checkbox6" id="checkbox6" class="checkbox">
+                                                <span></span>
+                                            </label>
+                                        </div>
+                                        <div>
+                                            <!--Открываем редактирование формы модификатор класса --open для открытой формы-->
+                                             <a href="#" class="edit-entry" aria-label="Открыть форму"></a>
+                                        </div>
+                                        <div>Г-7-52</div>
+                                        <div>545 725</div>
+                                        <div>18.05.2021</div>
+                                        <div>Степанов Федор Алексеевич</div>
+                                        <div>Иванов Алексанр Иванович</div>
+                                        <div>ИП Иванов Александр Иванович</div>
+                                        <div>T874AO199 Skoda Octavia</div>
+                                        <div>Автопарк</div>
+                                        <div><a href="#" class="edit"></a></div>
+                                        <div><a href="#" class="delite"></a></div>
+                                    </div>
+                                </div>
+                                <div class="content-table__wrapper">
+                                    <div class="content-table__row">
+                                        <div>
+                                            <label for="checkbox7" class="checkbox-label">
+                                                <input type="checkbox"  name="checkbox7" id="checkbox7" class="checkbox">
+                                                <span></span>
+                                            </label>
+                                        </div>
+                                        <div>
+                                            <!--Открываем редактирование формы модификатор класса --open для открытой формы-->
+                                             <a href="#" class="edit-entry" aria-label="Открыть форму"></a>
+                                        </div>
+                                        <div>Г-7-52</div>
+                                        <div>545 725</div>
+                                        <div>18.05.2021</div>
+                                        <div>Степанов Федор Алексеевич</div>
+                                        <div>Иванов Алексанр Иванович</div>
+                                        <div>ИП Иванов Александр Иванович</div>
+                                        <div>T874AO199 Skoda Octavia</div>
+                                        <div>Автопарк</div>
+                                        <div><a href="#" class="edit"></a></div>
+                                        <div><a href="#" class="delite"></a></div>
+                                    </div>
+                                </div>
+                                <div class="content-table__wrapper">
+                                    <div class="content-table__row">
+                                        <div>
+                                            <label for="checkbox8" class="checkbox-label">
+                                                <input type="checkbox"  name="checkbox8" id="checkbox8" class="checkbox">
+                                                <span></span>
+                                            </label>
+                                        </div>
+                                        <div>
+                                            <!--Открываем редактирование формы модификатор класса --open для открытой формы-->
+                                             <a href="#" class="edit-entry" aria-label="Открыть форму"></a>
+                                        </div>
+                                        <div>Г-7-52</div>
+                                        <div>545 725</div>
+                                        <div>18.05.2021</div>
+                                        <div>Степанов Федор Алексеевич</div>
+                                        <div>Иванов Алексанр Иванович</div>
+                                        <div>ИП Иванов Александр Иванович</div>
+                                        <div>T874AO199 Skoda Octavia</div>
+                                        <div>Автопарк</div>
+                                        <div><a href="#" class="edit"></a></div>
+                                        <div><a href="#" class="delite"></a></div>
+                                    </div>
+                                </div>
+                                <div class="content-table__wrapper">
+                                    <div class="content-table__row">
+                                        <div>
+                                            <label for="checkbox9" class="checkbox-label">
+                                                <input type="checkbox"  name="checkbox9" id="checkbox9" class="checkbox">
+                                                <span></span>
+                                            </label>
+                                        </div>
+                                        <div>
+                                            <!--Открываем редактирование формы модификатор класса --open для открытой формы-->
+                                             <a href="#" class="edit-entry" aria-label="Открыть форму"></a>
+                                        </div>
+                                        <div>Г-7-52</div>
+                                        <div>545 725</div>
+                                        <div>18.05.2021</div>
+                                        <div>Степанов Федор Алексеевич</div>
+                                        <div>Иванов Алексанр Иванович</div>
+                                        <div>ИП Иванов Александр Иванович</div>
+                                        <div>T874AO199 Skoda Octavia</div>
+                                        <div>Автопарк</div>
+                                        <div><a href="#" class="edit"></a></div>
+                                        <div><a href="#" class="delite"></a></div>
+                                    </div>
+                                </div>
+                                <div class="content-table__wrapper">
+                                    <div class="content-table__row">
+                                        <div>
+                                            <label for="checkbox10" class="checkbox-label">
+                                                <input type="checkbox"  name="checkbox10" id="checkbox10" class="checkbox">
+                                                <span></span>
+                                            </label>
+                                        </div>
+                                        <div>
+                                            <!--Открываем редактирование формы модификатор класса --open для открытой формы-->
+                                             <a href="#" class="edit-entry" aria-label="Открыть форму"></a>
+                                        </div>
+                                        <div>Г-7-52</div>
+                                        <div>545 725</div>
+                                        <div>18.05.2021</div>
+                                        <div>Степанов Федор Алексеевич</div>
+                                        <div>Иванов Алексанр Иванович</div>
+                                        <div>ИП Иванов Александр Иванович</div>
+                                        <div>T874AO199 Skoda Octavia</div>
+                                        <div>Автопарк</div>
+                                        <div><a href="#" class="edit"></a></div>
+                                        <div><a href="#" class="delite"></a></div>
+                                    </div>
+                                </div>
+                                <div class="content-table__wrapper">
+                                    <div class="content-table__row">
+                                        <div>
+                                            <label for="checkbox11" class="checkbox-label">
+                                                <input type="checkbox"  name="checkbox11" id="checkbox11" class="checkbox">
+                                                <span></span>
+                                            </label>
+                                        </div>
+                                        <div>
+                                            <!--Открываем редактирование формы модификатор класса --open для открытой формы-->
+                                             <a href="#" class="edit-entry" aria-label="Открыть форму"></a>
+                                        </div>
+                                        <div>Г-7-52</div>
+                                        <div>545 725</div>
+                                        <div>18.05.2021</div>
+                                        <div>Степанов Федор Алексеевич</div>
+                                        <div>Иванов Алексанр Иванович</div>
+                                        <div>ИП Иванов Александр Иванович</div>
+                                        <div>T874AO199 Skoda Octavia</div>
+                                        <div>Автопарк</div>
+                                        <div><a href="#" class="edit"></a></div>
+                                        <div><a href="#" class="delite"></a></div>
+                                    </div>
+                                </div>
+                                <div class="content-table__wrapper">
+                                    <div class="content-table__row">
+                                        <div>
+                                            <label for="checkbox12" class="checkbox-label">
+                                                <input type="checkbox"  name="checkbox12" id="checkbox12" class="checkbox">
+                                                <span></span>
+                                            </label>
+                                        </div>
+                                        <div>
+                                            <!--Открываем редактирование формы модификатор класса --open для открытой формы-->
+                                             <a href="#" class="edit-entry" aria-label="Открыть форму"></a>
+                                        </div>
+                                        <div>Г-7-52</div>
+                                        <div>545 725</div>
+                                        <div>18.05.2021</div>
+                                        <div>Степанов Федор Алексеевич</div>
+                                        <div>Иванов Алексанр Иванович</div>
+                                        <div>ИП Иванов Александр Иванович</div>
+                                        <div>T874AO199 Skoda Octavia</div>
+                                        <div>Автопарк</div>
+                                        <div><a href="#" class="edit"></a></div>
+                                        <div><a href="#" class="delite"></a></div>
+                                    </div>
+                                </div>
+                                <div class="content-table__wrapper">
+                                    <div class="content-table__row">
+                                        <div>
+                                            <label for="checkbox13" class="checkbox-label">
+                                                <input type="checkbox"  name="checkbox13" id="checkbox13" class="checkbox">
+                                                <span></span>
+                                            </label>
+                                        </div>
+                                        <div>
+                                            <!--Открываем редактирование формы модификатор класса --open для открытой формы-->
+                                             <a href="#" class="edit-entry" aria-label="Открыть форму"></a>
+                                        </div>
+                                        <div>Г-7-52</div>
+                                        <div>545 725</div>
+                                        <div>18.05.2021</div>
+                                        <div>Степанов Федор Алексеевич</div>
+                                        <div>Иванов Алексанр Иванович</div>
+                                        <div>ИП Иванов Александр Иванович</div>
+                                        <div>T874AO199 Skoda Octavia</div>
+                                        <div>Автопарк</div>
+                                        <div><a href="#" class="edit"></a></div>
+                                        <div><a href="#" class="delite"></a></div>
+                                    </div>
+                                </div>
+                                <div class="content-table__wrapper">
+                                    <div class="content-table__row">
+                                        <div>
+                                            <label for="checkbox14" class="checkbox-label">
+                                                <input type="checkbox"  name="checkbox14" id="checkbox14" class="checkbox">
+                                                <span></span>
+                                            </label>
+                                        </div>
+                                        <div>
+                                            <!--Открываем редактирование формы модификатор класса --open для открытой формы-->
+                                             <a href="#" class="edit-entry" aria-label="Открыть форму"></a>
+                                        </div>
+                                        <div>Г-7-52</div>
+                                        <div>545 725</div>
+                                        <div>18.05.2021</div>
+                                        <div>Степанов Федор Алексеевич</div>
+                                        <div>Иванов Алексанр Иванович</div>
+                                        <div>ИП Иванов Александр Иванович</div>
+                                        <div>T874AO199 Skoda Octavia</div>
+                                        <div>Автопарк</div>
+                                        <div><a href="#" class="edit"></a></div>
+                                        <div><a href="#" class="delite"></a></div>
+                                    </div>
+                                </div>
+                                <div class="content-table__wrapper">
+                                    <div class="content-table__row">
+                                        <div>
+                                            <label for="checkbox15" class="checkbox-label">
+                                                <input type="checkbox"  name="checkbox15" id="checkbox15" class="checkbox">
+                                                <span></span>
+                                            </label>
+                                        </div>
+                                        <div>
+                                            <!--Открываем редактирование формы модификатор класса --open для открытой формы-->
+                                             <a href="#" class="edit-entry" aria-label="Открыть форму"></a>
+                                        </div>
+                                        <div>Г-7-52</div>
+                                        <div>545 725</div>
+                                        <div>18.05.2021</div>
+                                        <div>Степанов Федор Алексеевич</div>
+                                        <div>Иванов Алексанр Иванович</div>
+                                        <div>ИП Иванов Александр Иванович</div>
+                                        <div>T874AO199 Skoda Octavia</div>
+                                        <div>Автопарк</div>
+                                        <div><a href="#" class="edit"></a></div>
+                                        <div><a href="#" class="delite"></a></div>
+                                    </div>
+                                </div>
+                                <div class="content-table__wrapper">
+                                    <div class="content-table__row">
+                                        <div>
+                                            <label for="checkbox16" class="checkbox-label">
+                                                <input type="checkbox"  name="checkbox16" id="checkbox16" class="checkbox">
+                                                <span></span>
+                                            </label>
+                                        </div>
+                                        <div>
+                                            <!--Открываем редактирование формы модификатор класса --open для открытой формы-->
+                                             <a href="#" class="edit-entry" aria-label="Открыть форму"></a>
+                                        </div>
+                                        <div>Г-7-52</div>
+                                        <div>545 725</div>
+                                        <div>18.05.2021</div>
+                                        <div>Степанов Федор Алексеевич</div>
+                                        <div>Иванов Алексанр Иванович</div>
+                                        <div>ИП Иванов Александр Иванович</div>
+                                        <div>T874AO199 Skoda Octavia</div>
+                                        <div>Автопарк</div>
+                                        <div><a href="#" class="edit"></a></div>
+                                        <div><a href="#" class="delite"></a></div>
+                                    </div>
+                                </div>
+                                <div class="content-table__wrapper">
+                                    <div class="content-table__row">
+                                        <div>
+                                            <label for="checkbox17" class="checkbox-label">
+                                                <input type="checkbox"  name="checkbox17" id="checkbox17" class="checkbox">
+                                                <span></span>
+                                            </label>
+                                        </div>
+                                        <div>
+                                            <!--Открываем редактирование формы модификатор класса --open для открытой формы-->
+                                             <a href="#" class="edit-entry" aria-label="Открыть форму"></a>
+                                        </div>
+                                        <div>Г-7-52</div>
+                                        <div>545 725</div>
+                                        <div>18.05.2021</div>
+                                        <div>Степанов Федор Алексеевич</div>
+                                        <div>Иванов Алексанр Иванович</div>
+                                        <div>ИП Иванов Александр Иванович</div>
+                                        <div>T874AO199 Skoda Octavia</div>
+                                        <div>Автопарк</div>
+                                        <div><a href="#" class="edit"></a></div>
+                                        <div><a href="#" class="delite"></a></div>
+                                    </div>
+                                </div>
+                                <div class="content-table__wrapper">
+                                    <div class="content-table__row">
+                                        <div>
+                                            <label for="checkbox18" class="checkbox-label">
+                                                <input type="checkbox"  name="checkbox18" id="checkbox18" class="checkbox">
+                                                <span></span>
+                                            </label>
+                                        </div>
+                                        <div>
+                                            <!--Открываем редактирование формы модификатор класса --open для открытой формы-->
+                                             <a href="#" class="edit-entry" aria-label="Открыть форму"></a>
+                                        </div>
+                                        <div>Г-7-52</div>
+                                        <div>545 725</div>
+                                        <div>18.05.2021</div>
+                                        <div>Степанов Федор Алексеевич</div>
+                                        <div>Иванов Алексанр Иванович</div>
+                                        <div>ИП Иванов Александр Иванович</div>
+                                        <div>T874AO199 Skoda Octavia</div>
+                                        <div>Автопарк</div>
+                                        <div><a href="#" class="edit"></a></div>
+                                        <div><a href="#" class="delite"></a></div>
+                                    </div>
+                                </div>
+                                <div class="content-table__wrapper">
+                                    <div class="content-table__row">
+                                        <div>
+                                            <label for="checkbox19" class="checkbox-label">
+                                                <input type="checkbox"  name="checkbox19" id="checkbox19" class="checkbox">
+                                                <span></span>
+                                            </label>
+                                        </div>
+                                        <div>
+                                            <!--Открываем редактирование формы модификатор класса --open для открытой формы-->
+                                             <a href="#" class="edit-entry" aria-label="Открыть форму"></a>
+                                        </div>
+                                        <div>Г-7-52</div>
+                                        <div>545 725</div>
+                                        <div>18.05.2021</div>
+                                        <div>Степанов Федор Алексеевич</div>
+                                        <div>Иванов Алексанр Иванович</div>
+                                        <div>ИП Иванов Александр Иванович</div>
+                                        <div>T874AO199 Skoda Octavia</div>
+                                        <div>Автопарк</div>
+                                        <div><a href="#" class="edit"></a></div>
+                                        <div><a href="#" class="delite"></a></div>
+                                    </div>
+                                </div>
+                                <div class="content-table__wrapper">
+                                    <div class="content-table__row">
+                                        <div>
+                                            <label for="checkbox20" class="checkbox-label">
+                                                <input type="checkbox"  name="checkbox20" id="checkbox20" class="checkbox">
+                                                <span></span>
+                                            </label>
+                                        </div>
+                                        <div>
+                                            <!--Открываем редактирование формы модификатор класса --open для открытой формы-->
+                                             <a href="#" class="edit-entry" aria-label="Открыть форму"></a>
+                                        </div>
+                                        <div>Г-7-52</div>
+                                        <div>545 725</div>
+                                        <div>18.05.2021</div>
+                                        <div>Степанов Федор Алексеевич</div>
+                                        <div>Иванов Алексанр Иванович</div>
+                                        <div>ИП Иванов Александр Иванович</div>
+                                        <div>T874AO199 Skoda Octavia</div>
+                                        <div>Автопарк</div>
+                                        <div><a href="#" class="edit"></a></div>
+                                        <div><a href="#" class="delite"></a></div>
+                                    </div>
+                                </div>
+
+   
+                                
                             </div>
                         </div>
                     </div>

@@ -47,6 +47,20 @@ h3 {
 h4 {
     font-size: 14px;
 }
+::-webkit-scrollbar {
+    width: 4px;
+    height:4px;               /* ширина всей полосы прокрутки */
+  }
+  
+::-webkit-scrollbar-track {
+    background: #ffffff;        /* цвет зоны отслеживания */
+  }
+  
+::-webkit-scrollbar-thumb {
+    background-color: #8E969B;    /* цвет бегунка */
+    border-radius: 20px;       /* округлось бегунка */
+    border: 3px solid #8E969B;  /* отступ вокруг бегунка */
+  }
 /*кнопки*/
 .btn {
     padding: 7px 16px;
@@ -153,7 +167,7 @@ aside {
     background-color:#222831;
     
 }
-.sitebar, main {
+.sitebar{
     padding-top:63px;
 }
 main {
@@ -162,6 +176,7 @@ main {
     height: 100%;
     display: flex;
     flex-direction: column;
+    margin-top:24px;
 }
 aside h3 {
     color: #FFFFFF;
@@ -272,22 +287,119 @@ footer {
 }
 .content-table {
     overflow: auto;
+    max-height:calc(100vh - 330px);
+    padding:4px;
 }
 .content-table__header{
     display:grid;
-    grid-template-columns: 32px 100px 140px 108px 220px 220px 248px 240px 140px;
+    grid-template-columns: 52px  100px 140px 108px 220px 220px 248px 240px 204px;
+    font-weight:700;
     
 }
 .content-table__header div {
     background: #EEEEEE;
     padding:5px 8px;
+    display:flex;
+    align-items: center;
 }
 .content-table__row{
     display:grid;
-    grid-template-columns: 32px 100px 140px 108px 220px 220px 248px 240px 140px;
+    grid-template-columns: 32px 20px 100px 140px 108px 220px 220px 248px 240px 140px 32px 32px;
 }
 .content-table__row div {
     padding:5px 8px;
+    display:flex;
+    align-items: center;
+}
+.content-table__more {
+ max-height:0;
+ overflow:hidden;
+ transition: max-height 0.5s linear;
+}
+.content-table__more--open {
+    max-height:2000px;
+}
+.content-table__more .content-more{
+   background: #FFF8E6;
+   padding:21px 16px;
+}
+.content-more {
+     display:flex;
+     flex-wrap:wrap;
+     align-items:center;
+}
+.content-more p {
+    width:25%;
+    min-width: 232px;
+    margin-bottom:10px;
+}
+.content-more p:nth-child(odd){
+    color:#8E969B;
+}
+.content-more p:nth-last-child(3){
+    margin-left:auto;
+}
+.content-more__footer {
+    width:100%;
+    display:flex;
+    justify-content: flex-end;
+    margin-top:28px;
+}
+.sort {
+    display:block;
+    width:16px;
+    height:16px;
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23clip0_1579_3895)'%3E%3Crect x='2' y='3.25' width='12' height='1.5' fill='%23222831'/%3E%3Crect x='4' y='7.25' width='8' height='1.5' fill='%23222831'/%3E%3Crect x='6' y='11.25' width='4' height='1.5' fill='%23222831'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_1579_3895'%3E%3Crect width='16' height='16' fill='white'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E");
+    background-repeat:no-repeat;
+    background-position: center;
+    margin-left:12px;
+}
+.sort.sort--active{
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23clip0_1339_18827)'%3E%3Crect x='2' y='3.25' width='12' height='1.5' fill='%23222831'/%3E%3Crect x='4' y='7.25' width='8' height='1.5' fill='%23222831'/%3E%3Crect x='6' y='11.25' width='4' height='1.5' fill='%23222831'/%3E%3Ccircle cx='13' cy='3' r='3' fill='%233D6AF2'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_1339_18827'%3E%3Crect width='16' height='16' fill='white'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E");
+}
+.sort-arrow{
+    display:block;
+    width:6px;
+    height:12px;
+    background-repeat:no-repeat;
+    background-position: center;
+    margin-left:auto;
+}
+.sort-arrow--down{
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='6' height='12' viewBox='0 0 6 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M3.75 8H6L3 12L0 8H2.25L2.25 0H3.75L3.75 8Z' fill='%23222831'/%3E%3C/svg%3E");
+}
+.sort-arrow--up {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23clip0_1330_11346)'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M7.25 6L5 6L8 2L11 6L8.75 6L8.75 14L7.25 14L7.25 6Z' fill='%23222831'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_1330_11346'%3E%3Crect width='16' height='16' fill='white'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E");
+}
+.edit{
+    display:block;
+    width:16px;
+    height:16px;
+    background-repeat:no-repeat;
+    background-position: center;
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23clip0_1579_7313)'%3E%3Cpath d='M10.4853 6.45739L9.54267 5.51472L3.33333 11.7241V12.6667H4.276L10.4853 6.45739ZM11.428 5.51472L12.3707 4.57206L11.428 3.62939L10.4853 4.57206L11.428 5.51472ZM4.828 14.0001H2V11.1714L10.9567 2.21472C11.0817 2.08974 11.2512 2.01953 11.428 2.01953C11.6048 2.01953 11.7743 2.08974 11.8993 2.21472L13.7853 4.10072C13.9103 4.22574 13.9805 4.39528 13.9805 4.57206C13.9805 4.74883 13.9103 4.91837 13.7853 5.04339L4.82867 14.0001H4.828Z' fill='%23222831'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_1579_7313'%3E%3Crect width='16' height='16' fill='white'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E");
+
+}
+.delite {
+    display:block;
+    width:16px;
+    height:16px;
+    background-repeat:no-repeat;
+    background-position: center;
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23clip0_1579_7316)'%3E%3Cpath d='M11.3333 3.99967H14.6666V5.33301H13.3333V13.9997C13.3333 14.1765 13.263 14.3461 13.138 14.4711C13.013 14.5961 12.8434 14.6663 12.6666 14.6663H3.33325C3.15644 14.6663 2.98687 14.5961 2.86185 14.4711C2.73682 14.3461 2.66659 14.1765 2.66659 13.9997V5.33301H1.33325V3.99967H4.66659V1.99967C4.66659 1.82286 4.73682 1.65329 4.86185 1.52827C4.98687 1.40325 5.15644 1.33301 5.33325 1.33301H10.6666C10.8434 1.33301 11.013 1.40325 11.138 1.52827C11.263 1.65329 11.3333 1.82286 11.3333 1.99967V3.99967ZM11.9999 5.33301H3.99992V13.333H11.9999V5.33301ZM5.99992 7.33301H7.33325V11.333H5.99992V7.33301ZM8.66659 7.33301H9.99992V11.333H8.66659V7.33301ZM5.99992 2.66634V3.99967H9.99992V2.66634H5.99992Z' fill='%23222831'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_1579_7316'%3E%3Crect width='16' height='16' fill='white'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E");
+
+}
+.edit-entry {
+    display:block;
+    width:5px;
+    height:8px;
+    background-repeat:no-repeat;
+    background-position: center; 
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='6' height='10' viewBox='0 0 6 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3.78145 5.00048L0.481445 1.70048L1.42411 0.757812L5.66678 5.00048L1.42411 9.24315L0.481445 8.30048L3.78145 5.00048Z' fill='%23222831'/%3E%3C/svg%3E");
+    transition:all 0.3s linear;
+}
+.edit-entry--open {
+    transform:rotate(90deg);
 }
 /*инпуты*/
 input[type="search"], input[type="text"], input[type="password"], input[type="data"]{
@@ -302,46 +414,89 @@ input[type="search"] {
     background-repeat:no-repeat;
     background-position: left 12px center;
 }
-input[type="checkbox"]{
-opacity:0;
-width:16px;
-height:16px;
-position:absolute;
-
-}
-
-.checkbox-label {
+.checkbox-label{
     display: block;
-position:relative;
-width:16px;
-height:16px;
-line-height: 0;
-border: 1px solid #BDC3C7;
-border-radius: 2px;
+    position:relative;
+}
+.checkbox-label>input {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+.checkbox-label>span {
+  display: inline-flex;
+  align-items: center;
+  user-select: none;
+}
+.checkbox-label>span::before {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  flex-grow: 0;
+  border: 1px solid #BDC3C7;
+  border-radius: 2px;
+  margin-right: 0.5em;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 50% 50%;
+}
 
-}
-.checkbox-label:before{
+.checkbox-label>input:not(:disabled):not(:checked)+span:hover::after{
     content:"";
-    display:block;
-    background:rgba(0, 0, 0, 0.05);
-    width:32px;
-    height:32px;
-    border-radius:50%;
-    opacity:0;
-    z-index:0;
-    top: -9px;
-    left: -9px;
-    position: absolute;
-    transition:all 0.3s linear;
+position:absolute;
+width:32px;
+height:32px;
+background: rgba(0, 0, 0, 0.05);
+border-radius: 50%;
+top: -10px;
+left: -8px;
 }
-input[type="checkbox"]+label:hover:before{
-    opacity:1;
+.checkbox-label>input:not(:disabled):not(:checked)+span:hover::before {
+  border-color: #BDC3C7;
 }
-input[type="checkbox"]:checked+label {
+
+/* стили для активного чекбокса (при нажатии на него) */
+.checkbox-label>input:not(:disabled):active+span::before {
+    border-color: #FFCA3D;;
+    background-color: #FFCA3D;
+}
+
+/* стили для чекбокса, находящегося в фокусе */
+.checkbox-label>input:focus+span::after {
     content:"";
     position:absolute;
-    display:block;
-    width:16px;
-    height:16px;
-background-color: #FFCA3D;
+    width:32px;
+    height:32px;
+    background: rgba(0, 0, 0, 0.02);
+    border-radius: 50%;
+    top: -10px;
+    left: -8px;
+}
+
+/* стили для чекбокса, находящегося в фокусе и не находящегося в состоянии checked */
+.checkbox-label>input:focus:not(:checked)+span::before {
+    border-color: #BDC3C7;
+}
+
+/* стили для чекбокса, находящегося в состоянии checked */
+.checkbox-label>input:checked+span::before {
+  border-color: #FFCA3D;;
+  background-color: #FFCA3D;
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='10' height='9' viewBox='0 0 10 9' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 6.5L1.85185 4.82612C1.50685 4.55729 1.01644 4.58403 0.702716 4.88879C0.327937 5.25286 0.353039 5.86193 0.756506 6.19392L4.16667 9L9.40649 2.0706C9.7172 1.6597 9.58466 1.06815 9.12832 0.829121C8.76611 0.63939 8.31976 0.740324 8.07442 1.06744L4 6.5Z' fill='%23222831'/%3E%3C/svg%3E");
+
+}
+.checkbox-label.checkbox-label--unselect>input+span::before {
+    border-color: #FFCA3D;;
+    background-color: #FFCA3D;
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='10' height='2' viewBox='0 0 10 2' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 0.999609C10 1.49667 9.59706 1.89961 9.1 1.89961H0.9C0.402944 1.89961 0 1.49667 0 0.999609C0 0.502553 0.402944 0.0996094 0.9 0.0996094H9.1C9.59706 0.0996094 10 0.502553 10 0.999609Z' fill='%23222831'/%3E%3C/svg%3E");
+
+  
+  }
+
+/* стили для чекбокса, находящегося в состоянии disabled */
+.checkbox-label>input:disabled+span::before {
+  background-color:  #DFE0E0;
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='10' height='9' viewBox='0 0 10 9' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 6.5L1.85185 4.82612C1.50685 4.55729 1.01644 4.58403 0.702716 4.88879C0.327937 5.25286 0.353039 5.86193 0.756506 6.19392L4.16667 9L9.40649 2.0706C9.7172 1.6597 9.58466 1.06815 9.12832 0.829121C8.76611 0.63939 8.31976 0.740324 8.07442 1.06744L4 6.5Z' fill='%238E969B'/%3E%3C/svg%3E");
 }
