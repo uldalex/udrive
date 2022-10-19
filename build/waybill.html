@@ -91,7 +91,7 @@
                         <!--шапка контента-->
                         <div class="content__header">
                             <form action="#" role="" class="form-head">
-                                <div class="placeholder-container">
+                                <div class="placeholder-container placeholder-container--left-icon">
                                     <input type="search" placeholder="Поиск" aria-label="Поиск">
                                     <label>Поиск</label>
                                 </div>
@@ -100,13 +100,14 @@
                                 <span class="error">Текст ошибки</span>
                             </form>
                             <div class="content-header__btns">
-                                <a href="#" class="btn btn--light disabled" aria-label="Печать путевых листов" role="button">Печать путевых листов</a>
-                                <a href="#" class="btn btn--light" aria-label="Печать журналов" role="button">Печать журналов</a>
+                                 <!--для модалок используем дата-атрибут с id модалки: data-hystmodal="id-модалки"-->
+                                <a href="#print-plist" class="btn btn--light disabled" aria-label="Печать путевых листов" role="button" data-hystmodal="#print-plist">Печать путевых листов</a>
+                                <a href="#print-journal" class="btn btn--light" aria-label="Печать журналов" role="button" data-hystmodal="#print-journal">Печать журналов</a>
                                 <a href="#" class="content__header__icon icon-list icon" aria-label="Создать группу" role="button"></a>
                                 <a href="#" id="setting-link" class="content__header__icon icon-settings icon" aria-label="Создать" role="button"></a>
                                 <div id="setting-menu" class="setting-menu">
                                     <ul>
-                                        <!--для модалок используем дата-атрибут с id модалки: data-hystmodal="id-модалки"-->
+                                       
                                         <li><a href="#setting-modal" aria-label="Настройка таблицы" data-hystmodal="#setting-modal">Настройка таблицы</a></li>
                                         <li><a href="#table-modal" data-hystmodal="#table-modal" aria-label="Настройка путевых листов">Настройка путевых листов</a></li>
                                     </ul>
@@ -978,7 +979,7 @@
                                 </label>
                             </li>
                         </ul>
-                        <div class="setting-checkbox__footer" >
+                        <div class="modal__footer" >
                             <a href="#" id="driver-close" class="dropdown__close btn btn--grey" aria-label="Сбросить">Сбросить</a>
                             <a href="#" class="btn btn--yellow" aria-label="Удалить">Удалить</a>
                         </div>
@@ -1027,11 +1028,79 @@
                                 </label>
                             </li>
                         </ul>
-                        <div class="setting-checkbox__footer" >
+                        <div class="modal__footer" >
                             <a href="#" id="driver-close" class="dropdown__close btn btn--grey" aria-label="Сбросить">Сбросить</a>
                             <a href="#" class="btn btn--yellow" aria-label="Удалить">Удалить</a>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--печать путевых листов-->
+    <div class="hystmodal" id="print-plist" aria-hidden="true">
+        <div class="hystmodal__wrap">
+            <div class="hystmodal__window " role="dialog" aria-modal="true">
+                <button class="hystmodal__close" data-hystclose>Закрыть</button>
+                <div class="hystmodal__styled">
+                    <h3>Печать путевых листов</h3>
+                    <form action="#" class="modal-form column-form">
+                        <div class="placeholder-container">
+                            
+                            <select>
+                                <option>Тип путевого листа</option>
+                                <option>Тип путевого листа</option>
+                                <option>Тип путевого листа</option>
+                                <option>Тип путевого листа</option>
+                            </select>
+                            <span class="placeholder">Тип путевого листа <span class="red">*</span></span>
+                        </div>
+                        <div class="modal__footer" >
+                            <a href="#" id="driver-close" class="dropdown__close btn btn--grey" aria-label="Сбросить">Сбросить</a>
+                            <a href="#" class="btn btn--yellow" aria-label="Удалить">Удалить</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--печать журналов-->
+    <div class="hystmodal" id="print-journal" aria-hidden="true">
+        <div class="hystmodal__wrap">
+            <div class="hystmodal__window " role="dialog" aria-modal="true">
+                <button class="hystmodal__close" data-hystclose>Закрыть</button>
+                <div class="hystmodal__styled">
+                    <h3>Печать журналов</h3>
+                    <form action="#" class="modal-form column-form journal-form">
+                        <div class="placeholder-container">
+                            <select>
+                                <option>Предрейсовый инструктаж БДД</option>
+                                <option>Предрейсовый инструктаж БДД</option>
+                                <option>Предрейсовый инструктаж БДД</option>
+                                <option>Предрейсовый инструктаж БДД</option>
+                            </select>
+                            <span class="placeholder">Тип журнала<span class="red">*</span></span>
+                        </div>
+                        <div class="journal-form-hidden">
+                            <div class="placeholder-container">
+                                <input type="text" placeholder="Профессия/Должность инструктуемого">
+                                <label>Профессия/Должность инструктуемого</label>
+                            </div>
+                            <div class="placeholder-container">
+                                <input type="text" placeholder="Должность инструктующего">
+                                <label>Должность инструктующего</label>
+                            </div>
+                            <div class="placeholder-container">
+                                <input type="text" placeholder="ФИО">
+                                <label>ФИО</label>
+                            </div>
+
+                        </div>
+                        <div class="modal__footer" >
+                            <a href="#" id="driver-close" class="dropdown__close btn btn--grey" aria-label="Сбросить">Сбросить</a>
+                            <a href="#" class="btn btn--yellow" aria-label="Удалить">Удалить</a>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
