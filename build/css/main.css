@@ -371,6 +371,7 @@ min-width:1550px;
      display:flex;
      flex-wrap:wrap;
      align-items:center;
+     width: calc(100vw - 350px);
 }
 .content-more p {
     width:25%;
@@ -644,7 +645,13 @@ margin: auto;
         box-shadow: 0 0 2px #FFCA3D;
      outline: none; 
     } 
-    select option { font-weight:normal; line-height:200% } 
+    select option {
+        -webkit-appearance:none;
+        -moz-appearance:none;
+        appearance:none;
+     font-weight:normal;
+     line-height:200%;
+     } 
   /*выпадающий фильтр*/
   .dropdown{
     position:relative;

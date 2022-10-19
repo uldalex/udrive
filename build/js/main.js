@@ -6,7 +6,8 @@ $(".edit-entry").on('click',function(){
 });
 /*Отмечаем чекбоксы */
 $(".checkbox-label").on('click',function(){
-    if ($('.checkbox:checked').length) {
+   
+    if ($('.content-table__row .checkbox:checked').length) {
         $('#all-checkbox-label').addClass('checkbox-label--unselect');  
         $("#all-checkbox").attr("checked", "checked");
     }else {
@@ -39,7 +40,9 @@ $('#all-checkbox-label').on('click', function(){
     } else {
      $(this).addClass('active');
       $(this).find('.dropdown-menu').slideDown(500);
+      if ($('.filter__list input[type="checkbox"]:checked').length) {
       $(this).find('.sort').addClass("sort--active"); 
+      }
     }
     }).on('click',' .dropdown__close', function() {
       $(this).parents('.dropdown').find('input[type="checkbox"]').prop("checked",false); 
