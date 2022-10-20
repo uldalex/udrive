@@ -88,8 +88,8 @@ $('#all-checkbox-label').on('click', function(){
     });
 
     /*селект */
-    var selectInput = $('.select');
-    $('.select').on('input',function(){
+
+    $('.select ').on('input',function(){
     var val = $(this).val()  
     if (val ==="") {
     $(this).parent('.placeholder-container').find('.placeholder').removeClass('placeholder--active');
@@ -99,11 +99,71 @@ $('#all-checkbox-label').on('click', function(){
     $(this).parents('form').find('.journal-form-hidden').css({'display':'block'});
     }
     });
+    /*input time */
+    $('.time').on('click',function(){
+        $(this).parent('.placeholder-container').find('.placeholder').addClass('placeholder--active');
+    });
+    $('.time').on('blur',function(){
+    var val = $(this).val()  
+    if (val ==="") {
+    $(this).parent('.placeholder-container').find('.placeholder').removeClass('placeholder--active');
+    }else {
+    $(this).parent('.placeholder-container').find('.placeholder').addClass('placeholder--active');
+    }
+    });
     /*сброс в модалках */
     $('.modal-reset').on('click', function(){
         $(this).parents('.setting-checkbox').find('input[type="checkbox"]').prop("checked",true);
         $(this).parents('form').find('input[type="text"]').prop('value','');
-    })
+    });
+    /*календарь в фильтрах*/
+    $('#select-date').dateRangePicker(	{
+        language:'ru',
+		inline:true,
+		container: '#calendar-container',
+ 	});
+
+    /*календарь в формах */
+    $('.select-form-date').dateRangePicker(	{
+        language:'ru',
+ 	});
+    /*календарь в формах со временем */
+        $('.select-form-time').dateRangePicker({
+            language:'ru',
+            time: {
+                enabled: true
+            }
+         });
+     $('.date-destroy').click(function(evt){
+        evt.stopPropagation();
+        $('#select-date').data('dateRangePicker').clear();
+        $('#select-date').data('dateRangePicker').close();
+        $('.select-form-date').data('dateRangePicker').clear();
+        $('.select-form-date').data('dateRangePicker').close();
+    });
+
+     /*Основные табы */
+     $('.main-header__list .tab-link').on('click', function() {
+        $(".main-header__list li a").removeClass('active');
+        $(".main-header__list li").removeClass('active');
+        $(this).toggleClass('active');
+        $(this).parent(".main-header__list li").addClass('active');
+        $('.tab-content.main-content')
+            .removeClass('tab-content--active')
+            .filter('[data-id=' + $(this).attr('data-link') + ']')
+            .addClass('tab-content--active');
+    });
+    /*Табы в контенте */
+    $('.page-tab-list .tab-link').on('click', function() {
+            $(".page-tab-list li a").removeClass('active');
+            $(".page-tab-list li").removeClass('active');
+            $(this).toggleClass('active');
+            $(this).parent(".page-tab-list li").addClass('active');
+            $('.content .tab-content')
+                .removeClass('tab-content--active')
+                .filter('[data-id=' + $(this).attr('data-link') + ']')
+                .addClass('tab-content--active');
+    });
 
     /*модалки */
      class HystModal {
