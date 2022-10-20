@@ -10,9 +10,13 @@ $(".checkbox-label").on('click',function(){
     if ($('.content-table__row .checkbox:checked').length) {
         $('#all-checkbox-label').addClass('checkbox-label--unselect');  
         $("#all-checkbox").attr("checked", "checked");
+        $('#delite-rows').removeClass('hidden');
+        $('#print-plink').removeClass("disabled")
     }else {
         $('#all-checkbox-label').removeClass('checkbox-label--unselect');
         $("#all-checkbox").attr("checked", false);
+        $('#delite-rows').addClass('hidden');
+        $('#print-plink').addClass("disabled")
     }
 });
 /*Снимаем чекбоксы */
@@ -20,10 +24,15 @@ $('#all-checkbox-label').on('click', function(){
     if ($("#all-checkbox").is(":checked")) {
         $(".checkbox").prop("checked", true);
         $(this).addClass('checkbox-label--unselect')
+        $('#delite-rows').removeClass('hidden');
+        $('#print-plink').removeClass("disabled")
     } else {
         $(".checkbox").prop("checked",false);
         $(this).removeClass('checkbox-label--unselect')
         $("#all-checkbox").prop("checked",false);
+        $('#delite-rows').addClass('hidden');
+        $('#print-plink').addClass("disabled")
+
     }
 }) 
 /*Dropdown Menu*/
@@ -44,14 +53,15 @@ $('#all-checkbox-label').on('click', function(){
       $(this).find('.sort').addClass("sort--active"); 
       }
     }
-    }).on('click',' .dropdown__close', function() {
+    }).on('click',' .filter-reset', function() {
       $(this).parents('.dropdown').find('input[type="checkbox"]').prop("checked",false); 
       $(this).parents('.dropdown').find('.dropdown-menu').slideUp(500);
-      $("#driver-input").prop('value','')
-      $(this).find('.sort').removeClass("sort--active"); 
+      $(this).parents('.dropdown').find(".filter-searsh").prop('value','')
+      $(this).parents('.dropdown').find('.sort').removeClass("sort--active"); 
+      $(this).parents('.dropdown').find('.filter__list li').css({'display':'block'});
     });
 
-    $("#driver-input").on("keyup", function() {
+    $(".filter-searsh").on("keyup", function() {
         var value = $(this).val().toLowerCase();
        $(".filter__list li .checkbox-label").filter(function() {
          let item = $(this).text().toLowerCase().indexOf(value) > -1;
@@ -76,6 +86,25 @@ $('#all-checkbox-label').on('click', function(){
         $(this).toggleClass('active');
         $("#setting-menu").toggleClass("setting-menu--open");
     });
+
+    /*селект */
+    var selectInput = $('.select');
+    $('.select').on('input',function(){
+    var val = $(this).val()  
+    if (val ==="") {
+    $(this).parent('.placeholder-container').find('.placeholder').removeClass('placeholder--active');
+    $(this).parents('form').find('.journal-form-hidden').css({'display':'none'});
+    }else {
+    $(this).parent('.placeholder-container').find('.placeholder').addClass('placeholder--active');
+    $(this).parents('form').find('.journal-form-hidden').css({'display':'block'});
+    }
+    });
+    /*сброс в модалках */
+    $('.modal-reset').on('click', function(){
+        $(this).parents('.setting-checkbox').find('input[type="checkbox"]').prop("checked",true);
+        $(this).parents('form').find('input[type="text"]').prop('value','');
+    })
+
     /*модалки */
      class HystModal {
         constructor(props) {
@@ -298,23 +327,23 @@ $('#all-checkbox-label').on('click', function(){
         }
       }
     const myModal = new HystModal({
-        // for dynamic init() of modals
-        // linkAttributeName: false,
         catchFocus: true,
         closeOnEsc: true,
         backscroll: true,
         beforeOpen: function(modal){
             console.log('Message before opening the modal');
-            console.log(modal); //modal window object
+            console.log(modal); 
         },
         afterClose: function(modal){
             console.log('Message after modal has closed');
-            console.log(modal); //modal window object
+            console.log(modal); 
 
-            //If Youtube video inside Modal, close it on modal closing
             let videoframe = modal.openedWindow.querySelector('iframe');
             if(videoframe){
                 videoframe.contentWindow.postMessage('{"event":"command","func":"stopVideo","args":""}', '*');
             }
         },
     });
+
+
+

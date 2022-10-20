@@ -100,8 +100,9 @@
                                 <span class="error">Текст ошибки</span>
                             </form>
                             <div class="content-header__btns">
+                                <a href="#" class="btn btn--red hidden" id="delite-rows" aria-label="Удалить" role="button">Удалить</a>
                                  <!--для модалок используем дата-атрибут с id модалки: data-hystmodal="id-модалки"-->
-                                <a href="#print-plist" class="btn btn--light disabled" aria-label="Печать путевых листов" role="button" data-hystmodal="#print-plist">Печать путевых листов</a>
+                                <a href="#print-plist" id="print-plink" class="btn btn--light disabled" aria-label="Печать путевых листов" role="button" data-hystmodal="#print-plist">Печать путевых листов</a>
                                 <a href="#print-journal" class="btn btn--light" aria-label="Печать журналов" role="button" data-hystmodal="#print-journal">Печать журналов</a>
                                 <a href="#" class="content__header__icon icon-list icon" aria-label="Создать группу" role="button"></a>
                                 <a href="#" id="setting-link" class="content__header__icon icon-settings icon" aria-label="Создать" role="button"></a>
@@ -139,7 +140,7 @@
                                             <a href="#" class=" sort" aria-label="Сортировать по возрастанию"></a>
                                                     <!--выпадающий фильтр-->
                                                     <div class="dropdown-menu" id="holder">
-                                                        <input class="search-input" id="driver-input" type="search" placeholder="Поиск">
+                                                        <input class="search-input filter-searsh" id="holder-input" type="search" placeholder="Поиск">
                                                         <ul class="filter__list">
                                                             <li>
                                                                 <label for="holder1" class="checkbox-label">
@@ -215,7 +216,7 @@
                                                             </li>
                                                         </ul>
                                                         <div class="dropdown-menu__footer" >
-                                                            <a href="#" id="driver-close" class="dropdown__close btn btn--grey" aria-label="Сбросить">Сбросить</a>
+                                                            <a href="#" id="filter-reset" class="filter-reset btn btn--grey" aria-label="Сбросить">Сбросить</a>
                                                             <a href="#" class="btn btn--yellow" aria-label="Удалить">Удалить</a>
                                                         </div>
                                                     </div>
@@ -226,7 +227,7 @@
                                             <a href="#" class="sort" aria-label="Сортировать по возрастанию"></a>
                                             <!--выпадающий фильтр-->
                                                     <div class="dropdown-menu" id="driver">
-                                                        <input class="search-input" id="driver-input" type="search" placeholder="Поиск">
+                                                        <input class="search-input filter-searsh" id="driver-input" type="search" placeholder="Поиск">
                                                         <ul class="filter__list">
                                                             <li>
                                                                 <label for="driver1" class="checkbox-label">
@@ -302,7 +303,7 @@
                                                             </li>
                                                         </ul>
                                                         <div class="dropdown-menu__footer" >
-                                                            <a href="#" id="driver-close" class="dropdown__close btn btn--grey" aria-label="Сбросить">Сбросить</a>
+                                                            <a href="#" id="filter-reset" class="filter-reset btn btn--grey" aria-label="Сбросить">Сбросить</a>
                                                             <a href="#" class="btn btn--yellow" aria-label="Удалить">Удалить</a>
                                                         </div>
                                                     </div>
@@ -312,7 +313,7 @@
                                             <a href="#" class="sort" aria-label="Сортировать по возрастанию"></a>
                                              <!--выпадающий фильтр-->
                                                 <div class="dropdown-menu" id="driver">
-                                                    <input class="search-input" id="driver-input" type="search" placeholder="Поиск">
+                                                    <input class="search-input filter-searsh" id="company-input" type="search" placeholder="Поиск">
                                                     <ul class="filter__list">
                                                         <li>
                                                             <label for="company1" class="checkbox-label">
@@ -322,7 +323,7 @@
                                                         </li>
                                                     </ul>
                                                     <div class="dropdown-menu__footer" >
-                                                            <a href="#" id="driver-close" class="dropdown__close btn btn--grey" aria-label="Сбросить">Сбросить</a>
+                                                            <a href="#" id="filter-reset" class="filter-reset btn btn--grey" aria-label="Сбросить">Сбросить</a>
                                                             <a href="#" class="btn btn--yellow" aria-label="Удалить">Удалить</a>
                                                     </div>
                                                 </div>
@@ -332,7 +333,7 @@
                                             <a href="#" class="sort" aria-label="Сортировать по возрастанию"></a>
                                              <!--выпадающий фильтр-->
                                                 <div class="dropdown-menu" id="driver">
-                                                    <input class="search-input" id="driver-input" type="search" placeholder="Поиск">
+                                                    <input class="search-input filter-searsh" id="ts-input" type="search" placeholder="Поиск">
                                                     <ul class="filter__list">
                                                         <li>
                                                             <label for="ts1" class="checkbox-label">
@@ -354,7 +355,7 @@
                                                         </li>
                                                     </ul>
                                                     <div class="dropdown-menu__footer" >
-                                                            <a href="#" id="driver-close" class="dropdown__close btn btn--grey" aria-label="Сбросить">Сбросить</a>
+                                                            <a href="#" id="filter-reset" class="filter-reset btn btn--grey" aria-label="Сбросить">Сбросить</a>
                                                             <a href="#" class="btn btn--yellow" aria-label="Удалить">Удалить</a>
                                                     </div>
                                                 </div>
@@ -364,7 +365,7 @@
                                             <a href="#" class="sort" aria-label="Сортировать по возрастанию"></a>
                                                 <!--выпадающий фильтр-->
                                                 <div class="dropdown-menu dropdown-menu--last" id="driver">
-                                                    <input class="search-input" id="driver-input" type="search" placeholder="Поиск">
+                                                    <input class="search-input filter-searsh" id="ap-input" type="search" placeholder="Поиск">
                                                     <ul class="filter__list">
                                                         <li>
                                                             <label for="ap1" class="checkbox-label">
@@ -374,7 +375,7 @@
                                                         </li>
                                                     </ul>
                                                     <div class="dropdown-menu__footer" >
-                                                            <a href="#" id="driver-close" class="dropdown__close btn btn--grey" aria-label="Сбросить">Сбросить</a>
+                                                            <a href="#" id="filter-reset" class="filter-reset btn btn--grey" aria-label="Сбросить">Сбросить</a>
                                                             <a href="#" class="btn btn--yellow" aria-label="Удалить">Удалить</a>
                                                     </div>
                                                 </div>
@@ -962,7 +963,7 @@
                             </li>
                             <li>
                                 <label for="setting-company" class="checkbox-label">
-                                    <input type="checkbox"  name="setting-company" id="setting-driver" class="checkbox" checked>
+                                    <input type="checkbox"  name="setting-company" id="setting-company" class="checkbox" checked>
                                     <span>Организация</span>
                                 </label>
                             </li>
@@ -980,7 +981,7 @@
                             </li>
                         </ul>
                         <div class="modal__footer" >
-                            <a href="#" id="driver-close" class="dropdown__close btn btn--grey" aria-label="Сбросить">Сбросить</a>
+                            <a href="#"  class="modal-reset dropdown__close btn btn--grey" aria-label="Сбросить">Сбросить</a>
                             <a href="#" class="btn btn--yellow" aria-label="Удалить">Удалить</a>
                         </div>
                     </div>
@@ -998,38 +999,44 @@
                     <div class="setting-checkbox">
                         <ul>
                             <li>
-                                <label for="table1" class="checkbox-label">
-                                    <input type="checkbox"  name="table1" id="table1" class="checkbox" checked>
+                                <!--Внимание на классы! Другой тип чекбокса-->
+                                <div class="btn-label">
+                                    <input type="checkbox"  name="table1" id="table1" class="checkbox-btn" checked>
+                                    <label for="table1"></label>
                                     <span>Печатать штамп мед. работника и тех. контролера</span>
-                                </label>
+                                </div>
                             </li>
                             <li>
-                                <label for="table2" class="checkbox-label">
-                                    <input type="checkbox"  name="table2" id="table2" class="checkbox" checked>
-                                    <span>Не использовать номера путевых листов</span>
-                                </label>
+                                <div class="btn-label">
+                                        <input type="checkbox"  name="table2" id="table2" class="checkbox-btn" checked>
+                                        <label for="table2"></label>
+                                        <span>Не использовать номера путевых листов</span>
+                                </div>
                             </li>
                             <li>
-                                <label for="table3" class="checkbox-label">
-                                    <input type="checkbox"  name="table3" id="table3" class="checkbox" checked>
+                                <div class="btn-label">
+                                    <input type="checkbox"  name="table3" id="table3" class="checkbox-btn" checked>
+                                    <label for="table3"></label>
                                     <span>Не использовать данные медицинского работника</span>
-                                </label>
+                                </div>
                             </li>
                             <li>
-                                <label for="table4" class="checkbox-label">
-                                    <input type="checkbox"  name="table4" id="table4" class="checkbox" checked>
-                                    <span>Не использовать данные технического контролера</span>
-                                </label>
+                                <div  class="btn-label">
+                                    <input type="checkbox"  name="table4" id="table4" class="checkbox-btn" checked>
+                                     <label for="table4"></label>
+                                     <span>Не использовать данные технического контролера</span>
+                                </div>
                             </li>
                             <li>
-                                <label for="table5" class="checkbox-label">
-                                    <input type="checkbox"  name="table5" id="table5" class="checkbox" checked>
+                                <div  class="btn-label">
+                                    <input type="checkbox"  name="table5" id="table5" class="checkbox-btn" checked>
+                                    <label for="table5"></label>
                                     <span>Не использовать данные должностного лица</span>
-                                </label>
+                                </div>
                             </li>
                         </ul>
                         <div class="modal__footer" >
-                            <a href="#" id="driver-close" class="dropdown__close btn btn--grey" aria-label="Сбросить">Сбросить</a>
+                            <a href="#"  class="modal-reset dropdown__close btn btn--grey" aria-label="Сбросить">Сбросить</a>
                             <a href="#" class="btn btn--yellow" aria-label="Удалить">Удалить</a>
                         </div>
                     </div>
@@ -1046,9 +1053,8 @@
                     <h3>Печать путевых листов</h3>
                     <form action="#" class="modal-form column-form">
                         <div class="placeholder-container">
-                            
                             <select>
-                                <option>Тип путевого листа</option>
+                                <option>Путевой лист</option>
                                 <option>Тип путевого листа</option>
                                 <option>Тип путевого листа</option>
                                 <option>Тип путевого листа</option>
@@ -1056,7 +1062,7 @@
                             <span class="placeholder">Тип путевого листа <span class="red">*</span></span>
                         </div>
                         <div class="modal__footer" >
-                            <a href="#" id="driver-close" class="dropdown__close btn btn--grey" aria-label="Сбросить">Сбросить</a>
+                            <a href="#"  class="modal-reset btn btn--grey" aria-label="Сбросить">Сбросить</a>
                             <a href="#" class="btn btn--yellow" aria-label="Удалить">Удалить</a>
                         </div>
                     </form>
@@ -1073,12 +1079,12 @@
                     <h3>Печать журналов</h3>
                     <form action="#" class="modal-form column-form journal-form">
                         <div class="placeholder-container">
-                            <select>
-                                <option></option>
-                                <option>Предрейсовый инструктаж БДД</option>
-                                <option>Предрейсовый инструктаж БДД</option>
-                                <option>Предрейсовый инструктаж БДД</option>
-                                <option>Предрейсовый инструктаж БДД</option>
+                            <select class="select">
+                                <option value =""></option> 
+                                <option value="1">Предрейсовый инструктаж БДД</option>
+                                <option value="2">Предрейсовый инструктаж БДД</option>
+                                <option value="3">Предрейсовый инструктаж БДД</option>
+                                <option value="4">Предрейсовый инструктаж БДД</option>
                             </select>
                             <span class="placeholder">Тип журнала<span class="red">*</span></span>
                         </div>
@@ -1098,7 +1104,7 @@
 
                         </div>
                         <div class="modal__footer" >
-                            <a href="#" id="driver-close" class="dropdown__close btn btn--grey" aria-label="Сбросить">Сбросить</a>
+                            <a href="#" class="modal-reset btn btn--grey" aria-label="Сбросить">Сбросить</a>
                             <a href="#" class="btn btn--yellow" aria-label="Удалить">Удалить</a>
                         </div>
                     </form>
