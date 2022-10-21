@@ -16,22 +16,14 @@
   
   .date-picker-wrapper {
     position: absolute;
-    z-index: 1;
+    z-index: 10000;
     background-color: #ffffff;
     padding: 5px 12px;
     font-size: 16px;
     line-height: 22px;
-
+    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.1);
+border-radius: 6px;
   }
-  form .date-picker-wrapper {
-    position:fixed;
-    z-index: 1;
-    background-color: #ffffff;
-    padding: 5px 12px;
-    font-size: 16px;
-    line-height: 22px;
-  }
-  
   .dp-clearfix {
     clear: both;
     height: 0;
@@ -343,9 +335,53 @@
     width: 129px;
     padding: 0;
     margin: 0;
-    height: 20px;
+    height: 15px;
   }
-  
+  input[type='range'] {
+    overflow: hidden;
+    width: 80px;
+    -webkit-appearance: none;
+    background-color: transparent;
+    border:1px solid #c0cad0;
+    border-radius:4px;
+}
+
+input[type='range']::-webkit-slider-runnable-track {
+    height: 4px;
+    -webkit-appearance: none;
+    color: #FFCA3D;
+    margin-top: -1px;
+}
+
+input[type='range']::-webkit-slider-thumb {
+    width: 20px;
+    -webkit-appearance: none;
+    min-height: 20px;
+    margin-top: -8px;
+    border-radius: 20px;
+    cursor: ew-resize;
+    background: #EEEEEE;
+    box-shadow: -80px 0 0 80px #FFCA3D;
+}
+
+input[type="range"]::-moz-range-progress {
+    background-color: #FFCA3D;
+}
+input[type="range"]::-moz-range-track {  
+    background-color: transparent;
+}
+input[type="range"]::-ms-fill-lower {
+    background-color: #FFCA3D;
+}
+input[type="range"]::-ms-fill-upper {  
+    background-color: transparent;
+}
+.time {
+  width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
   .date-picker-wrapper .time1 {
     width: 180px;
     padding: 0 5px;

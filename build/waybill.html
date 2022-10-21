@@ -76,18 +76,21 @@
                     <ul class="tab-list main-header__list">
                         <!--Внимание! Модификатор класса --active и у ссылки и у li-->
                         <li class="main-header__item active">
-                            <a data-link="tab_01" href="#" class="tab-link main-header__link main-header__link--active">Путевые листы</a>
+                            <a data-link="tab_01" href="#" id="all-list" class="tab-link main-header__link main-header__link--active">Путевые листы</a>
                         </li>
                         <li class="main-header__item">
-                            <a data-link="tab_02" href="#" class="tab-link main-header__link">Создать путевой лист</a>
+                            <a data-link="tab_02" href="#" id="add-list" class="tab-link main-header__link hidden">Создать путевой лист</a><span id="add-list-close" class="icon main-header__link--close hidden"></span>
+                        </li>
+                        <li class="main-header__item">
+                            <a data-link="tab_03" href="#" id="add-group" class="tab-link main-header__link hidden">Создать группу</a><span id="add-group-close" class="icon main-header__link--close hidden"></span>
                         </li>
                     </ul>
                     <div data-id="tab_01" class="tab-content tab-content--active">
                         <div  class="main-header__title">
                             <h1>Путевые листы</h1>
                             <div class="main-header__btns">
-                                <a href="#" class="btn btn--yellow" aria-label="Создать группу" role="button">Создать группу</a>
-                                <a href="#" class="btn btn--yellow" aria-label="Создать" role="button">Создать</a>
+                                <a href="#" id="add-group-link" class="btn btn--yellow" aria-label="Создать группу" role="button">Создать группу</a>
+                                <a href="#" id="add-list-link" class="btn btn--yellow" aria-label="Создать" role="button">Создать</a>
                             </div>
                         </div>
                     </div>
@@ -119,10 +122,9 @@
                                 <a href="#print-plist" id="print-plink" class="btn btn--light disabled" aria-label="Печать путевых листов" role="button" data-hystmodal="#print-plist">Печать путевых листов</a>
                                 <a href="#print-journal" class="btn btn--light" aria-label="Печать журналов" role="button" data-hystmodal="#print-journal">Печать журналов</a>
                                 <a href="#" class="content__header__icon icon-list icon" aria-label="Создать группу" role="button"></a>
-                                <a href="#" id="setting-link" class="content__header__icon icon-settings icon" aria-label="Создать" role="button"></a>
+                                <a href="#" id="setting-link" class="setting-link content__header__icon icon-settings icon" aria-label="Создать" role="button"></a>
                                 <div id="setting-menu" class="setting-menu">
                                     <ul>
-                                       
                                         <li><a href="#setting-modal" aria-label="Настройка таблицы" data-hystmodal="#setting-modal">Настройка таблицы</a></li>
                                         <li><a href="#table-modal" data-hystmodal="#table-modal" aria-label="Настройка путевых листов">Настройка путевых листов</a></li>
                                     </ul>
@@ -947,10 +949,10 @@
                                     <a data-link="tab-page_03" href="#" class="tab-link page-tab-list__link">Дополнительные данные</a></li>
                             </ul>
                             <div class="content-header__btns">
-                                <a href="#print-plist" id="print-plink" class="btn btn--light disabled" aria-label="Сохранить и распечатать" role="button" data-hystmodal="#print-plist">Сохранить и распечатать</a>
-                                <a href="#print-journal" class="btn btn--light disabled" aria-label="Сохранить" role="button" data-hystmodal="#print-journal">Сохранить</a>
-                                <a href="#" id="setting-link" class="content__header__icon icon-settings icon" aria-label="Создать" role="button"></a>
-                                <div id="setting-menu" class="setting-menu">
+                                <a href="#print-plist" id="print-plink" class="btn btn--yellow  disabled" aria-label="Сохранить и распечатать" role="button" data-hystmodal="#print-plist">Сохранить и распечатать</a>
+                                <a href="#print-journal" class="btn btn--yellow disabled" aria-label="Сохранить" role="button" data-hystmodal="#print-journal">Сохранить</a>
+                                <a href="#" id="setting-link" class="setting-link content__header__icon icon-settings icon" aria-label="Создать" role="button"></a>
+                                <div class="setting-menu">
                                     <ul>
                                         <li><a href="#setting-modal" aria-label="Настройка таблицы" data-hystmodal="#setting-modal">Настройка таблицы</a></li>
                                         <li><a href="#table-modal" data-hystmodal="#table-modal" aria-label="Настройка путевых листов">Настройка путевых листов</a></li>
@@ -960,6 +962,7 @@
                         </div>
                         <!--тело контента-->
                         <div class="content">
+                            <!--таб основные данные-->
                             <div data-id="tab-page_01" class="tab-content tab-content--active">
                                 <form action="#" class="column-form row">
                                     <div class="col-12">
@@ -971,29 +974,59 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="placeholder-container">
-                                            <select class="select">
-                                                <option value =""></option> 
-                                                <option value="1">Иванов Иван Иванович</option>
-                                                <option value="2">Петров Петр Сергеевич</option>
-                                                <option value="3">Сидоров Сидор Сидорович</option>
-                                            </select>
-                                            <span class="placeholder">Владелец<span class="red">*</span></span>
+                                        <div class="dropdown input-select placeholder-container" >
+                                            <div class="input-select__link"><span class="input-select-value"></span><span>Владелец</span></div>
+                                            <div class="select-reset">Владелец</div>
+                                                <div class="dropdown-menu" >
+                                                    <ul class="select__list">
+                                                        <li>
+                                                            <a href="#" data-hystmodal="#add-worker" aria-label="Добавить организацию">+ Добавить владельца</a>
+                                                        </li>
+                                                        <li>
+                                                            <span>Иванов Иван Иванович</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>Петров Петр Сергеевич</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>Сидоров Сидор Сидорович</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <!--скрытый инпут для добавления значения в форму-->
+                                                <input type="hidden" class="select-value" id="" value="">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="dropdown input-select placeholder-container" >
+                                            <div class="input-select__link"><span class="input-select-value"></span><span>Организация</span></div>
+                                            <div class="select-reset">Организация</div>
+                                                <div class="dropdown-menu" >
+                                                    <ul class="select__list">
+                                                        <li>
+                                                            <a href="#" data-hystmodal="#add-worker" aria-label="Добавить организацию">+ Добавить организацию</a>
+                                                        </li>
+                                                        <li>
+                                                            <span>Текст</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>Текст</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>Текст</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>Текст</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <!--скрытый инпут для добавления значения в форму-->
+                                                <input type="hidden" class="select-value" id="" value="">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="placeholder-container">
-                                            <select class="select">
-                                                <option value =""></option> 
-                                                <option value="1">ИП Иванов Иван Иванович</option>
-                                                <option value="2">ООО "Рога и копыта"</option>
-                                            </select>
-                                            <span class="placeholder">Организация<span class="red">*</span></span>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="placeholder-container">
-                                            <input type="data" class="select-form-date" placeholder="10.11.2020 - 11.11.2020">
+                                            <input type="data" class="select-form-date icon icon-date" placeholder="10.11.2020 - 11.11.2020">
                                             <label>Срок действия<span class="red">*</span></label>
                                         </div>
                                     </div>
@@ -1004,75 +1037,153 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="placeholder-container">
-                                            <select class="select">
-                                                <option value =""></option> 
-                                                <option value="1">Иванов Иван Иванович</option>
-                                                <option value="2">Петров Петр Сергеевич</option>
-                                                <option value="3">Сидоров Сидор Сидорович</option>
-                                            </select>
-                                            <span class="placeholder">Водитель<span class="red">*</span></span>
+                                        <div class="dropdown input-select placeholder-container" >
+                                            <div class="input-select__link"><span class="input-select-value"></span><span>Водитель</span></div>
+                                            <div class="select-reset">Водитель</div>
+                                                <div class="dropdown-menu" >
+                                                    <ul class="select__list">
+                                                        <li>
+                                                            <a href="#" data-hystmodal="#add-worker" aria-label="Добавить организацию">+ Добавить водителя</a>
+                                                        </li>
+                                                        <li>
+                                                            <span>Иванов Иван Иванович</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>Петров Петр Сергеевич</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>Сидоров Сидор Сидорович</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <!--скрытый инпут для добавления значения в форму-->
+                                                <input type="hidden" class="select-value" id="" value="">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="placeholder-container">
-                                            <select class="select">
-                                                <option value =""></option> 
-                                                <option value="1">Машина</option>
-                                                <option value="2">Самокат</option>
-                                                <option value="3">Метла</option>
-                                            </select>
-                                            <span class="placeholder">Транспортное средство<span class="red">*</span></span>
+                                        <div class="dropdown input-select placeholder-container" >
+                                            <div class="input-select__link"><span class="input-select-value"></span><span>Транспортное средство</span></div>
+                                            <div class="select-reset">Транспортное средство</div>
+                                                <div class="dropdown-menu" >
+                                                    <ul class="select__list">
+                                                        <li>
+                                                            <a href="#" data-hystmodal="#add-worker" aria-label="Добавить организацию">+ Добавить транспортное средство</a>
+                                                        </li>
+                                                        <li>
+                                                            <span>Машина</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>Самокат</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>Метла</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <!--скрытый инпут для добавления значения в форму-->
+                                                <input type="hidden" class="select-value" id="" value="">
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <h4>Медицинский контроль</h4>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="placeholder-container">
-                                            <select class="select">
-                                                <option value =""></option> 
-                                                <option value="1">ООО "Залечим"</option>
-                                                <option value="2">ИП Загубилов ИИ</option>
-                                                <option value="3">ЗАО "РФ"</option>
-                                            </select>
-                                            <span class="placeholder">Медицинская организация<span class="red">*</span></span>
+                                        <div class="dropdown input-select placeholder-container" >
+                                            <div class="input-select__link"><span class="input-select-value"></span><span>Медицинская организация</span></div>
+                                            <div class="select-reset">Медицинская организация</div>
+                                                <div class="dropdown-menu" >
+                                                    <ul class="select__list">
+                                                        <li>
+                                                            <a href="#" data-hystmodal="#add-worker" aria-label="Добавить организацию">+ Добавить организацию</a>
+                                                        </li>
+                                                        <li>
+                                                            <span>ООО "Залечим"</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>ИП Загубилов ИИ</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>ЗАО "РФ"</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <!--скрытый инпут для добавления значения в форму-->
+                                                <input type="hidden" class="select-value" id="" value="">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="placeholder-container">
-                                            <select class="select">
-                                                <option value =""></option> 
-                                                <option value="1">Младший фельдшер</option>
-                                                <option value="2">Старший ветеринар</option>
-                                                <option value="3">Автослесарь</option>
-                                            </select>
-                                            <span class="placeholder">Медицинский контролер<span class="red">*</span></span>
+                                        <div class="dropdown input-select placeholder-container" >
+                                            <div class="input-select__link"><span class="input-select-value"></span><span>Медицинский контролер</span></div>
+                                            <div class="select-reset">Медицинский контролер</div>
+                                                <div class="dropdown-menu" >
+                                                    <ul class="select__list">
+                                                        <li>
+                                                            <a href="#add-worker"  data-hystmodal="#add-worker" aria-label="Добавить организацию">+ Добавить контролера</a>
+                                                        </li>
+                                                        <li>
+                                                            <span>Младший фельдшер</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>Старший ветеринар</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>Автослесарь</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <!--скрытый инпут для добавления значения в форму-->
+                                                <input type="hidden" class="select-value" id="" value="">
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <h4>Технический контроль</h4>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="placeholder-container">
-                                            <select class="select">
-                                                <option value =""></option> 
-                                                <option value="1">ООО "Залечим"</option>
-                                                <option value="2">ИП Загубилов ИИ</option>
-                                                <option value="3">ЗАО "РФ"</option>
-                                            </select>
-                                            <span class="placeholder">Организация технического контроля<span class="red">*</span></span>
+                                        <div class="dropdown input-select placeholder-container" >
+                                            <div class="input-select__link"><span class="input-select-value"></span><span>Организация технического контроля</span></div>
+                                            <div class="select-reset">Организация технического контроля</div>
+                                                <div class="dropdown-menu" >
+                                                    <ul class="select__list">
+                                                        <li>
+                                                            <a href="#" data-hystmodal="#add-worker" aria-label="Добавить организацию">+ Добавить организацию</a>
+                                                        </li>
+                                                        <li>
+                                                            <span>ООО "Сломаем"</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>Дешево и сердито</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>Контрольный контроль</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <!--скрытый инпут для добавления значения в форму-->
+                                                <input type="hidden" class="select-value" id="" value="">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="placeholder-container">
-                                            <select class="select">
-                                                <option value =""></option> 
-                                                <option value="1">Младший фельдшер</option>
-                                                <option value="2">Старший ветеринар</option>
-                                                <option value="3">Автослесарь</option>
-                                            </select>
-                                            <span class="placeholder">Технический контролер<span class="red">*</span></span>
+                                        <div class="dropdown input-select placeholder-container" >
+                                            <div class="input-select__link"><span class="input-select-value"></span><span>Технический контролер</span></div>
+                                            <div class="select-reset">Технический контролер</div>
+                                                <div class="dropdown-menu" >
+                                                    <ul class="select__list">
+                                                        <li>
+                                                            <a href="#" data-hystmodal="#add-worker" aria-label="Добавить организацию">+ Добавить контролера</a>
+                                                        </li>
+                                                        <li>
+                                                            <span>ООО "Сломаем"</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>Дешево и сердито</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>Контрольный контроль</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <!--скрытый инпут для добавления значения в форму-->
+                                                <input type="hidden" class="select-value" id="" value="">
                                         </div>
                                     </div>
                                     <div class="col-12">
@@ -1080,14 +1191,27 @@
                                     </div>
                                     <div class="col-12">
                                         <div class="col-md-6">
-                                            <div class="placeholder-container">
-                                                <select class="select">
-                                                    <option value =""></option> 
-                                                    <option value="1">Иванов Иван Иванович</option>
-                                                    <option value="2">Петров Петр Сергеевич</option>
-                                                    <option value="3">Сидоров Сидор Сидорович</option>
-                                                </select>
-                                                <span class="placeholder">Должностное лицо/Диспетчер<span class="red">*</span></span>
+                                            <div class="dropdown input-select placeholder-container" >
+                                                <div class="input-select__link"><span class="input-select-value"></span><span>Должностное лицо/Диспетчер</span></div>
+                                                <div class="select-reset">Должностное лицо/Диспетчер</div>
+                                                    <div class="dropdown-menu" >
+                                                        <ul class="select__list">
+                                                            <li>
+                                                                <a href="#" data-hystmodal="#add-worker" aria-label="Добавить организацию">+ Добавить диспетчера</a>
+                                                            </li>
+                                                            <li>
+                                                                <span>Иванов Иван Иванович</span>
+                                                            </li>
+                                                            <li>
+                                                                <span>Петров Петр Сергеевич</span>
+                                                            </li>
+                                                            <li>
+                                                                <span>Сидоров Сидор Сидорович</span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <!--скрытый инпут для добавления значения в форму-->
+                                                    <input type="hidden" class="select-value" id="" value="">
                                             </div>
                                         </div>
                                     </div>
@@ -1095,25 +1219,51 @@
                                         <h4>Транспорт</h4>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="placeholder-container">
-                                            <select class="select">
-                                                <option value =""></option> 
-                                                <option value="1">перевозка</option>
-                                                <option value="2">еще перевозка</option>
-                                                <option value="3">снова перевозка</option>
-                                            </select>
-                                            <span class="placeholder">Вид перевозки<span class="red">*</span></span>
+                                        <div class="dropdown input-select placeholder-container" >
+                                            <div class="input-select__link"><span class="input-select-value"></span><span>Вид перевозки</span></div>
+                                            <div class="select-reset">Вид перевозки</div>
+                                                <div class="dropdown-menu" >
+                                                    <ul class="select__list">
+                                                        <li>
+                                                            <a href="#" data-hystmodal="#add-worker" aria-label="Добавить вид">+ Добавить вид</a>
+                                                        </li>
+                                                        <li>
+                                                            <span>Текст</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>Текст</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>Текст</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <!--скрытый инпут для добавления значения в форму-->
+                                                <input type="hidden" class="select-value" id="" value="">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="placeholder-container">
-                                            <select class="select">
-                                                <option value =""></option> 
-                                                <option value="1">Сообщение</option>
-                                                <option value="2">еще сообщение</option>
-                                                <option value="3">еще одно</option>
-                                            </select>
-                                            <span class="placeholder">Вид сообщения<span class="red">*</span></span>
+                                        <div class="dropdown input-select placeholder-container" >
+                                            <div class="input-select__link"><span class="input-select-value"></span><span>Вид сообщения</span></div>
+                                            <div class="select-reset">Вид сообщения</div>
+                                                <div class="dropdown-menu" >
+                                                    <ul class="select__list">
+                                                        <li>
+                                                            <a href="#" data-hystmodal="#add-worker" aria-label="Добавить организацию">+ Добавить вид</a>
+                                                        </li>
+                                                        <li>
+                                                            <span>Текст</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>Текст</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>Текст</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <!--скрытый инпут для добавления значения в форму-->
+                                                <input type="hidden" class="select-value" id="" value="">
                                         </div>
                                     </div>
                                     <div class="col-12">
@@ -1121,21 +1271,97 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="placeholder-container">
-                                            <input type="data" class="select-form-time" placeholder="10.11.2020 - 11.11.2020">
+                                            <input type="data" id="select-form-time" class="select-form-time icon icon-date" placeholder="10.11.2020 - 11.11.2020">
                                             <label>Выезд с парковки<span class="red">*</span></label>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="placeholder-container">
-                                            <input type="data" class="select-form-date--time" placeholder="10.11.2020 - 11.11.2020">
+                                            <input type="data" id="select-form-time1" class="select-form-time icon icon-date" placeholder="10.11.2020 - 11.11.2020">
                                             <label>Возвращение на парковку<span class="red">*</span></label>
                                         </div>
                                     </div>
                                 </form>
                             </div>
+                            <!--таб адреса-->
                             <div data-id="tab-page_02" class="tab-content">
-xc
+                                <form action="#" class="">
+                                    <div class="column-form row">
+                                        <div class="col-md-6">
+                                            <div class="placeholder-container">
+                                                <input type="text" placeholder="Наименование заказчика">
+                                                <label>Наименование заказчика<span class"red">*</span></label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="placeholder-container">
+                                                <input type="text" placeholder="Код заказчика">
+                                                <label>Код заказчика<span class"red">*</span></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="column-form row">
+                                        <div class="col-md-6">
+                                            <div class="placeholder-container">
+                                                <input type="text" placeholder="Адрес погрузки">
+                                                <label>Адрес погрузки<span class"red">*</span></label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="placeholder-container">
+                                                <input type="text" placeholder="Адрес разгрузки">
+                                                <label>Адрес разгрузки<span class"red">*</span></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="column-form row">
+                                        <div class="col-md-6">
+                                            <div class="placeholder-container">
+                                                <input type="text" placeholder="Наименование груза">
+                                                <label>Наименование груза<span class"red">*</span></label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="placeholder-container">
+                                                <input type="text" placeholder="Весс груза (тонн)">
+                                                <label>Весс груза (тонн)<span class"red">*</span></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                <div class="content-table">
+                                    <div class="content-table__header content-table__header--adress">
+                                        <div class="content-table__filter">№</div>
+                                        <div class="content-table__filter">Наименование заказчика</div>
+                                        <div class="content-table__filter">Код заказчика</div>
+                                        <div class="content-table__filter">Адрес погрузки</div>
+                                        <div class="content-table__filter">Адрес разгрузки</div>
+                                        <div class="content-table__filter">Вес (тонн)</div>
+                                        <div class="content-table__filter">Наименование груза</div>
+                                    </div>
+                                    <div class="content-table__row content-table__row--adress">
+                                        <div>1</div>
+                                        <div>Сидоров Петр Иванович</div>
+                                        <div>154896</div>
+                                        <div>Москва, ул. Лесная 43</div>
+                                        <div>Москва, ул. Беломорская 125</div>
+                                        <div>5</div>
+                                        <div>Техника</div>
+                                        <div><a href="#" class="delite"></a></div>
+                                    </div>
+                                    <div class="content-table__row content-table__row--adress">
+                                        <div>1</div>
+                                        <div>Сидоров Петр Иванович</div>
+                                        <div>154896</div>
+                                        <div>Москва, ул. Лесная 43</div>
+                                        <div>Москва, ул. Беломорская 125</div>
+                                        <div>5</div>
+                                        <div>Техника</div>
+                                        <div><a href="#" class="delite"></a></div>
+                                    </div>
+                                </div>
                             </div>
+                            <!--таб дополнительные данные-->
                             <div data-id="tab-page_03" class="tab-content">
 xzc
                             </div>
@@ -1278,14 +1504,24 @@ xzc
                     <div class="hystmodal__styled">
                         <h3>Печать путевых листов</h3>
                         <form action="#" class="modal-form column-form">
-                            <div class="placeholder-container">
-                                <select>
-                                    <option>Путевой лист</option>
-                                    <option>Тип путевого листа</option>
-                                    <option>Тип путевого листа</option>
-                                    <option>Тип путевого листа</option>
-                                </select>
-                                <span class="placeholder">Тип путевого листа <span class="red">*</span></span>
+                            <div class="dropdown input-select placeholder-container" >
+                                <div class="input-select__link"><span class="input-select-value"></span><span>Путевой лист</span></div>
+                                    <div class="select-reset">Путевой лист</div>
+                                    <div class="dropdown-menu" >
+                                        <ul class="select__list">
+                                            <li>
+                                                <span>Тип путевого листа</span>
+                                            </li>
+                                            <li>
+                                                <span>Тип путевого листа</span>
+                                            </li>
+                                            <li>
+                                                <span>Тип путевого листа</span>
+                                            </li>
+                                            </ul>
+                                    </div>
+                                <!--скрытый инпут для добавления значения в форму-->
+                                <input type="hidden" class="select-value" id="" value="">
                             </div>
                             <div class="modal__footer" >
                                 <a href="#"  class="modal-reset btn btn--grey" aria-label="Сбросить">Сбросить</a>
@@ -1298,45 +1534,121 @@ xzc
         </div>
         <!--печать журналов-->
         <div class="hystmodal" id="print-journal" aria-hidden="true">
-        <div class="hystmodal__wrap">
-            <div class="hystmodal__window " role="dialog" aria-modal="true">
-                <button class="hystmodal__close" data-hystclose>Закрыть</button>
-                <div class="hystmodal__styled">
-                    <h3>Печать журналов</h3>
-                    <form action="#" class="modal-form column-form journal-form">
-                        <div class="placeholder-container">
-                            <select class="select">
-                                <option value =""></option> 
-                                <option value="1">Предрейсовый инструктаж БДД</option>
-                                <option value="2">Предрейсовый инструктаж БДД</option>
-                                <option value="3">Предрейсовый инструктаж БДД</option>
-                                <option value="4">Предрейсовый инструктаж БДД</option>
-                            </select>
-                            <span class="placeholder">Тип журнала<span class="red">*</span></span>
-                        </div>
-                        <div class="journal-form-hidden">
-                            <div class="placeholder-container">
-                                <input type="text" placeholder="Профессия/Должность инструктуемого">
-                                <label>Профессия/Должность инструктуемого</label>
+            <div class="hystmodal__wrap">
+                <div class="hystmodal__window " role="dialog" aria-modal="true">
+                    <button class="hystmodal__close" data-hystclose>Закрыть</button>
+                    <div class="hystmodal__styled">
+                        <h3>Печать журналов</h3>
+                        <form action="#" class="modal-form column-form journal-form">
+                            <div class="dropdown input-select placeholder-container" >
+                                <div class="input-select__link"><span class="input-select-value"></span><span>Тип журнала</span></div>
+                                    <div class="select-reset">Тип журнала</div>
+                                    <div class="dropdown-menu" >
+                                        <ul class="select__list">
+                                            <li>
+                                                <span>Предрейсовый инструктаж БДД</span>
+                                            </li>
+                                            <li>
+                                                <span>Предрейсовый инструктаж БДД</span>
+                                            </li>
+                                            <li>
+                                                <span>Предрейсовый инструктаж БДД</span>
+                                            </li>
+                                            </ul>
+                                    </div>
+                                <!--скрытый инпут для добавления значения в форму-->
+                                <input type="hidden" class="select-value" id="" value="">
                             </div>
-                            <div class="placeholder-container">
-                                <input type="text" placeholder="Должность инструктующего">
-                                <label>Должность инструктующего</label>
-                            </div>
-                            <div class="placeholder-container">
-                                <input type="text" placeholder="ФИО">
-                                <label>ФИО</label>
-                            </div>
+                            <div class="journal-form-hidden hidden">
+                                <div class="placeholder-container">
+                                    <input type="text" placeholder="Профессия/Должность инструктуемого">
+                                    <label>Профессия/Должность инструктуемого</label>
+                                </div>
+                                <div class="placeholder-container">
+                                    <input type="text" placeholder="Должность инструктующего">
+                                    <label>Должность инструктующего</label>
+                                </div>
+                                <div class="placeholder-container">
+                                    <input type="text" placeholder="ФИО">
+                                    <label>ФИО</label>
+                                </div>
 
-                        </div>
-                        <div class="modal__footer" >
-                            <a href="#" class="modal-reset btn btn--grey" aria-label="Сбросить">Сбросить</a>
-                            <a href="#" class="btn btn--yellow" aria-label="Удалить">Удалить</a>
-                        </div>
-                    </form>
+                            </div>
+                            <div class="modal__footer" >
+                                <a href="#" class="modal-reset btn btn--grey" aria-label="Сбросить">Сбросить</a>
+                                <a href="#" class="btn btn--yellow" aria-label="Удалить">Удалить</a>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
+        <!--Добавить сотрудника-->
+        <div class="hystmodal" id="add-worker" aria-hidden="true">
+            <div class="hystmodal__wrap">
+                <div class="hystmodal__window " role="dialog" aria-modal="true">
+                    <button class="hystmodal__close" data-hystclose>Закрыть</button>
+                    <div class="hystmodal__styled">
+                        <h3>Создание сотрудника</h3>
+                        <form action="#" class="modal-form column-form">
+                            <div class="dropdown input-select placeholder-container" >
+                                <div class="input-select__link"><span class="input-select-value"></span><span>Медицинский контролер</span></div>
+                                    <div class="select-reset">Медицинский контролер</div>
+                                    <div class="dropdown-menu" >
+                                        <ul class="select__list">
+                                            <li>
+                                                <span>Текст</span>
+                                            </li>
+                                            <li>
+                                                <span>Текст</span>
+                                            </li>
+                                            <li>
+                                                <span>Текст</span>
+                                            </li>
+                                            </ul>
+                                    </div>
+                                <!--скрытый инпут для добавления значения в форму-->
+                                <input type="hidden" class="select-value" id="" value="">
+                            </div>
+                            <div class="placeholder-container">
+                                <input type="text" placeholder="ФИО">
+                                <label>ФИО<span class"red">*</span></label>
+                            </div>
+                            <div class="placeholder-container">
+                                <input type="text" placeholder="Телефон">
+                                <label>Телефон<span class"red">*</span></label>
+                            </div>
+                            <a class="link--blue form__addlink" data-link="form-add-diplom" href="#">+ Добавить данные диплома</a>
+                            <div id="form-add-diplom" class="form-add hidden">
+                                <div class="row">
+                                    <h4>Диплом</h4>
+                                    <a href="#" class="delite delite--grey"></a>
+                                </div>
+                                <div class="placeholder-container">
+                                    <input type="text" placeholder="ФИО">
+                                    <label>Номер диплома<span class"red">*</span></label>
+                                </div>
+                                <div class="placeholder-container">
+                                    <input type="text" placeholder="Телефон">
+                                    <label>Серия диплома<span class"red">*</span></label>
+                                </div>
+                                <div class="placeholder-container">
+                                    <input type="data" id="select-diplom" class="select-form-time icon icon-date" placeholder="Дата выдачи диплома">
+                                    <label>Дата выдачи диплома<span class="red">*</span></label>
+                                </div>
+                                <a class="link--blue form__addlink icon file" data-link="form-add-img" href="#">Добавить данные диплома</a>
+                                <div id="form-add-img" class="form-add hidden">
+Здесь добавление файла, в макете путевых листов не отрисован, поискать
+                                </div>
+                            </div>
+                            <div class="modal__footer" >
+                                <a href="#"  class="modal-reset btn btn--grey" aria-label="Сбросить">Сбросить</a>
+                                <a href="#" class="btn btn--yellow" aria-label="Удалить">Удалить</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
         <script type="text/javascript" src="js/jquery-3.6.1.min.js"></script>
         <script type="text/javascript" src="js/moment.min.js"></script>
