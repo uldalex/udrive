@@ -1,0 +1,671 @@
+
+<!DOCTYPE html>
+<html class="page" lang="ru">
+    <!--head-->
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="format-detection" content="date=no">
+        <meta name="format-detection" content="address=no">
+        <meta name="format-detection" content="email=no">
+        <meta content="notranslate" name="google">
+        <title>Путевые листы</title>
+        <link rel="stylesheet" href="css/daterangepicker.min.css">
+        <link rel="stylesheet" href="css/main.css">
+        
+    </head>
+    <body>
+        <!--шапка-->
+        <header>
+            <div class="container">
+                <div class="row">
+                    <!--логотип-->
+                    <a href="#" class="logo" aria-label="Юдрайв">
+                        <img width="87" height="19" src="img/logo.svg">
+                    </a>
+                    <!--юзерпанель-->
+                    <div  class="user">
+                        <span>Владелец:</span><a  href="#" class="user__name icon" aria-label="Личный кабинет">Александр Иванов</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!--контентная часть-->
+        <div class="page__inner">
+            <!--сайтбар-->
+            <aside>
+                <div class="sitebar">
+                    <h3>Разделы</h3>
+                    <ul id="main-menu" class="main-menu" role="menu">
+                        <li class="main-menu__item">
+                            <a href="company.html" class="main-menu__link" aria-label="Организации">Организации</a>
+                        </li>
+                        <li class="main-menu__item">
+                            <a href="contracts.html" class="main-menu__link" aria-label="Договора">Договора</a>
+                        </li>
+                        <li class="main-menu__item">
+                            <a href="drivers.html" class="main-menu__link" aria-label="Водители">Водители</a>
+                        </li>
+                        <li class="main-menu__item">
+                            <a href="workers.html" class="main-menu__link" aria-label="Сотрудники">Сотрудники</a>
+                        </li>
+                        <li class="main-menu__item">
+                            <a href="transport.html" class="main-menu__link" aria-label="Транспорт">Транспорт</a>
+                        </li>
+                        <li class="main-menu__item">
+                            <a href="trailers.html" class="main-menu__link" aria-label="Прицепы">Прицепы</a>
+                        </li>
+                        <li class="main-menu__item">
+                            <a href="freighter-card.html" class="main-menu__link" aria-label="Карточка фрахтовщика">Карточка фрахтовщика</a>
+                        </li>
+                        <li class="main-menu__item">
+                            <!--у ссылки модификатор active -->
+                            <a href="waybill.html" class="main-menu__link" aria-label="Путевая документация">Путевая документация</a>
+                        </li>
+                        <li class="main-menu__item">
+                            <a href="bdd.html" class="main-menu__link main-menu__link--active" aria-label="БДД">БДД</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </aside>
+            <main>
+                <!--шапка в main-->
+                <div class="main-header">
+                    <ul class="tab-list main-header__list">
+                        <!--Внимание! Модификатор класса --active и у ссылки и у li-->
+                        <li class="main-header__item active">
+                            <a data-link="tab_01" href="#" id="all-list" class="tab-link main-header__link main-header__link--active">БДД</a>
+                        </li>
+                        <li class="main-header__item">
+                            <a data-link="tab_02" href="#" id="add-list" class="tab-link main-header__link hidden">Создать журнал</a><span id="add-list-close" class="icon main-header__link--close hidden"></span>
+                        </li>
+                    </ul>
+                </div>
+                <!--динамический контент в main-->
+                <!--таб БДД-->
+                <div data-id="tab_01" class="tab-content tab-content--active main-content">
+                    <div  class="main-header__title">
+                            <h1>БДД</h1>
+                            <div class="main-header__btns">
+                                <a href="#" id="add-list-link" class="btn btn--yellow" aria-label="Создать" role="button">Создать журнал</a>
+                            </div>
+                    </div>
+                    <div class="content__wrapper">
+                        <!--шапка контента-->
+                        <div class="content__header content__header--white">
+                            <form action="#" role="" class="form-head">
+                                <div class="placeholder-container placeholder-container--left-icon">
+                                    <input type="search" placeholder="Поиск" aria-label="Поиск">
+                                    <label>Поиск</label>
+                                </div>
+                                <input type="submit" class=" btn btn--light" value="Найти" aria-label="Поиск">
+                                <!--сюда валидацию, у .error сейчас display:none. при ошибке сделать .error  display:block-->
+                                <span class="error">Текст ошибки</span>
+                            </form>
+
+                            <div class="content-header__btns">
+                                <a href="#" class="btn btn--red hidden" id="delite-rows" aria-label="Удалить" role="button">Удалить</a>
+                                 <!--для модалок используем дата-атрибут с id модалки: data-hystmodal="id-модалки"-->
+                                <a href="#print-journal" class="btn btn--light" aria-label="Печать журналов" role="button" data-hystmodal="#print-journal">Печать журналов</a>
+                                <a href="#" class="content__header__icon icon-list icon" aria-label="Создать группу" role="button"></a>
+                                <a href="#" id="setting-link" class="setting-link content__header__icon icon-settings icon" aria-label="Создать" role="button"></a>
+                                <div id="setting-menu" class="setting-menu">
+                                    <ul>
+                                        <li><a href="#setting-modal" aria-label="Настройка таблицы" data-hystmodal="#setting-modal">Настройка таблицы</a></li>
+                                        <li><a href="#table-modal" data-hystmodal="#table-modal" aria-label="Настройка путевых листов">Настройка путевых листов</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!--тело контента-->
+                        <div class="content">
+                            <div class="content-table">
+                                нет макета! сверстана только вкладка "создать журнал"
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--таб создать журнал-->
+                <div data-id="tab_02" class="tab-content  main-content">
+                    <div  class="main-header__title">
+                        <h1>Создание журнала</h1>
+                        <div class="main-header__btns">
+                            <a href="#"  class="btn btn--yellow disabled" aria-label="Сохранить и распечатать" role="button">Сохранить и распечатать</a>
+                             <a href="#" class="btn btn--yellow disabled" aria-label="Сохранить" role="button">Сохранить</a>
+                        </div>
+                    </div>
+                    <div class="content__wrapper">
+                        <!--шапка контента-->
+                        <div class="content__header">
+                        </div>
+                        <div class="content">
+                            <form action="#" class="column-form row">
+                                <div class="col-md-6">
+                                    <div class="dropdown input-select placeholder-container" >
+                                        <div class="input-select__link"><span class="input-select-value"></span><span class="label-value">Тип события<span class="red">*</span></span></div>
+                                        <div class="select-reset">Тип события</div>
+                                        <div class="dropdown-menu" >
+                                            <ul class="select__list">
+                                                <li>
+                                                    <span>Сезонный инструктаж</span>
+                                                </li>
+                                                <li>
+                                                    <span>Сезонный инструктаж</span>
+                                                </li>
+                                                <li>
+                                                    <span>Сезонный инструктаж</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <!--скрытый инпут для добавления значения в форму-->
+                                        <input type="hidden" class="select-value" id="" value="">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                        <div class="placeholder-container">
+                                            <input type="data" class="select-form-date icon icon-date" placeholder="10.11.2020 - 11.11.2020">
+                                            <label class="label-value">Срок действия<span class="red">*</span></label>
+                                        </div>
+                                </div>
+                                <div class="journal-form-hidden hidden row">
+                                    <div class="col-12">
+                                            <h4>Данные инструктажа</h4>
+                                    </div>
+                                    <div class="clone-block row">
+                                        <div class="col-12">
+                                            <div class="col-md-6">
+                                                <div class="placeholder-container">
+                                                    <input type="text" placeholder="Номер записи">
+                                                    <label>Номер записи <span class="red">*</span></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="dropdown input-select placeholder-container" >
+                                                <div class="input-select__link"><span class="input-select-value"></span><span class="label-value">Водитель<span class="red">*</span></span></div>
+                                                <div class="select-reset">Водитель</div>
+                                                <div class="dropdown-menu" >
+                                                    <ul class="select__list">
+                                                        <li>
+                                                            <a href="#" data-hystmodal="#add-worker" aria-label="Добавить организацию">+ Добавить владельца</a>
+                                                        </li>
+                                                        <li>
+                                                            <span>Иванов Иван Иванович</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>Петров Петр Сергеевич</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>Сидоров Сидор Сидорович</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <!--скрытый инпут для добавления значения в форму-->
+                                                <input type="hidden" class="select-value" id="" value="">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="dropdown input-select placeholder-container" >
+                                                <div class="input-select__link"><span class="input-select-value"></span><span class="label-value">Транспортное средство<span class="red">*</span></span></div>
+                                                <div class="select-reset">Транспортное средство</div>
+                                                <div class="dropdown-menu" >
+                                                    <ul class="select__list">
+                                                        <li>
+                                                            <a href="#" data-hystmodal="#add-worker" aria-label="Добавить организацию">+ Добавить Транспортное средство</a>
+                                                        </li>
+                                                        <li>
+                                                            <span>автомобиль</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>автомобиль</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>автомобиль</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <!--скрытый инпут для добавления значения в форму-->
+                                                <input type="hidden" class="select-value" id="" value="">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="dropdown input-select placeholder-container" >
+                                                <div class="input-select__link"><span class="input-select-value"></span><span class="label-value">Должность/профессия инструктируемого<span class="red">*</span></span></div>
+                                                <div class="select-reset">Должность/профессия инструктируемого</div>
+                                                <div class="dropdown-menu" >
+                                                    <ul class="select__list">
+                                                        <li>
+                                                            <a href="#" data-hystmodal="#add-worker" aria-label="Добавить организацию">+ Добавить должность/профессию</a>
+                                                        </li>
+                                                        <li>
+                                                            <span>должность</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>должность</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>должность</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <!--скрытый инпут для добавления значения в форму-->
+                                                <input type="hidden" class="select-value" id="" value="">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 align-center">
+                                            <label for="remember-data" class="checkbox-label">
+                                                <input type="checkbox" name="remember-data" id="remember-data" class="checkbox">
+                                            <span>Запомнить данные</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="dropdown input-select placeholder-container" >
+                                                <div class="input-select__link"><span class="input-select-value"></span><span class="label-value">ФИО инструктора<span class="red">*</span></span></div>
+                                                <div class="select-reset">ФИО инструктора</div>
+                                                <div class="dropdown-menu" >
+                                                    <ul class="select__list">
+                                                        <li>
+                                                            <a href="#" data-hystmodal="#add-worker" aria-label="Добавить организацию">+ инструктора</a>
+                                                        </li>
+                                                        <li>
+                                                            <span>Сидоров Сидор Сидорович</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>Иванов Иван Иванович</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>Петров Петр Петрович</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <!--скрытый инпут для добавления значения в форму-->
+                                                <input type="hidden" class="select-value" id="" value="">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 align-center">
+                                            <label for="remember-data" class="checkbox-label">
+                                                <input type="checkbox" name="remember-data" id="remember-data" class="checkbox">
+                                            <span>Запомнить данные</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="dropdown input-select placeholder-container" >
+                                                <div class="input-select__link"><span class="input-select-value"></span><span class="label-value">Должность инструктора<span class="red">*</span></span></div>
+                                                <div class="select-reset">Должность инструктора</div>
+                                                <div class="dropdown-menu" >
+                                                    <ul class="select__list">
+                                                        <li>
+                                                            <a href="#" data-hystmodal="#add-worker" aria-label="Добавить организацию">+ Добавить должность/профессию</a>
+                                                        </li>
+                                                        <li>
+                                                            <span>должность</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>должность</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>должность</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <!--скрытый инпут для добавления значения в форму-->
+                                                <input type="hidden" class="select-value" id="" value="">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 align-center">
+                                            <label for="remember-data" class="checkbox-label">
+                                                <input type="checkbox" name="remember-data" id="remember-data" class="checkbox">
+                                            <span>Запомнить данные</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="cloned-block"></div>
+                                    <div class="col-md-6">
+                                        <a href="#" class="btn--clone btn btn--light">+ Добавить</a>
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="content-table">
+                                <div class="content-table__header content-table__header--journal">
+                                    <div class="content-table__filter">Номер</div>
+                                    <div class="content-table__filter">Водитель</div>
+                                    <div class="content-table__filter">Транспортное средство</div>
+                                    <div class="content-table__filter">Должность инструктируемого</div>
+                                    <div class="content-table__filter">ФИО инструктора</div>
+                                    <div class="content-table__filter">Должность инструктора</div>
+                                </div>
+                                <div class="content-table--f">
+                                    <div class="content-table__row content-table__row--journal">
+                                        <div class="content-table__filter">Номер</div>
+                                        <div class="content-table__filter">Водитель</div>
+                                        <div class="content-table__filter">Грузовой автомобиль</div>
+                                        <div class="content-table__filter">Водитель</div>
+                                        <div class="content-table__filter">Степанов Федор Алексеевич</div>
+                                        <div class="content-table__filter">Техник</div>
+                                        <div><a href="#" data-hystmodal="#edit-modal" class="edit"></a></div>
+                                        <div><a href="#" data-hystmodal="#delite-modal" class="delite"></a></div>
+                                    </div>
+                                    <div class="content-table__row content-table__row--journal">
+                                        <div class="content-table__filter">Номер</div>
+                                        <div class="content-table__filter">Водитель</div>
+                                        <div class="content-table__filter">Грузовой автомобиль</div>
+                                        <div class="content-table__filter">Водитель</div>
+                                        <div class="content-table__filter">Степанов Федор Алексеевич</div>
+                                        <div class="content-table__filter">Техник</div>
+                                        <div><a href="#" data-hystmodal="#edit-modal" class="edit"></a></div>
+                                        <div><a href="#" data-hystmodal="#delite-modal" class="delite"></a></div>
+                                    </div>
+                                    <div class="content-table__row content-table__row--journal">
+                                        <div class="content-table__filter">Номер</div>
+                                        <div class="content-table__filter">Водитель</div>
+                                        <div class="content-table__filter">Грузовой автомобиль</div>
+                                        <div class="content-table__filter">Водитель</div>
+                                        <div class="content-table__filter">Степанов Федор Алексеевич</div>
+                                        <div class="content-table__filter">Техник</div>
+                                        <div><a href="#" data-hystmodal="#edit-modal" class="edit"></a></div>
+                                        <div><a href="#" data-hystmodal="#delite-modal" class="delite"></a></div>
+                                    </div>
+                                    <div class="content-table__row content-table__row--journal">
+                                        <div class="content-table__filter">Номер</div>
+                                        <div class="content-table__filter">Водитель</div>
+                                        <div class="content-table__filter">Грузовой автомобиль</div>
+                                        <div class="content-table__filter">Водитель</div>
+                                        <div class="content-table__filter">Степанов Федор Алексеевич</div>
+                                        <div class="content-table__filter">Техник</div>
+                                        <div><a href="#" data-hystmodal="#edit-modal" class="edit"></a></div>
+                                        <div><a href="#" data-hystmodal="#delite-modal" class="delite"></a></div>
+                                    </div>
+                                    <div class="content-table__row content-table__row--journal">
+                                        <div class="content-table__filter">Номер</div>
+                                        <div class="content-table__filter">Водитель</div>
+                                        <div class="content-table__filter">Грузовой автомобиль</div>
+                                        <div class="content-table__filter">Водитель</div>
+                                        <div class="content-table__filter">Степанов Федор Алексеевич</div>
+                                        <div class="content-table__filter">Техник</div>
+                                        <div><a href="#" data-hystmodal="#edit-modal" class="edit"></a></div>
+                                        <div><a href="#" data-hystmodal="#delite-modal" class="delite"></a></div>
+                                    </div>
+                                    <div class="content-table__row content-table__row--journal">
+                                        <div class="content-table__filter">Номер</div>
+                                        <div class="content-table__filter">Водитель</div>
+                                        <div class="content-table__filter">Грузовой автомобиль</div>
+                                        <div class="content-table__filter">Водитель</div>
+                                        <div class="content-table__filter">Степанов Федор Алексеевич</div>
+                                        <div class="content-table__filter">Техник</div>
+                                        <div><a href="#" data-hystmodal="#edit-modal" class="edit"></a></div>
+                                        <div><a href="#" data-hystmodal="#delite-modal" class="delite"></a></div>
+                                    </div>
+                                    <div class="content-table__row content-table__row--journal">
+                                        <div class="content-table__filter">Номер</div>
+                                        <div class="content-table__filter">Водитель</div>
+                                        <div class="content-table__filter">Грузовой автомобиль</div>
+                                        <div class="content-table__filter">Водитель</div>
+                                        <div class="content-table__filter">Степанов Федор Алексеевич</div>
+                                        <div class="content-table__filter">Техник</div>
+                                        <div><a href="#" data-hystmodal="#edit-modal" class="edit"></a></div>
+                                        <div><a href="#" data-hystmodal="#delite-modal" class="delite"></a></div>
+                                    </div>
+                                    <div class="content-table__row content-table__row--journal">
+                                        <div class="content-table__filter">Номер</div>
+                                        <div class="content-table__filter">Водитель</div>
+                                        <div class="content-table__filter">Грузовой автомобиль</div>
+                                        <div class="content-table__filter">Водитель</div>
+                                        <div class="content-table__filter">Степанов Федор Алексеевич</div>
+                                        <div class="content-table__filter">Техник</div>
+                                        <div><a href="#" data-hystmodal="#edit-modal" class="edit"></a></div>
+                                        <div><a href="#" data-hystmodal="#delite-modal" class="delite"></a></div>
+                                    </div>
+                                    <div class="content-table__row content-table__row--journal">
+                                        <div class="content-table__filter">Номер</div>
+                                        <div class="content-table__filter">Водитель</div>
+                                        <div class="content-table__filter">Грузовой автомобиль</div>
+                                        <div class="content-table__filter">Водитель</div>
+                                        <div class="content-table__filter">Степанов Федор Алексеевич</div>
+                                        <div class="content-table__filter">Техник</div>
+                                        <div><a href="#" data-hystmodal="#edit-modal" class="edit"></a></div>
+                                        <div><a href="#" data-hystmodal="#delite-modal" class="delite"></a></div>
+                                    </div>
+                                    <div class="content-table__row content-table__row--journal">
+                                        <div class="content-table__filter">Номер</div>
+                                        <div class="content-table__filter">Водитель</div>
+                                        <div class="content-table__filter">Грузовой автомобиль</div>
+                                        <div class="content-table__filter">Водитель</div>
+                                        <div class="content-table__filter">Степанов Федор Алексеевич</div>
+                                        <div class="content-table__filter">Техник</div>
+                                        <div><a href="#" data-hystmodal="#edit-modal" class="edit"></a></div>
+                                        <div><a href="#" data-hystmodal="#delite-modal" class="delite"></a></div>
+                                    </div>
+                                    <div class="content-table__row content-table__row--journal">
+                                        <div class="content-table__filter">Номер</div>
+                                        <div class="content-table__filter">Водитель</div>
+                                        <div class="content-table__filter">Грузовой автомобиль</div>
+                                        <div class="content-table__filter">Водитель</div>
+                                        <div class="content-table__filter">Степанов Федор Алексеевич</div>
+                                        <div class="content-table__filter">Техник</div>
+                                        <div><a href="#" data-hystmodal="#edit-modal" class="edit"></a></div>
+                                        <div><a href="#" data-hystmodal="#delite-modal" class="delite"></a></div>
+                                    </div>
+                                    <div class="content-table__row content-table__row--journal">
+                                        <div class="content-table__filter">Номер</div>
+                                        <div class="content-table__filter">Водитель</div>
+                                        <div class="content-table__filter">Грузовой автомобиль</div>
+                                        <div class="content-table__filter">Водитель</div>
+                                        <div class="content-table__filter">Степанов Федор Алексеевич</div>
+                                        <div class="content-table__filter">Техник</div>
+                                        <div><a href="#" data-hystmodal="#edit-modal" class="edit"></a></div>
+                                        <div><a href="#" data-hystmodal="#delite-modal" class="delite"></a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        <!--подвал-->
+        <footer>
+        </footer>
+    <!--модалки-->
+        <!--настройка таблицы-->
+        <div class="hystmodal" id="setting-modal" aria-hidden="true">
+            <div class="hystmodal__wrap">
+                <div class="hystmodal__window hystmodal__window--setting" role="dialog" aria-modal="true">
+                    <button class="hystmodal__close" data-hystclose>Закрыть</button>
+                    <div class="hystmodal__styled">
+                        <h3>Настройка таблицы</h3>
+                        <div class="setting-checkbox">
+                            <ul>
+                                <li>
+                                    <label for="setting-num" class="checkbox-label">
+                                        <input type="checkbox"  name="setting-num" id="setting-num" class="checkbox" checked>
+                                        <span>Номер</span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label for="setting-numdoc" class="checkbox-label">
+                                        <input type="checkbox"  name="setting-numdoc" id="setting-numdoc" class="checkbox" checked>
+                                        <span>Номер документа</span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label for="setting-data" class="checkbox-label">
+                                        <input type="checkbox"  name="setting-data" id="setting-data" class="checkbox" checked>
+                                        <span>Дата</span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label for="setting-holder" class="checkbox-label">
+                                        <input type="checkbox"  name="setting-holder" id="setting-holder" class="checkbox" checked>
+                                        <span>Владелец</span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label for="setting-driver" class="checkbox-label">
+                                        <input type="checkbox"  name="setting-driver" id="setting-driver" class="checkbox" checked>
+                                        <span>Водитель</span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label for="setting-company" class="checkbox-label">
+                                        <input type="checkbox"  name="setting-company" id="setting-company" class="checkbox" checked>
+                                        <span>Организация</span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label for="setting-ts" class="checkbox-label">
+                                        <input type="checkbox"  name="setting-ts" id="setting-ts" class="checkbox" checked>
+                                        <span>Транспортное средство</span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label for="setting-ap" class="checkbox-label">
+                                        <input type="checkbox"  name="setting-ap" id="setting-ap" class="checkbox" checked>
+                                        <span>Тип автопарка</span>
+                                    </label>
+                                </li>
+                            </ul>
+                            <div class="modal__footer" >
+                                <a href="#"  class="modal-reset dropdown__close btn btn--grey" aria-label="Сбросить">Сбросить</a>
+                                <a href="#" class="btn btn--yellow" aria-label="Удалить">Удалить</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Редактирование записи инструктажа-->
+        <div class="hystmodal" id="edit-modal" aria-hidden="true">
+            <div class="hystmodal__wrap">
+                <div class="hystmodal__window " role="dialog" aria-modal="true">
+                    <button class="hystmodal__close" data-hystclose>Закрыть</button>
+                    <div class="hystmodal__styled">
+                        <h3>Редактирование записи инструктажа</h3>
+                            <form action="#" class="modal-form column-form journal-form">
+                                <div class="dropdown input-select placeholder-container">
+                                    <div class="input-select__link active"><span class="input-select-value">РМ689</span><span class="label-value">Номер записи<span class="red">*</span></span></div>
+                                        <div class="select-reset">Номер записи</div>
+                                        <div class="dropdown-menu">
+                                            <ul class="select__list">
+                                                <li>
+                                                    <span>РМ689</span>
+                                                </li>
+                                                <li>
+                                                    <span>РМ689</span>
+                                                </li>
+                                                <li>
+                                                    <span>РМ689</span>
+                                                </li>
+                                                </ul>
+                                        </div>
+                                    <!--скрытый инпут для добавления значения в форму-->
+                                    <input type="hidden" class="select-value" id="" value="РМ689">
+                                </div>
+                                <div class="dropdown input-select placeholder-container">
+                                    <div class="input-select__link active"><span class="input-select-value">Текст</span><span class="label-value">Водитель</span></div>
+                                        <div class="select-reset">Водитель</div>
+                                        <div class="dropdown-menu">
+                                            <ul class="select__list">
+                                                <li>
+                                                    <span>Текст</span>
+                                                </li>
+                                                <li>
+                                                    <span>Текст</span>
+                                                </li>
+                                                <li>
+                                                    <span>Текст</span>
+                                                </li>
+                                                </ul>
+                                        </div>
+                                    <!--скрытый инпут для добавления значения в форму-->
+                                    <input type="hidden" class="select-value" id="" value="Текст">
+                                </div>
+                                <div class="dropdown input-select placeholder-container">
+                                    <div class="input-select__link  active"><span class="input-select-value">Легковой автомобиль</span><span class="label-value">Транспортное средство</span></div>
+                                        <div class="select-reset">Транспортное средство</div>
+                                        <div class="dropdown-menu">
+                                            <ul class="select__list">
+                                                <li>
+                                                    <span>Легковой автомобиль</span>
+                                                </li>
+                                                <li>
+                                                    <span>Легковой автомобиль</span>
+                                                </li>
+                                                <li>
+                                                    <span>Легковой автомобиль</span>
+                                                </li>
+                                                </ul>
+                                        </div>
+                                    <!--скрытый инпут для добавления значения в форму-->
+                                    <input type="hidden" class="select-value" id="" value="Легковой автомобиль">
+                                </div>
+                                <div class="dropdown input-select placeholder-container">
+                                    <div class="input-select__link active"><span class="input-select-value">Водитель</span><span class="label-value">Должность/профессия инструктируемого<span class="red"> *</span></span></div>
+                                        <div class="select-reset">Должность/профессия инструктируемого</div>
+                                        <div class="dropdown-menu">
+                                            <ul class="select__list">
+                                                <li>
+                                                    <span>Водитель</span>
+                                                </li>
+                                                <li>
+                                                    <span>Водитель</span>
+                                                </li>
+                                                <li>
+                                                    <span>Водитель</span>
+                                                </li>
+                                                </ul>
+                                        </div>
+                                    <!--скрытый инпут для добавления значения в форму-->
+                                    <input type="hidden" class="select-value" id="" value="">
+                                </div>
+                                <div class="dropdown input-select placeholder-container">
+                                    <div class="input-select__link active"><span class="input-select-value">Степанов Федор Алексеевич</span><span class="label-value">ФИО инструктора <span class="red"> *</span></span></div>
+                                        <div class="select-reset">ФИО инструктора </div>
+                                        <div class="dropdown-menu">
+                                            <ul class="select__list">
+                                                <li>
+                                                    <span>Степанов Федор Алексеевич</span>
+                                                </li>
+                                                <li>
+                                                    <span>Степанов Федор Алексеевич</span>
+                                                </li>
+                                                <li>
+                                                    <span>Степанов Федор Алексеевич</span>
+                                                </li>
+                                                </ul>
+                                        </div>
+                                    <!--скрытый инпут для добавления значения в форму-->
+                                    <input type="hidden" class="select-value" id="" value="">
+                                </div>
+                            <div class="modal__footer">
+                                <a href="#" class="modal-reset btn btn--grey" aria-label="Сбросить">Сбросить</a>
+                                <a href="#" class="btn btn--yellow" aria-label="Удалить">Удалить</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--удалить-->
+        <div class="hystmodal" id="delite-modal" aria-hidden="true">
+            <div class="hystmodal__wrap">
+                <div class="hystmodal__window " role="dialog" aria-modal="true">
+                    <button class="hystmodal__close" data-hystclose>Закрыть</button>
+                    <div class="hystmodal__styled">
+                        <h3>Удалить данные о транспорте?</h3>
+                        <p>Запись инструктажа будет удалена из таблицы.</p>
+                        <div class="modal__footer">
+                                <a href="#" class="modal-reset btn btn--grey" aria-label="Сбросить">Отмена</a>
+                                <a href="#" class="btn btn--red" aria-label="Удалить">Удалить</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript" src="js/jquery-3.6.1.min.js"></script>
+        <script type="text/javascript" src="js/moment.min.js"></script>
+        <script type="text/javascript" src="js/jquery.daterangepicker.min.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
+        <script type="text/javascript" src="js/bdd.js"></script>
+    </body>
+</html>

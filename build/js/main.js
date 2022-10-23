@@ -35,10 +35,16 @@ $('#all-checkbox-label').on('click', function () {
 
   }
 })
+/*клонировать блок формы */
+$(".btn--clone").on('click', function(){
+  form= $(this).parents('form');
+  cloned=$(this).parents('form').find('.cloned-block')
+  $(form).find('.clone-block').clone().appendTo(cloned);
+  
+})
 /*Dropdown Menu*/
-
 $('.dropdown').on('click', function () {
-  $(this).parent('form').find('.journal-form-hidden').removeClass('hidden')
+   $(this).parents('form').find('.journal-form-hidden').removeClass('hidden')
   if ($(this).hasClass("active")) {
     $(this).removeClass('active');
     var value = '';
@@ -98,6 +104,7 @@ $(document).mouseup(function (e) {
     $(parent).removeClass('active');
   }
 });
+
 /*сортировка по возрастанию.убыванию */
 $(".sort-arrow").on('click', function () {
   $(this).toggleClass('sort-arrow--up');
@@ -110,10 +117,10 @@ $(".setting-link").on("click", function () {
 
 
 /*input time */
-$('.time').on('click', function () {
+$('.time-icon').on('click', function () {
   $(this).parent('.placeholder-container').find('.placeholder').addClass('placeholder--active');
 });
-$('.time').on('blur', function () {
+$('.time-icon').on('blur', function () {
   var val = $(this).val()
   if (val === "") {
     $(this).parent('.placeholder-container').find('.placeholder').removeClass('placeholder--active');
@@ -132,39 +139,14 @@ $('.form__addlink').on('click', function () {
   $('#'+id).removeClass('hidden');
 });
 
-/*календарь в фильтрах*/
-$('#select-date').dateRangePicker({
-  inline: true,
-  container: '#calendar-container',
-});
 
-/*календарь в формах */
-$('.select-form-date').dateRangePicker({ });
-$('#select-diplom').dateRangePicker({singleDate : true, });
-/*календарь в формах со временем */
-$('#select-form-time').dateRangePicker({
-	separator : ' ~ ',
-	format: 'DD.MM.YYYY HH:mm',
-  singleDate : true,
-	time: {
-		enabled: true
-	}
-});
-$('#select-form-time1').dateRangePicker({
-	separator : ' ~ ',
-	format: 'DD.MM.YYYY HH:mm',
-  singleDate : true,
-	time: {
-		enabled: true
-	}
-});
-$('.date-destroy').on('click',function (evt) {
-  evt.stopPropagation();
-  $('#select-date').data('dateRangePicker').clear();
-  $('#select-date').data('dateRangePicker').close();
-  $('.select-form-date').data('dateRangePicker').clear();
-  $('.select-form-date').data('dateRangePicker').close();
-});
+
+for (let e of document.querySelectorAll('input[type="range"].slider-progress')) {
+  e.style.setProperty('--value', e.value);
+  e.style.setProperty('- мин', e.min == ''? '0': e.min);
+  e.style.setProperty('--max', e.max == '' ? '100' : e.max);
+  e.addEventListener('input', () => e.style.setProperty('--value', e.value));
+}
 
 /*Основные табы */
 $('.main-header__list .tab-link').on('click', function () {
@@ -188,6 +170,11 @@ $('.page-tab-list .tab-link').on('click', function () {
     .filter('[data-id=' + $(this).attr('data-link') + ']')
     .addClass('tab-content--active');
 });
+/*вертикально разворачивающийся блок(аккордион) */
+$(".content-gorisontal-tab__link").on('click', function(){
+  $(this).toggleClass('active');
+  $(this).parent('.content-gorisontal-tab').find('.content-gorisontal-tab__content').toggleClass('active');
+})
 /*скрыть/показать вкладку создания документа/группы */
 $("#add-list-link").on('click', function () {
   $("#add-list").removeClass('hidden');
@@ -209,6 +196,7 @@ $(' #add-group-close').on('click', function () {
   $("#add-group").addClass('hidden');
   $("#all-list").trigger('click');
 });
+
 /*модалки */
 class HystModal {
   constructor(props) {
