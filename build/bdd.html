@@ -534,6 +534,111 @@
                 </div>
             </div>
         </div>
+        <div class="hystmodal" id="table-modal" aria-hidden="true">
+            <div class="hystmodal__wrap">
+                <div class="hystmodal__window " role="dialog" aria-modal="true">
+                    <button class="hystmodal__close" data-hystclose>Закрыть</button>
+                    <div class="hystmodal__styled">
+                        <h3>Настройка путевых листов</h3>
+                        <div class="setting-checkbox">
+                            <ul>
+                                <li>
+                                    <!--Внимание на классы! Другой тип чекбокса-->
+                                    <div class="btn-label">
+                                        <input type="checkbox"  name="table1" id="table1" class="checkbox-btn" checked>
+                                        <label for="table1"></label>
+                                        <span>Печатать штамп мед. работника и тех. контролера</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="btn-label">
+                                            <input type="checkbox"  name="table2" id="table2" class="checkbox-btn" checked>
+                                            <label for="table2"></label>
+                                            <span>Не использовать номера путевых листов</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="btn-label">
+                                        <input type="checkbox"  name="table3" id="table3" class="checkbox-btn" checked>
+                                        <label for="table3"></label>
+                                        <span>Не использовать данные медицинского работника</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div  class="btn-label">
+                                        <input type="checkbox"  name="table4" id="table4" class="checkbox-btn" checked>
+                                        <label for="table4"></label>
+                                        <span>Не использовать данные технического контролера</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div  class="btn-label">
+                                        <input type="checkbox"  name="table5" id="table5" class="checkbox-btn" checked>
+                                        <label for="table5"></label>
+                                        <span>Не использовать данные должностного лица</span>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="modal__footer" >
+                                <a href="#"  class="modal-reset dropdown__close btn btn--grey" aria-label="Сбросить">Сбросить</a>
+                                <a href="#" class="btn btn--yellow" aria-label="Удалить">Удалить</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--печать журналов-->
+        <div class="hystmodal" id="print-journal" aria-hidden="true">
+            <div class="hystmodal__wrap">
+                <div class="hystmodal__window " role="dialog" aria-modal="true">
+                    <button class="hystmodal__close" data-hystclose>Закрыть</button>
+                    <div class="hystmodal__styled">
+                        <h3>Печать журналов</h3>
+                        <form action="#" class="modal-form column-form journal-form">
+                            <div class="dropdown input-select placeholder-container" >
+                                <div class="input-select__link"><span class="input-select-value"></span><span>Тип журнала</span></div>
+                                    <div class="select-reset">Тип журнала</div>
+                                    <div class="dropdown-menu" >
+                                        <ul class="select__list">
+                                            <li>
+                                                <span>Предрейсовый инструктаж БДД</span>
+                                            </li>
+                                            <li>
+                                                <span>Предрейсовый инструктаж БДД</span>
+                                            </li>
+                                            <li>
+                                                <span>Предрейсовый инструктаж БДД</span>
+                                            </li>
+                                            </ul>
+                                    </div>
+                                <!--скрытый инпут для добавления значения в форму-->
+                                <input type="hidden" class="select-value" id="" value="">
+                            </div>
+                            <div class="journal-form-hidden hidden">
+                                <div class="placeholder-container">
+                                    <input type="text" placeholder="Профессия/Должность инструктуемого">
+                                    <label>Профессия/Должность инструктуемого</label>
+                                </div>
+                                <div class="placeholder-container">
+                                    <input type="text" placeholder="Должность инструктующего">
+                                    <label>Должность инструктующего</label>
+                                </div>
+                                <div class="placeholder-container">
+                                    <input type="text" placeholder="ФИО">
+                                    <label>ФИО</label>
+                                </div>
+
+                            </div>
+                            <div class="modal__footer" >
+                                <a href="#" class="modal-reset btn btn--grey" aria-label="Сбросить">Сбросить</a>
+                                <a href="#" class="btn btn--yellow" aria-label="Удалить">Удалить</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!--Редактирование записи инструктажа-->
         <div class="hystmodal" id="edit-modal" aria-hidden="true">
             <div class="hystmodal__wrap">
