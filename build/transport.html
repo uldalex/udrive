@@ -379,7 +379,7 @@
                                         <span>ГБО (газобалонное оборудование)</span>
                                         </label>
                                     </div>
-                                <form>
+                                </form>
                                 <form action="#" class="column-form row">
                                     <div class="col-12"><h4>СТС</h4></div>
                                     <div class="col-md-6">
@@ -555,15 +555,21 @@
                                     <div class="col-md-6">
                                         <div class="downliad-qr">
                                             <div class="qr-code">
-                                                <img src="img/gr.png">
-<div class="input__wrapper">
-   <input name="file" type="file" id="input__file" class="input input__file" multiple>
-   <label for="input__file" class="input__file-button">
-      <span class="input__file-icon-wrapper"><img class="input__file-icon" src="img/qr.svg" alt="Выбрать файл" width="48"></span>
-      <span class="input__file-button-text">Выберите файл</span>
-   </label>
-</div>
+                                                <div class="qr-img">
+                                                    <!--Здесь так: если загружен qr, то он перекрывает кнопку загрузки файла, если картинки нет - то мы видим кнопку "загрузить". Для понимания механизма раскомментировать картинку-->
+                                                    <!--<img src="img/gr.png">-->
+                                                    <div class="input__wrapper">
+                                                    <input name="file" type="file" id="input__file" class="input input__file" multiple>
+                                                    <label for="input__file" class="input__file-button">
+                                                        <span class="input__file-icon-wrapper"><img class="input__file-icon" src="img/qr.svg" alt="Выбрать файл" width="48"></span>
+                                                        <span class="input__file-button-text">Выберите файл</span>
+                                                    </label>
+                                                    </div>
+                                                </div>
                                                 <div class="gr-buttons">
+                                                    <a href="#" class="btn btn--yellow" aria-label="Загрузить QR код">Загрузить QR код</a>
+                                                    <a href="#" class="btn btn--light" aria-label="Проверить QR код">Проверить QR код</a>
+                                                    <a href="#" class="btn btn--grey" aria-label="Сбросить QR код">Сбросить QR код</a>
                                                     <a
                                                 </div>
                                             <div>

@@ -1173,3 +1173,23 @@ margin-bottom:-32px;
     }
 }
 
+.qr-code {
+    display:flex;
+}
+.qr-img{
+    margin-right:20px;
+    position:relative;
+}
+.qr-img {
+ z-index: 2;   
+}
+
+.gr-buttons {
+    display:flex;
+    flex-direction: column;
+    padding-top: 16px;
+}
+.gr-buttons a {
+    display:block;
+    margin-bottom:24px;
+}
