@@ -10,7 +10,7 @@
         <meta name="format-detection" content="address=no">
         <meta name="format-detection" content="email=no">
         <meta content="notranslate" name="google">
-        <title>Путевые листы</title>
+        <title>Транспорт</title>
         <link rel="stylesheet" href="css/daterangepicker.min.css">
         <link rel="stylesheet" href="css/main.css">
         
@@ -51,7 +51,7 @@
                             <a href="workers.html" class="main-menu__link" aria-label="Сотрудники">Сотрудники</a>
                         </li>
                         <li class="main-menu__item">
-                            <a href="transport.html" class="main-menu__link" aria-label="Транспорт">Транспорт</a>
+                            <a href="transport.html" class="main-menu__link main-menu__link--active" aria-label="Транспорт">Транспорт</a>
                         </li>
                         <li class="main-menu__item">
                             <a href="trailers.html" class="main-menu__link" aria-label="Прицепы">Прицепы</a>
@@ -64,7 +64,7 @@
                             <a href="waybill.html" class="main-menu__link" aria-label="Путевая документация">Путевая документация</a>
                         </li>
                         <li class="main-menu__item">
-                            <a href="bdd.html" class="main-menu__link main-menu__link--active" aria-label="БДД">БДД</a>
+                            <a href="bdd.html" class="main-menu__link " aria-label="БДД">БДД</a>
                         </li>
                     </ul>
                 </div>
@@ -559,22 +559,230 @@
                                                     <!--Здесь так: если загружен qr, то он перекрывает кнопку загрузки файла, если картинки нет - то мы видим кнопку "загрузить". Для понимания механизма раскомментировать картинку-->
                                                     <!--<img src="img/gr.png">-->
                                                     <div class="input__wrapper">
-                                                    <input name="file" type="file" id="input__file" class="input input__file" multiple>
-                                                    <label for="input__file" class="input__file-button">
+                                                        <input name="file" type="file" id="input__file" class="input input__file" multiple>
+                                                        <label for="input__file" class="input__file-button">
                                                         <span class="input__file-icon-wrapper"><img class="input__file-icon" src="img/qr.svg" alt="Выбрать файл" width="48"></span>
                                                         <span class="input__file-button-text">Выберите файл</span>
-                                                    </label>
+                                                        </label>
                                                     </div>
                                                 </div>
                                                 <div class="gr-buttons">
                                                     <a href="#" class="btn btn--yellow" aria-label="Загрузить QR код">Загрузить QR код</a>
                                                     <a href="#" class="btn btn--light" aria-label="Проверить QR код">Проверить QR код</a>
                                                     <a href="#" class="btn btn--grey" aria-label="Сбросить QR код">Сбросить QR код</a>
-                                                    <a
                                                 </div>
-                                            <div>
+                                            </div>
                                         </div>
                                     </div>
+                                    <div class="col-12">
+                                        <h4>Техосмотр</h4>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="placeholder-container">
+                                                <input type="text" placeholder="095684302142">
+                                                <label>Серия и номер лицензии<span class="red">*</span></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="placeholder-container">
+                                                <input id="select-form-date3" type="data"  class="select-form-date3 icon icon-date" placeholder="10.11.2020 - 11.11.2020">
+                                                <label>Действительна до<span class="red">*</span></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <h4>ОСАГО</h4>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="placeholder-container">
+                                                <input type="text" placeholder="095684302142">
+                                                <label>Серия</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="placeholder-container">
+                                                <input type="text" placeholder="095684302142">
+                                                <label>Номер</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="placeholder-container">
+                                                <input id="select-form-date4" type="data"  class="select-form-date4 icon icon-date" placeholder="10.11.2020 - 11.11.2020">
+                                                <label>Дата выдачи</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="placeholder-container">
+                                                <input id="select-form-date5" type="data"  class="select-form-date5 icon icon-date" placeholder="10.11.2020 - 11.11.2020">
+                                                <label>Действителен до</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="dropdown input-select placeholder-container" >
+                                            <div class="input-select__link"><span class="input-select-value"></span><span class="label-value">Страховщик</span></div>
+                                            <div class="select-reset">Страховщик</div>
+                                                <div class="dropdown-menu" >
+                                                    <ul class="select__list">
+                                                        <li>
+                                                            <a href="#" data-hystmodal="#add-worker" aria-label="Добавить организацию">+ Добавить страховщика</a>
+                                                        </li>
+                                                        <li>
+                                                            <span>текст</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>текст</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>текст</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>текст</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>текст</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>текст</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <!--скрытый инпут для добавления значения в форму-->
+                                                <input type="hidden" class="select-value" id="" value="">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="placeholder-container">
+                                                <input type="text" placeholder="095684302142">
+                                                <label>Премия (руб)</label>
+                                        </div>
+                                    </div>
+                                     <div class="col-12">
+                                        <h4>КАСКО</h4>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="placeholder-container">
+                                                <input type="text" placeholder="095684302142">
+                                                <label>Серия</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="placeholder-container">
+                                                <input type="text" placeholder="095684302142">
+                                                <label>Номер</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="placeholder-container">
+                                                <input id="select-form-date6" type="data"  class="select-form-date6 icon icon-date" placeholder="10.11.2020 - 11.11.2020">
+                                                <label>Дата выдачи</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="placeholder-container">
+                                                <input id="select-form-date7" type="data"  class="select-form-date7 icon icon-date" placeholder="10.11.2020 - 11.11.2020">
+                                                <label>Действителен до</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="dropdown input-select placeholder-container" >
+                                            <div class="input-select__link"><span class="input-select-value"></span><span class="label-value">Страховщик</span></div>
+                                            <div class="select-reset">Страховщик</div>
+                                                <div class="dropdown-menu" >
+                                                    <ul class="select__list">
+                                                        <li>
+                                                            <a href="#" data-hystmodal="#add-worker" aria-label="Добавить организацию">+ Добавить страховщика</a>
+                                                        </li>
+                                                        <li>
+                                                            <span>текст</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>текст</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>текст</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>текст</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>текст</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>текст</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <!--скрытый инпут для добавления значения в форму-->
+                                                <input type="hidden" class="select-value" id="" value="">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="placeholder-container">
+                                                <input type="text" placeholder="095684302142">
+                                                <label>Премия (руб)</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <h4>ДОСАГО</h4>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="col-md-6">
+                                            <div class="placeholder-container">
+                                                    <input type="text" placeholder="Сумма страхования">
+                                                    <label>Сумма страхования (руб)</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="placeholder-container">
+                                                <input id="select-form-date8" type="data"  class="select-form-date8 icon icon-date" placeholder="10.11.2020 - 11.11.2020">
+                                                <label>Дата выдачи</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="placeholder-container">
+                                                <input id="select-form-date9" type="data"  class="select-form-date9 icon icon-date" placeholder="10.11.2020 - 11.11.2020">
+                                                <label>Действителен до</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="dropdown input-select placeholder-container" >
+                                            <div class="input-select__link"><span class="input-select-value"></span><span class="label-value">Страховщик</span></div>
+                                            <div class="select-reset">Страховщик</div>
+                                                <div class="dropdown-menu" >
+                                                    <ul class="select__list">
+                                                        <li>
+                                                            <a href="#" data-hystmodal="#add-worker" aria-label="Добавить организацию">+ Добавить страховщика</a>
+                                                        </li>
+                                                        <li>
+                                                            <span>текст</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>текст</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>текст</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>текст</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>текст</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>текст</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <!--скрытый инпут для добавления значения в форму-->
+                                                <input type="hidden" class="select-value" id="" value="">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                            <div class="placeholder-container">
+                                                    <input type="text" placeholder="Сумма страхования">
+                                                    <label>Премия (руб)</label>
+                                            </div>
+                                        </div>
                                 </form>
                             </div>
                         </div>

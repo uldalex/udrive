@@ -2,7 +2,8 @@
 /*разворачиваем подробнее */
 $(".edit-entry").on('click', function () {
   $(this).toggleClass('edit-entry--open');
-  $(this).parents('.content-table__wrapper').find('.content-table__more').toggleClass('content-table__more--open')
+  $(this).parents('.content-table__wrapper').find('.content-table__more').toggleClass('content-table__more--open');
+  $(this).parents('.content-table__wrapper').find('.content-table__row').toggleClass('active')
 });
 /*Отмечаем чекбоксы */
 $(".checkbox-label").on('click', function () {
@@ -41,6 +42,10 @@ $(".btn--clone").on('click', function(){
   cloned=$(this).parents('form').find('.cloned-block')
   $(form).find('.clone-block').clone().appendTo(cloned);
   
+});
+/*удалить фотки из модалки */
+$(".form-add-img").on("click", function(){
+  $(this).parent('.col-md-6').remove();
 })
 /*Dropdown Menu*/
 $('.dropdown').on('click', function () {

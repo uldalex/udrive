@@ -10,7 +10,7 @@
         <meta name="format-detection" content="address=no">
         <meta name="format-detection" content="email=no">
         <meta content="notranslate" name="google">
-        <title>Путевые листы</title>
+        <title>Организации</title>
         <link rel="stylesheet" href="css/daterangepicker.min.css">
         <link rel="stylesheet" href="css/main.css">
         
@@ -39,7 +39,7 @@
                     <h3>Разделы</h3>
                     <ul id="main-menu" class="main-menu" role="menu">
                         <li class="main-menu__item">
-                            <a href="company.html" class="main-menu__link" aria-label="Организации">Организации</a>
+                            <a href="company.html" class="main-menu__link main-menu__link--active" aria-label="Организации">Организации</a>
                         </li>
                         <li class="main-menu__item">
                             <a href="contracts.html" class="main-menu__link" aria-label="Договора">Договора</a>
@@ -64,7 +64,7 @@
                             <a href="waybill.html" class="main-menu__link" aria-label="Путевая документация">Путевая документация</a>
                         </li>
                         <li class="main-menu__item">
-                            <a href="bdd.html" class="main-menu__link main-menu__link--active" aria-label="БДД">БДД</a>
+                            <a href="bdd.html" class="main-menu__link" aria-label="БДД">БДД</a>
                         </li>
                     </ul>
                 </div>
@@ -76,10 +76,10 @@
                     <ul class="tab-list main-header__list">
                         <!--Внимание! Модификатор класса --active и у ссылки и у li-->
                         <li class="main-header__item active">
-                            <a data-link="tab_01" href="#" id="all-list" class="tab-link main-header__link main-header__link--active">БДД</a>
+                            <a data-link="tab_01" href="#" id="all-list" class="tab-link main-header__link main-header__link--active">Организации</a>
                         </li>
                         <li class="main-header__item">
-                            <a data-link="tab_02" href="#" id="add-list" class="tab-link main-header__link hidden">Создать журнал</a><span id="add-list-close" class="icon main-header__link--close hidden"></span>
+                            <a data-link="tab_02" href="#" id="add-list" class="tab-link main-header__link hidden">Создать организацию</a><span data-hystmodal="#close-modal"  class="icon main-header__link--close hidden"></span>
                         </li>
                     </ul>
                 </div>
@@ -87,9 +87,9 @@
                 <!--таб БДД-->
                 <div data-id="tab_01" class="tab-content tab-content--active main-content">
                     <div  class="main-header__title">
-                            <h1>БДД</h1>
+                            <h1>Организации</h1>
                             <div class="main-header__btns">
-                                <a href="#" id="add-list-link" class="btn btn--yellow" aria-label="Создать" role="button">Создать журнал</a>
+                                <a href="#" id="add-list-link" class="btn btn--yellow" aria-label="Создать" role="button">Создать организацию</a>
                             </div>
                     </div>
                     <div class="content__wrapper">
@@ -108,13 +108,13 @@
                             <div class="content-header__btns">
                                 <a href="#" class="btn btn--red hidden" id="delite-rows" aria-label="Удалить" role="button">Удалить</a>
                                  <!--для модалок используем дата-атрибут с id модалки: data-hystmodal="id-модалки"-->
-                                <a href="#print-journal" class="btn btn--light" aria-label="Печать журналов" role="button" data-hystmodal="#print-journal">Печать журналов</a>
+                                <a href="#print-journal" class="btn btn--light" aria-label="Печать карточек организаций" role="button" data-hystmodal="#print-journal">Печать карточек организаций</a>
                                 <a href="#" class="content__header__icon icon-list icon" aria-label="Создать группу" role="button"></a>
                                 <a href="#" id="setting-link" class="setting-link content__header__icon icon-settings icon" aria-label="Создать" role="button"></a>
                                 <div id="setting-menu" class="setting-menu">
                                     <ul>
                                         <li><a href="#setting-modal" aria-label="Настройка таблицы" data-hystmodal="#setting-modal">Настройка таблицы</a></li>
-                                        <li><a href="#table-modal" data-hystmodal="#table-modal" aria-label="Настройка путевых листов">Настройка путевых листов</a></li>
+                                        <li><a href="#table-modal" data-hystmodal="#table-modal" aria-label="Настройка путевых листов">Настройка карточек организаций</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -122,55 +122,856 @@
                         <!--тело контента-->
                         <div class="content">
                             <div class="content-table">
-                                
+                                <!-- у всех таблиц стиль display:grid. количество и размер ячеек задаются в правиле grid-template-columns. для каждой таблицы есть модификатор с --модификатор ДЛя content-table__header и content-table__row grid-template-columns задаются отдельно, они разные! -->
+                                    <div class="content-table__header content-table__header--company">
+                                        <div  class="content-table__filter">
+                                            <label for="all-checkbox" id="all-checkbox-label" class="checkbox-label">
+                                                <input type="checkbox" name="all-checkbox" id="all-checkbox" class="all-checkbox ">
+                                                <!--спаны в label нужны для стилизации чекбокса, не удалять!-->
+                                                <span></span>
+                                            </label>
+                                        </div>
+                                        <div  class="content-table__filter">Номер</div>
+                                        <div  id="select-date" class="content-table__filter">
+                                            <span>Дата</span> 
+                                            <a href="#" class="sort" aria-label="Сортировать по возрастанию"></a>
+                                            <!--Внимание! модификатор класса --up для фильтрации по возрастанию.-->
+                                            <a href="#" class="sort-arrow" aria-label="Отсортировано по возрастанию"></a>
+                                            <div id="calendar-container" class="calendar-container"></div>
+                                        </div>
+                                        <div class="dropdown content-table__filter">
+                                            <span class="select">Владелец</span>
+                                            <!--Внимание! модификатор класса --active для активного фильтра-->
+                                            <a href="#" class=" sort" aria-label="Сортировать по возрастанию"></a>
+                                                    <!--выпадающий фильтр-->
+                                                    <div class="dropdown-menu" id="holder">
+                                                        <input class="search-input filter-searsh" id="holder-input" type="search" placeholder="Поиск">
+                                                        <ul class="filter__list">
+                                                            <li>
+                                                                <label for="holder1" class="checkbox-label">
+                                                                    <input type="checkbox"  name="holder1" id="holder1" >
+                                                                    <span>Степанов Федор Алексеевич</span>
+                                                                </label>
+                                                            </li>
+                                                            <li>
+                                                                <label for="holder2" class="checkbox-label">
+                                                                    <input type="checkbox"  name="holder2" id="holder2" >
+                                                                    <span>Петров Афанасий Тереньтьевич</span>
+                                                                </label>
+                                                            </li>
+                                                            <li>
+                                                                <label for="holder3" class="checkbox-label">
+                                                                    <input type="checkbox"  name="holder3" id="holder3" >
+                                                                    <span>Сидоров Николай Николаевич</span>
+                                                                </label>
+                                                            </li>
+                                                            <li>
+                                                                <label for="holder4" class="checkbox-label">
+                                                                    <input type="checkbox"  name="holder4" id="holder4" >
+                                                                    <span>Вильфанд Иван Иванович</span>
+                                                                </label>
+                                                            </li>
+                                                            <li>
+                                                                <label for="holder5" class="checkbox-label">
+                                                                    <input type="checkbox"  name="holder5" id="holder5" >
+                                                                    <span>Степанов Федор Алексеевич</span>
+                                                                </label>
+                                                            </li>
+                                                            <li>
+                                                                <label for="holder6" class="checkbox-label">
+                                                                    <input type="checkbox"  name="holder6" id="holder6" >
+                                                                    <span>Петров Афанасий Тереньтьевич</span>
+                                                                </label>
+                                                            </li>
+                                                            <li>
+                                                                <label for="holder7" class="checkbox-label">
+                                                                    <input type="checkbox"  name="holder7" id="holder7" >
+                                                                    <span>Сидоров Николай Николаевич</span>
+                                                                </label>
+                                                            </li>
+                                                            <li>
+                                                                <label for="holder8" class="checkbox-label">
+                                                                    <input type="checkbox"  name="holder8" id="holder8" >
+                                                                    <span>Вильфанд Иван Иванович</span>
+                                                                </label>
+                                                            </li>
+                                                            <li>
+                                                                <label for="holder9" class="checkbox-label">
+                                                                    <input type="checkbox"  name="holder9" id="holder9" >
+                                                                    <span>Степанов Федор Алексеевич</span>
+                                                                </label>
+                                                            </li>
+                                                            <li>
+                                                                <label for="holder10" class="checkbox-label">
+                                                                    <input type="checkbox"  name="holder10" id="holder10" >
+                                                                    <span>Петров Афанасий Тереньтьевич</span>
+                                                                </label>
+                                                            </li>
+                                                            <li>
+                                                                <label for="holder11" class="checkbox-label">
+                                                                    <input type="checkbox"  name="holder11" id="holder11" >
+                                                                    <span>Сидоров Николай Николаевич</span>
+                                                                </label>
+                                                            </li>
+                                                            <li>
+                                                                <label for="holder12" class="checkbox-label">
+                                                                    <input type="checkbox"  name="holder12" id="holder12" >
+                                                                    <span>Вильфанд Иван Иванович</span>
+                                                                </label>
+                                                            </li>
+                                                        </ul>
+                                                        <div class="dropdown-menu__footer" >
+                                                            <a href="#" id="filter-reset" class="filter-reset btn btn--grey" aria-label="Сбросить">Сбросить</a>
+                                                            <a href="#" class="btn btn--yellow" aria-label="Удалить">Удалить</a>
+                                                        </div>
+                                                    </div>
+
+                                        </div>
+                                        <div  class="dropdown content-table__filter">
+                                            <span class="select">Тип автопарка</span>
+                                            <a href="#" class="sort" aria-label="Сортировать по возрастанию"></a>
+                                                <!--выпадающий фильтр-->
+                                                <div class="dropdown-menu dropdown-menu--last" id="driver">
+                                                    <input class="search-input filter-searsh" id="ap-input" type="search" placeholder="Поиск">
+                                                    <ul class="filter__list">
+                                                        <li>
+                                                            <label for="ap1" class="checkbox-label">
+                                                                <input type="checkbox"  name="ap1" id="ap1" >
+                                                                <span>Автопарк</span>
+                                                            </label>
+                                                        </li>
+                                                    </ul>
+                                                    <div class="dropdown-menu__footer" >
+                                                            <a href="#" id="filter-reset" class="filter-reset btn btn--grey" aria-label="Сбросить">Сбросить</a>
+                                                            <a href="#" class="btn btn--yellow" aria-label="Удалить">Удалить</a>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                        <div  class="dropdown content-table__filter">
+                                            <span class="select">Организация</span>
+                                            <a href="#" class="sort" aria-label="Сортировать по возрастанию"></a>
+                                             <!--выпадающий фильтр-->
+                                                <div class="dropdown-menu" id="driver">
+                                                    <input class="search-input filter-searsh" id="company-input" type="search" placeholder="Поиск">
+                                                    <ul class="filter__list">
+                                                        <li>
+                                                            <label for="company1" class="checkbox-label">
+                                                                <input type="checkbox"  name="company1" id="company1" >
+                                                                <span>Рога и копыта</span>
+                                                            </label>
+                                                        </li>
+                                                    </ul>
+                                                    <div class="dropdown-menu__footer" >
+                                                            <a href="#" id="filter-reset" class="filter-reset btn btn--grey" aria-label="Сбросить">Сбросить</a>
+                                                            <a href="#" class="btn btn--yellow" aria-label="Удалить">Удалить</a>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                        <div  class="dropdown content-table__filter">
+                                            <span class="select">Телефон</span>
+                                            <a href="#" class="sort" aria-label="Сортировать по возрастанию"></a>
+                                             <!--выпадающий фильтр-->
+                                                <div class="dropdown-menu" id="driver">
+                                                    <input class="search-input filter-searsh" id="company-input" type="search" placeholder="Поиск">
+                                                    <ul class="filter__list">
+                                                        <li>
+                                                            <label for="company1" class="checkbox-label">
+                                                                <input type="checkbox"  name="company1" id="company1" >
+                                                                <span>+7 (920) 045-65-47</span>
+                                                            </label>
+                                                        </li>
+                                                        <li>
+                                                            <label for="company1" class="checkbox-label">
+                                                                <input type="checkbox"  name="company1" id="company1" >
+                                                                <span>+7 (920) 045-65-47</span>
+                                                            </label>
+                                                        </li>
+                                                        <li>
+                                                            <label for="company1" class="checkbox-label">
+                                                                <input type="checkbox"  name="company1" id="company1" >
+                                                                <span>+7 (920) 045-65-47</span>
+                                                            </label>
+                                                        </li>
+                                                    </ul>
+                                                    <div class="dropdown-menu__footer" >
+                                                            <a href="#" id="filter-reset" class="filter-reset btn btn--grey" aria-label="Сбросить">Сбросить</a>
+                                                            <a href="#" class="btn btn--yellow" aria-label="Удалить">Удалить</a>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                        <div  class="dropdown content-table__filter">
+                                            <span class="select">Email</span>
+                                            <a href="#" class="sort" aria-label="Сортировать по возрастанию"></a>
+                                             <!--выпадающий фильтр-->
+                                                <div class="dropdown-menu" id="driver">
+                                                    <input class="search-input filter-searsh" id="company-input" type="search" placeholder="Поиск">
+                                                    <ul class="filter__list">
+                                                        <li>
+                                                            <label for="company1" class="checkbox-label">
+                                                                <input type="checkbox"  name="company1" id="company1" >
+                                                                <span>hero2231@gmail.com</span>
+                                                            </label>
+                                                        </li>
+                                                        <li>
+                                                            <label for="company1" class="checkbox-label">
+                                                                <input type="checkbox"  name="company1" id="company1" >
+                                                                <span>hero2231@gmail.com</span>
+                                                            </label>
+                                                        </li>
+                                                        <li>
+                                                            <label for="company1" class="checkbox-label">
+                                                                <input type="checkbox"  name="company1" id="company1" >
+                                                                <span>hero2231@gmail.com</span>
+                                                            </label>
+                                                        </li>
+                                                    </ul>
+                                                    <div class="dropdown-menu__footer" >
+                                                            <a href="#" id="filter-reset" class="filter-reset btn btn--grey" aria-label="Сбросить">Сбросить</a>
+                                                            <a href="#" class="btn btn--yellow" aria-label="Удалить">Удалить</a>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                        <div  class="dropdown content-table__filter">
+                                            <div class="tooltip">
+                                                <span class="tooltiptext tooltip--top">Просроченное ВУ</span>
+                                                <a href="#" class="info"></a>
+                                                
+                                            </div>
+                                            
+                                        </div>
+                                </div>
+                                <div class="content-table--g">
+                                    <div class="content-table__wrapper">
+                                        <div class="content-table__row content-table__row--company">
+                                            <div>
+                                                <label for="checkbox1" class="checkbox-label">
+                                                    <input type="checkbox"  name="checkbox1" id="checkbox1" class="checkbox">
+                                                    <span></span>
+                                                </label>
+                                            </div>
+                                            <div>
+                                                <!--Открываем редактирование формы модификатор класса --open для открытой формы-->
+                                                <a href="#" class="edit-entry" aria-label="Открыть форму"></a>
+                                            </div>
+                                            <div>Г-7-52</div>
+                                            <div>18.05.2021</div>
+                                            <div>Степанов Федор Алексеевич</div>
+                                            <div>Автопарк</div>
+                                            <div>ИП Иванов Александр Иванович</div>
+                                            <div>+7 (920) 045-65-47</div>
+                                            <div>hero2231@gmail.com</div>
+                                            <div><div class="icon icon-yes"></div></div>
+                                            <div><a href="#" class="edit"></a></div>
+                                            <div><a href="#" class="delite"></a></div>
+                                        </div>
+                                        <!--разворачивающийся блок. модификатор --open -->
+                                        <div class="content-table__more">
+                                            <div class="content-more">
+                                                <p>Организационная форма</p>
+                                                <p>Индивидуальный предприниматель</p>
+                                                <p>Номер мед. лицензии</p>
+                                                <p>156-845</p>
+                                                <p>Город</p>
+                                                <p>Москва</p>
+                                                <p>Дата мед. лицензии</p>
+                                                <p>26.07.2021</p>
+                                                <p>ИНН</p>
+                                                <p>125698745858</p>
+                                                <p>Медицинский контролер</p>
+                                                <p>Иванов Иван Иванович</p>
+                                                <p>КПП</p>
+                                                <p>458692</p>
+                                                <p>Телефон</p>
+                                                <p>+7 (920) 045-65-47</p>
+                                                <p>ОГРН</p>
+                                                <p>1248</p>
+                                                <p>Технический контролер</p>
+                                                <p>Сидоров Петр Иванович</p>
+                                                <p>ОКПО</p>
+                                                <p>9687</p>
+                                                <p>Телефон</p>
+                                                <p>+7 (920) 569-24-13</p>
+                                                <p>Юридический адрес</p>
+                                                <p>Москва, ул. Беломорская 125, офис 33</p>
+                                                <p>Наименование счета</p>
+                                                <p>ИП Иванов Иван Иванович</p>
+                                                <p>Фактический адрес</p>
+                                                <p>Москва, ул. Беломорская 125, офис 33</p>
+                                                 <p>Банк</p>
+                                                <p>ОАО “Сбербанк России”</p>
+                                                <p>ФИО руководителя</p>
+                                                <p>Иванов Алексанр Иванович</p>
+                                                <p>Номер счета</p>
+                                                <p>404023109991119000856</p>
+                                                <p>Действующий на основании свидетельства</p>
+                                                <p>Текст</p>
+                                                <p>БИК</p>
+                                                <p>047501711</p>
+                                                <p>Расчетный счет</p>
+                                                <p>30101810400000000711</p>
+                                                <div class="content-more__footer">
+                                                    <a href="#" class="btn btn--yellow" aria-label="Печать">Печать</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="content-table__wrapper">
+                                        <div class="content-table__row content-table__row--company">
+                                            <div>
+                                                <label for="checkbox2" class="checkbox-label">
+                                                    <input type="checkbox"  name="checkbox2" id="checkbox2" class="checkbox">
+                                                    <span></span>
+                                                </label>
+                                            </div>
+                                            <div>
+                                                <!--Открываем редактирование формы модификатор класса --open для открытой формы-->
+                                                <a href="#" class="edit-entry" aria-label="Открыть форму"></a>
+                                            </div>
+                                            <div>Г-7-52</div>
+                                            <div>18.05.2021</div>
+                                            <div>Степанов Федор Алексеевич</div>
+                                            <div>Автопарк</div>
+                                            <div>ИП Иванов Александр Иванович</div>
+                                            <div>+7 (920) 045-65-47</div>
+                                            <div>hero2231@gmail.com</div>
+                                            <div><div class="icon icon-no"></div></div>
+                                            <div><a href="#" class="edit"></a></div>
+                                            <div><a href="#" class="delite"></a></div>
+                                        </div>
+                                        <!--разворачивающийся блок. модификатор --open -->
+                                        <div class="content-table__more">
+                                            <div class="content-more">
+                                                <p>Организационная форма</p>
+                                                <p>Индивидуальный предприниматель</p>
+                                                <p>Номер мед. лицензии</p>
+                                                <p>156-845</p>
+                                                <p>Город</p>
+                                                <p>Москва</p>
+                                                <p>Дата мед. лицензии</p>
+                                                <p>26.07.2021</p>
+                                                <p>ИНН</p>
+                                                <p>125698745858</p>
+                                                <p>Медицинский контролер</p>
+                                                <p>Иванов Иван Иванович</p>
+                                                <p>КПП</p>
+                                                <p>458692</p>
+                                                <p>Телефон</p>
+                                                <p>+7 (920) 045-65-47</p>
+                                                <p>ОГРН</p>
+                                                <p>1248</p>
+                                                <p>Технический контролер</p>
+                                                <p>Сидоров Петр Иванович</p>
+                                                <p>ОКПО</p>
+                                                <p>9687</p>
+                                                <p>Телефон</p>
+                                                <p>+7 (920) 569-24-13</p>
+                                                <p>Юридический адрес</p>
+                                                <p>Москва, ул. Беломорская 125, офис 33</p>
+                                                <p>Наименование счета</p>
+                                                <p>ИП Иванов Иван Иванович</p>
+                                                <p>Фактический адрес</p>
+                                                <p>Москва, ул. Беломорская 125, офис 33</p>
+                                                 <p>Банк</p>
+                                                <p>ОАО “Сбербанк России”</p>
+                                                <p>ФИО руководителя</p>
+                                                <p>Иванов Алексанр Иванович</p>
+                                                <p>Номер счета</p>
+                                                <p>404023109991119000856</p>
+                                                <p>Действующий на основании свидетельства</p>
+                                                <p>Текст</p>
+                                                <p>БИК</p>
+                                                <p>047501711</p>
+                                                <p>Расчетный счет</p>
+                                                <p>30101810400000000711</p>
+                                                <div class="content-more__footer">
+                                                    <a href="#" class="btn btn--yellow" aria-label="Печать">Печать</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="content-table__wrapper">
+                                        <div class="content-table__row content-table__row--company">
+                                            <div>
+                                                <label for="checkbox3" class="checkbox-label">
+                                                    <input type="checkbox"  name="checkbox3" id="checkbox3" class="checkbox">
+                                                    <span></span>
+                                                </label>
+                                            </div>
+                                            <div>
+                                                <!--Открываем редактирование формы модификатор класса --open для открытой формы-->
+                                                <a href="#" class="edit-entry" aria-label="Открыть форму"></a>
+                                            </div>
+                                            <div>Г-7-52</div>
+                                            <div>18.05.2021</div>
+                                            <div>Степанов Федор Алексеевич</div>
+                                            <div>Автопарк</div>
+                                            <div>ИП Иванов Александр Иванович</div>
+                                            <div>+7 (920) 045-65-47</div>
+                                            <div>hero2231@gmail.com</div>
+                                            <div><div class="icon icon-yes"></div></div>
+                                            <div><a href="#" class="edit"></a></div>
+                                            <div><a href="#" class="delite"></a></div>
+                                        </div>
+                                        <!--разворачивающийся блок. модификатор --open -->
+                                        <div class="content-table__more">
+                                            <div class="content-more">
+                                                <p>Организационная форма</p>
+                                                <p>Индивидуальный предприниматель</p>
+                                                <p>Номер мед. лицензии</p>
+                                                <p>156-845</p>
+                                                <p>Город</p>
+                                                <p>Москва</p>
+                                                <p>Дата мед. лицензии</p>
+                                                <p>26.07.2021</p>
+                                                <p>ИНН</p>
+                                                <p>125698745858</p>
+                                                <p>Медицинский контролер</p>
+                                                <p>Иванов Иван Иванович</p>
+                                                <p>КПП</p>
+                                                <p>458692</p>
+                                                <p>Телефон</p>
+                                                <p>+7 (920) 045-65-47</p>
+                                                <p>ОГРН</p>
+                                                <p>1248</p>
+                                                <p>Технический контролер</p>
+                                                <p>Сидоров Петр Иванович</p>
+                                                <p>ОКПО</p>
+                                                <p>9687</p>
+                                                <p>Телефон</p>
+                                                <p>+7 (920) 569-24-13</p>
+                                                <p>Юридический адрес</p>
+                                                <p>Москва, ул. Беломорская 125, офис 33</p>
+                                                <p>Наименование счета</p>
+                                                <p>ИП Иванов Иван Иванович</p>
+                                                <p>Фактический адрес</p>
+                                                <p>Москва, ул. Беломорская 125, офис 33</p>
+                                                 <p>Банк</p>
+                                                <p>ОАО “Сбербанк России”</p>
+                                                <p>ФИО руководителя</p>
+                                                <p>Иванов Алексанр Иванович</p>
+                                                <p>Номер счета</p>
+                                                <p>404023109991119000856</p>
+                                                <p>Действующий на основании свидетельства</p>
+                                                <p>Текст</p>
+                                                <p>БИК</p>
+                                                <p>047501711</p>
+                                                <p>Расчетный счет</p>
+                                                <p>30101810400000000711</p>
+                                                <div class="content-more__footer">
+                                                    <a href="#" class="btn btn--yellow" aria-label="Печать">Печать</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                        <div class="table-total">Всего 2495</div>
                     </div>
                 </div>
-                <!--таб создать журнал-->
+                <!--таб создать организацию-->
                 <div data-id="tab_02" class="tab-content  main-content">
                     <div  class="main-header__title">
-                        <h1>Создание журнала</h1>
-                        <div class="main-header__btns">
-                            <a href="#"  class="btn btn--yellow disabled" aria-label="Сохранить и распечатать" role="button">Сохранить и распечатать</a>
-                             <a href="#" class="btn btn--yellow disabled" aria-label="Сохранить" role="button">Сохранить</a>
-                        </div>
+                        <h1>Создание организации</h1>
                     </div>
                     <div class="content__wrapper">
                         <!--шапка контента-->
                         <div class="content__header">
+                            <!--табы в контенте-->
+                            <ul class="tab-list page-tab-list">
+                                <li class="page-tab-list__item active">
+                                    <a data-link="tab-page_01" href="#" class="tab-link page-tab-list__link active">Основные данные</a>
+                                </li>
+                                <li class="page-tab-list__item">
+                                    <a data-link="tab-page_02" href="#" class="tab-link page-tab-list__link">Банковские счета</a></li>
+                            </ul>
+                            <div class="content-header__btns">
+                                <a href="#print-plist" id="print-plink" class="btn btn--yellow  disabled" aria-label="Сохранить" role="button" data-hystmodal="#print-plist">Сохранить</a>
+                                <div class="setting-menu">
+                                    <ul>
+                                        <li>
+                                            <a href="#setting-modal" aria-label="Настройка таблицы" data-hystmodal="#setting-modal">Настройка таблицы</a>
+                                        </li>
+                                        <li>
+                                            <a href="#table-modal" data-hystmodal="#table-modal" aria-label="Настройка путевых листов">Настройка путевых листов</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
+                        <!--тело контента-->
                         <div class="content">
-                            <form action="#" class="column-form row">
-                                <div class="col-md-6">
-                                    <div class="dropdown input-select placeholder-container" >
-                                        <div class="input-select__link"><span class="input-select-value"></span><span class="label-value">Тип события<span class="red">*</span></span></div>
-                                        <div class="select-reset">Тип события</div>
-                                        <div class="dropdown-menu" >
-                                            <ul class="select__list">
-                                                <li>
-                                                    <span>Сезонный инструктаж</span>
-                                                </li>
-                                                <li>
-                                                    <span>Сезонный инструктаж</span>
-                                                </li>
-                                                <li>
-                                                    <span>Сезонный инструктаж</span>
-                                                </li>
-                                            </ul>
+                            <!--таб основные данные-->
+                            <div data-id="tab-page_01" class="tab-content tab-content--active">
+                                <form action="#" class="column-form row">
+                                    <div class="col-md-6">
+                                        <div class="dropdown input-select placeholder-container" >
+                                            <div class="input-select__link"><span class="input-select-value"></span><span class="label-value">Владелец<span class="red">*</span></span></div>
+                                            <div class="select-reset">Владелец</div>
+                                                <div class="dropdown-menu" >
+                                                    <ul class="select__list">
+                                                        <li>
+                                                            <a href="#" data-hystmodal="#add-worker" aria-label="Добавить организацию">+ Добавить владельца</a>
+                                                        </li>
+                                                        <li>
+                                                            <span>Иванов Иван Иванович</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>Петров Петр Сергеевич</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>Сидоров Сидор Сидорович</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <!--скрытый инпут для добавления значения в форму-->
+                                                <input type="hidden" class="select-value" id="" value="">
                                         </div>
-                                        <!--скрытый инпут для добавления значения в форму-->
-                                        <input type="hidden" class="select-value" id="" value="">
                                     </div>
-                                </div>
-                                <div class="col-md-6">
-                                        <div class="placeholder-container">
-                                            <input type="data" class="select-form-date icon icon-date" placeholder="10.11.2020 - 11.11.2020">
-                                            <label class="label-value">Срок действия<span class="red">*</span></label>
+                                    <div class="col-md-6">
+                                        <div class="dropdown input-select placeholder-container" >
+                                            <div class="input-select__link"><span class="input-select-value"></span><span class="label-value">Тип автопарка<span class="red">*</span></span></div>
+                                            <div class="select-reset">Тип автопарка</div>
+                                                <div class="dropdown-menu" >
+                                                    <ul class="select__list">
+                                                        <li>
+                                                            <a href="#" data-hystmodal="#add-worker" aria-label="Добавить организацию">+ Добавить тип</a>
+                                                        </li>
+                                                        <li>
+                                                            <span>текст</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>текст</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>текст</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <!--скрытый инпут для добавления значения в форму-->
+                                                <input type="hidden" class="select-value" id="" value="">
                                         </div>
-                                </div>
-                                <div class="journal-form-hidden hidden">sdf</div>
-                            </form>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="dropdown input-select placeholder-container" >
+                                            <div class="input-select__link"><span class="input-select-value"></span><span class="label-value">Организация<span class="red">*</span></span></div>
+                                            <div class="select-reset">Организация</div>
+                                                <div class="dropdown-menu" >
+                                                    <ul class="select__list">
+                                                        <li>
+                                                            <a href="#" data-hystmodal="#add-worker" aria-label="Добавить организацию">+ Добавить организацию</a>
+                                                        </li>
+                                                        <li>
+                                                            <span>Текст</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>Текст</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>Текст</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>Текст</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <!--скрытый инпут для добавления значения в форму-->
+                                                <input type="hidden" class="select-value" id="" value="">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="dropdown input-select placeholder-container" >
+                                            <div class="input-select__link"><span class="input-select-value"></span><span class="label-value">Организационная форма<span class="red">*</span></span></div>
+                                            <div class="select-reset select-reset-of">Организационная форма</div>
+                                                <div class="dropdown-menu" >
+                                                    <ul class="select__list">
+                                                        <li id="ooo">
+                                                            <span>ООО</span>
+                                                        </li>
+                                                        <li id="ip">
+                                                            <span>ИП</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <!--скрытый инпут для добавления значения в форму-->
+                                                <input type="hidden" class="select-value" id="" value="">
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="col-md-6">
+                                            <div class="placeholder-container">
+                                                <input type="text" value="" placeholder="Город">
+                                                <label>Город<span class="red">*</span></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="placeholder-container">
+                                            <input type="tel"  value="" placeholder="Телефон">
+                                            <label>Телефон<span class="red">*</span></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="placeholder-container">
+                                            <input type="email"  value="" placeholder="Email">
+                                            <label>Email<span class="red">*</span></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="placeholder-container placeholder-container--half">
+                                            <input type="text"  value="" placeholder="Email">
+                                            <label>ИНН<span class="red">*</span></label>
+                                        </div>
+                                        <div class="placeholder-container placeholder-container--half">
+                                            <input type="text"  value="" placeholder="Email КПП">
+                                            <label>КПП<span class="red">*</span></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="placeholder-container placeholder-container--half">
+                                            <input type="text"  value="" placeholder="ОГРН">
+                                            <label>ОГРН<span class="red">*</span></label>
+                                        </div>
+                                        <div class="placeholder-container placeholder-container--half">
+                                            <input type="text"  value="" placeholder="ОКПО">
+                                            <label>ОКПО<span class="red">*</span></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="placeholder-container">
+                                            <input type="text"  value="" placeholder="Юридический адрес">
+                                            <label>Юридический адрес<span class="red">*</span></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="placeholder-container">
+                                            <input type="text"  value="" placeholder="Юридический адрес">
+                                            <label>Фактический адрес<span class="red">*</span></label>
+                                        </div>
+                                    </div>
+                                    <div class="of_ul col-md-6 align-center hidden">
+                                            <label for="medservise" class="checkbox-label">
+                                            <input type="checkbox" name="remember-data" id="medservise" class="medusl checkbox">
+                                            <span>Предоставление медицинских услуг</span>
+                                            </label>
+                                    </div>
+                                    <div  class="of_ip col-md-6 hidden">
+                                        <div class="btn-label">
+                                            <input type="checkbox" name="table1" id="medusl" class="medusl checkbox-btn" >
+                                            <label for="medusl"></label>
+                                            <span>Предоставление медицинских услуг</span>
+                                        </div>
+                                    </div>
+                                    <div class="med-form-hidden hidden row">
+                                        <div class="col-12">
+                                            <h4>Медицинская лицензия</h4>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="placeholder-container">
+                                                <input type="text"  value="" placeholder="Номер медицинской лицензии">
+                                                <label>Номер медицинской лицензии<span class="red">*</span></label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="placeholder-container">
+                                                <input id="select-form-date" type="data" class="select-form-date icon icon-date" placeholder="10.11.2020 - 11.11.2020">
+                                                <label>Дата выдачи<span class="red">*</span></label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12"><h4>Медицинский контролер</h4></div>
+                                            <div class="col-md-6">
+                                                <div class="dropdown input-select placeholder-container" >
+                                                    <div class="input-select__link"><span class="input-select-value"></span><span class="label-value">ФИО сотрудника<span class="red">*</span></span></div>
+                                                    <div class="select-reset select-reset-of">ФИО сотрудника</div>
+                                                        <div class="dropdown-menu" >
+                                                            <ul class="select__list">
+                                                                <li>
+                                                                    <a href="#" data-hystmodal="#add-worker" aria-label="Добавить сотрудника">+ Добавить сотрудника</a>
+                                                                </li>
+                                                                <li>
+                                                                    <span>Иванов Иван Иванович</span>
+                                                                </li>
+                                                                <li>
+                                                                    <span>Петров Петр Петрович</span>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                        <!--скрытый инпут для добавления значения в форму-->
+                                                        <input type="hidden" class="select-value" id="" value="">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="placeholder-container">
+                                                    <input type="tel"  value="" placeholder="Телефон">
+                                                    <label>Телефон<span class="red">*</span></label>
+                                                </div>
+                                            </div>
+                                        <div class="col-md-12 ">
+                                            <div class="placeholder-container">
+                                                <a href="#add-worker" data-hystmodal="#add-worker" class="btn btn--light">+ Добавить</a>
+                                            </div>
+                                        </div>
+                                        <div class="content-table ">
+                                            <div class="content-table__header content-table__header--company-tab">
+                                                <div class="content-table__filter">ФИО</div>
+                                                <div class="content-table__filter">Квалификация</div>
+                                                <div class="content-table__filter">Телефон</div>
+                                                <div class="content-table__filter">Номер диплома</div>
+                                                <div class="content-table__filter">Серия диплома</div>
+                                                <div class="content-table__filter">Дата выдачи диплома</div>
+                                                
+                                            </div>
+                                            <div class="content-table--f">
+                                                <div class="content-table__row content-table__row--company-tab">
+                                                    <div class="content-table__filter">Иванов Иван Иванович</div>
+                                                    <div class="content-table__filter">инструктор</div>
+                                                    <div class="content-table__filter">+7 (920) 045-65-47</div>
+                                                    <div class="content-table__filter">555-555</div>
+                                                    <div class="content-table__filter">AA-II</div>
+                                                    <div class="content-table__filter">01.01.2001</div>
+                                                    <div><a href="#" data-hystmodal="#edit-modal" class="edit"></a></div>
+                                                    <div><a href="#" data-hystmodal="#delite-modal" class="delite"></a></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div  class="of_ip col-md-6 hidden">
+                                        <div class="btn-label">
+                                            <input type="checkbox" name="table1" id="texusl" class="texusl checkbox-btn" >
+                                            <label for="texusl"></label>
+                                            <span>Предоставление технических услуг</span>
+                                        </div>
+                                    </div>
+                                    <div class="of_ul col-md-6 align-center hidden">
+                                            <label for="texservise" class="checkbox-label">
+                                            <input type="checkbox" name="remember-data" id="texservise" class="texusl checkbox">
+                                            <span>Предоставление технических услуг</span>
+                                            </label>
+                                    </div>
+                                    <div class="tex-form-hidden hidden row">
+                                        <div class="col-12"><h4>Технический контролер</h4></div>
+                                            <div class="col-md-6">
+                                                <div class="dropdown input-select placeholder-container" >
+                                                    <div class="input-select__link"><span class="input-select-value"></span><span class="label-value">ФИО сотрудника<span class="red">*</span></span></div>
+                                                    <div class="select-reset select-reset-of">ФИО сотрудника</div>
+                                                        <div class="dropdown-menu" >
+                                                            <ul class="select__list">
+                                                                <li>
+                                                                    <a href="#" data-hystmodal="#add-worker" aria-label="Добавить сотрудника">+ Добавить сотрудника</a>
+                                                                </li>
+                                                                <li>
+                                                                    <span>Иванов Иван Иванович</span>
+                                                                </li>
+                                                                <li>
+                                                                    <span>Петров Петр Петрович</span>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                        <!--скрытый инпут для добавления значения в форму-->
+                                                        <input type="hidden" class="select-value" id="" value="">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="placeholder-container">
+                                                    <input type="tel"  value="" placeholder="Телефон">
+                                                    <label>Телефон<span class="red">*</span></label>
+                                                </div>
+                                            </div>
+                                        <div class="col-md-12 ">
+                                            <div class="placeholder-container">
+                                                <a href="#add-worker" data-hystmodal="#add-worker" class="btn btn--light">+ Добавить</a>
+                                            </div>
+                                        </div>
+                                        <div class="content-table ">
+                                            <div class="content-table__header content-table__header--company-tab">
+                                                <div class="content-table__filter">ФИО</div>
+                                                <div class="content-table__filter">Квалификация</div>
+                                                <div class="content-table__filter">Телефон</div>
+                                                <div class="content-table__filter">Номер диплома</div>
+                                                <div class="content-table__filter">Серия диплома</div>
+                                                <div class="content-table__filter">Дата выдачи диплома</div>
+                                                
+                                            </div>
+                                            <div class="content-table--f">
+                                                <div class="content-table__row content-table__row--company-tab">
+                                                    <div class="content-table__filter">Иванов Иван Иванович</div>
+                                                    <div class="content-table__filter">инструктор</div>
+                                                    <div class="content-table__filter">+7 (920) 045-65-47</div>
+                                                    <div class="content-table__filter">555-555</div>
+                                                    <div class="content-table__filter">AA-II</div>
+                                                    <div class="content-table__filter">01.01.2001</div>
+                                                    <div><a href="#" data-hystmodal="#edit-modal" class="edit"></a></div>
+                                                    <div><a href="#" data-hystmodal="#delite-modal" class="delite"></a></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <!--таб Банковские счета-->
+                            <div data-id="tab-page_02" class="tab-content">
+                                <form action="#" class="column-form row pb-100">
+                                    <div class="clone-block row">
+                                        <div class="col-md-6">
+                                            <div class="placeholder-container">
+                                                    <input type="text" value="" placeholder="Наименование счета">
+                                                    <label>Наименование счета<span class="red">*</span></label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="placeholder-container">
+                                                    <input type="text" value="" placeholder="Банк">
+                                                    <label>Банк<span class="red">*</span></label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="placeholder-container">
+                                                    <input type="text" value="" placeholder="Номер счета">
+                                                    <label>Номер счета<span class="red">*</span></label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="placeholder-container">
+                                                    <input type="text" value="" placeholder="БИК">
+                                                    <label>БИК<span class="red">*</span></label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="placeholder-container">
+                                                    <input type="text" value="" placeholder="Расчетный счет">
+                                                    <label>Расчетный счет<span class="red">*</span></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="cloned-block"></div>
+                                    <div class="col-md-12 ">
+                                            <div class="placeholder-container">
+                                                <a href="#" class="btn--clone btn btn--light">+ Добавить</a>
+                                            </div>
+                                    </div>
+                                        <div class="content-table ">
+                                            <div class="content-table__header content-table__header--bank">
+                                                <div class="content-table__filter">Название счета</div>
+                                                <div class="content-table__filter">Банк</div>
+                                                <div class="content-table__filter">Номер счета</div>
+                                                <div class="content-table__filter">БИК</div>
+                                                <div class="content-table__filter">Расчетный счет</div>
+                                                
+                                            </div>
+                                            <div class="content-table--f">
+                                                <div class="content-table__row content-table__row--bank">
+                                                    <div class="content-table__filter">ИП Иванов Иван Иванович</div>
+                                                    <div class="content-table__filter">ОАО "Сбербанк России"</div>
+                                                    <div class="content-table__filter">404023109991119000856</div>
+                                                    <div class="content-table__filter">047501711</div>
+                                                    <div class="content-table__filter">30101810400000000711</div>
+                                                    <div><a href="#" data-hystmodal="#edit-modal" class="edit"></a></div>
+                                                    <div><a href="#" data-hystmodal="#delite-modal" class="delite"></a></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -441,9 +1242,26 @@
                                     <input type="data" id="select-diplom" class="select-form-time icon icon-date" placeholder="Дата выдачи диплома">
                                     <label>Дата выдачи диплома<span class="red">*</span></label>
                                 </div>
-                                <a class="link--blue form__addlink icon file" data-link="form-add-img" href="#">Прикрепить фото диплома</a>
-                                <div id="form-add-img" class="form-add hidden">
-            Здесь добавление файла, в макете путевых листов не отрисован, поискать
+                                <div class="input__wrapper input__wrapper--file">
+                                    <input name="file" type="file" id="input__file" class="input input__file" multiple="">
+                                    <label for="input__file" class="input__file-button">
+                                    <span class="input__file-icon-wrapper"><img class="input__file-icon" src="img/file.svg" alt="Выбрать файл" width="48"></span>
+                                    <span class="input__file-button-text">Добавить фото диплома</span>
+                                    </label>
+                                </div>
+                                <div id="form-add-img" class="form-add row">
+            
+                                <div class="col-md-6">
+                                    <div class="form-add-img">
+                                        <img src="img/diplom.png">
+                                        <a href="#" class="delite delite--white"></a>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-add-img">
+                                        <img src="img/diplom1.png">
+                                        <a href="#" class="delite delite--white"></a>
+                                    </div>
                                 </div>
                             </div>
                             <div class="modal__footer" >
@@ -461,83 +1279,27 @@
                 <div class="hystmodal__window " role="dialog" aria-modal="true">
                     <button class="hystmodal__close" data-hystclose>Закрыть</button>
                     <div class="hystmodal__styled">
-                        <h3>Редактирование транспортных данных</h3>
+                        <h3>Редактирование банковского счета</h3>
                             <form action="#" class="modal-form column-form journal-form">
-                                <div class="dropdown input-select placeholder-container">
-                                    <div class="input-select__link"><span class="input-select-value"></span><span class="label-value">Организация</span></div>
-                                        <div class="select-reset">Организация</div>
-                                        <div class="dropdown-menu">
-                                            <ul class="select__list">
-                                                <li>
-                                                    <span>ООО "Желтое такси"</span>
-                                                </li>
-                                                <li>
-                                                    <span>ООО "Желтое такси"</span>
-                                                </li>
-                                                <li>
-                                                    <span>ООО "Желтое такси"</span>
-                                                </li>
-                                                </ul>
-                                        </div>
-                                    <!--скрытый инпут для добавления значения в форму-->
-                                    <input type="hidden" class="select-value" id="" value="">
+                                <div class="placeholder-container active">
+                                    <input type="text"  placeholder="Название счета" value="ИП Иванов Иван Иванович">
+                                    <label>Название счета<span class="red">*</span></label>
                                 </div>
-                                <div class="dropdown input-select placeholder-container">
-                                    <div class="input-select__link"><span class="input-select-value"></span><span class="label-value">Водитель</span></div>
-                                        <div class="select-reset">Водитель</div>
-                                        <div class="dropdown-menu">
-                                            <ul class="select__list">
-                                                <li>
-                                                    <span>Текст</span>
-                                                </li>
-                                                <li>
-                                                    <span>Текст</span>
-                                                </li>
-                                                <li>
-                                                    <span>Текст</span>
-                                                </li>
-                                                </ul>
-                                        </div>
-                                    <!--скрытый инпут для добавления значения в форму-->
-                                    <input type="hidden" class="select-value" id="" value="">
+                                <div class="placeholder-container active">
+                                    <input type="text" placeholder="Банк" value="ОАО “Сбербанк России”">
+                                    <label>Банк<span class="red">*</span></label>
                                 </div>
-                                <div class="dropdown input-select placeholder-container">
-                                    <div class="input-select__link"><span class="input-select-value"></span><span class="label-value">Транспортное средство</span></div>
-                                        <div class="select-reset">Транспортное средство</div>
-                                        <div class="dropdown-menu">
-                                            <ul class="select__list">
-                                                <li>
-                                                    <span>Легковой автомобиль</span>
-                                                </li>
-                                                <li>
-                                                    <span>Легковой автомобиль</span>
-                                                </li>
-                                                <li>
-                                                    <span>Легковой автомобиль</span>
-                                                </li>
-                                                </ul>
-                                        </div>
-                                    <!--скрытый инпут для добавления значения в форму-->
-                                    <input type="hidden" class="select-value" id="" value="">
+                                <div class="placeholder-container active">
+                                    <input type="text"  placeholder="Номер счета" value="404023109991119000856">
+                                    <label>Номер счета<span class="red">*</span></label>
                                 </div>
-                                <div class="dropdown input-select placeholder-container">
-                                    <div class="input-select__link"><span class="input-select-value"></span><span class="label-value">Прицеп</span></div>
-                                        <div class="select-reset">Прицеп</div>
-                                        <div class="dropdown-menu">
-                                            <ul class="select__list">
-                                                <li>
-                                                    <span>ТН-4521</span>
-                                                </li>
-                                                <li>
-                                                    <span>ТН-4521</span>
-                                                </li>
-                                                <li>
-                                                    <span>ТН-4521</span>
-                                                </li>
-                                                </ul>
-                                        </div>
-                                    <!--скрытый инпут для добавления значения в форму-->
-                                    <input type="hidden" class="select-value" id="" value="">
+                                <div class="placeholder-container active">
+                                    <input type="text" placeholder="БИК" value="047501711">
+                                    <label>БИК<span class="red">*</span></label>
+                                </div>
+                                <div class="placeholder-container active">
+                                    <input type="text"  placeholder="Расчетный счет" value="30101810400000000711">
+                                    <label>Расчетный счет<span class="red">*</span></label>
                                 </div>
                             <div class="modal__footer">
                                 <a href="#" class="modal-reset btn btn--grey" aria-label="Сбросить">Сбросить</a>
@@ -554,11 +1316,27 @@
                 <div class="hystmodal__window " role="dialog" aria-modal="true">
                     <button class="hystmodal__close" data-hystclose>Закрыть</button>
                     <div class="hystmodal__styled">
-                        <h3>Удалить данные о транспорте?</h3>
-                        <p>Данные транспортного средства будут удалены из таблицы.</p>
+                        <h3>Удалить банковский счет?</h3>
+                        <p>Данный банковский счет будет удален из таблицы.</p>
                         <div class="modal__footer">
                                 <a href="#" class="modal-reset btn btn--grey" aria-label="Сбросить">Отмена</a>
                                 <a href="#" class="btn btn--red" aria-label="Удалить">Удалить</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Закрыть создание организации. Какое событие на открытие модалки?????-->
+        <div class="hystmodal" id="close-modal" aria-hidden="true">
+            <div class="hystmodal__wrap">
+                <div class="hystmodal__window " role="dialog" aria-modal="true">
+                    <button class="hystmodal__close" data-hystclose>Закрыть</button>
+                    <div class="hystmodal__styled">
+                        <h3>Закрыть “Создание организации”?</h3>
+                        <p>Вы действительно хотите закрыть страницу “Создание организации”? Все данные будут утеряны!</p>
+                        <div class="modal__footer">
+                                <a href="#" class="modal-reset btn btn--grey" aria-label="Сбросить" data-hystclose>Отмена</a>
+                                <a href="#" id="add-list-close" class="btn btn--red" aria-label="Закрыть" data-hystclose>Закрыть</a>
                         </div>
                     </div>
                 </div>
@@ -568,6 +1346,6 @@
         <script type="text/javascript" src="js/moment.min.js"></script>
         <script type="text/javascript" src="js/jquery.daterangepicker.min.js"></script>
         <script type="text/javascript" src="js/main.js"></script>
-        <script type="text/javascript" src="js/bdd.js"></script>
+        <script type="text/javascript" src="js/company.js"></script>
     </body>
 </html>

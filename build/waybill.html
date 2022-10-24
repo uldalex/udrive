@@ -127,6 +127,7 @@
                         <!--тело контента-->
                         <div class="content">
                             <div class="content-table">
+                                <!-- у всех таблиц стиль display:grid. количество и размер ячеек задаются в правиле grid-template-columns. для каждой таблицы есть модификатор с --модификатор. ДЛя content-table__header и content-table__row grid-template-columns задаются отдельно, они разные!-->
                                 <div class="content-table__header">
                                         <div  class="content-table__filter">
                                             <label for="all-checkbox" id="all-checkbox-label" class="checkbox-label">
@@ -920,10 +921,9 @@
                                         </div>
                                     </div>
                                 </div>
-   
-                                
                             </div>
                         </div>
+                        <div class="table-total">Всего 2495</div>
                     </div>
                 </div>
                 <!--таб создать путевой лист-->
@@ -2358,10 +2358,27 @@
                                     <input type="data" id="select-diplom" class="select-form-time icon icon-date" placeholder="Дата выдачи диплома">
                                     <label>Дата выдачи диплома<span class="red">*</span></label>
                                 </div>
-                                <a class="link--blue form__addlink icon file" data-link="form-add-img" href="#">Прикрепить фото диплома</a>
-                                <div id="form-add-img" class="form-add hidden">
-            Здесь добавление файла, в макете путевых листов не отрисован, поискать
+                                <div class="input__wrapper input__wrapper--file">
+                                    <input name="file" type="file" id="input__file" class="input input__file" multiple="">
+                                    <label for="input__file" class="input__file-button">
+                                    <span class="input__file-icon-wrapper"><img class="input__file-icon" src="img/file.svg" alt="Выбрать файл" width="48"></span>
+                                    <span class="input__file-button-text">Добавить фото диплома</span>
+                                    </label>
                                 </div>
+                                <div id="form-add-img" class="form-add row">
+                                <div class="col-md-6">
+                                    <div class="form-add-img">
+                                        <img src="img/diplom.png">
+                                        <a href="#" class="delite delite--white"></a>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-add-img">
+                                        <img src="img/diplom1.png">
+                                        <a href="#" class="delite delite--white"></a>
+                                    </div>
+                                </div>
+                            </div>
                             </div>
                             <div class="modal__footer" >
                                 <a href="#"  class="modal-reset btn btn--grey" aria-label="Сбросить">Сбросить</a>
