@@ -37,20 +37,20 @@ $('#all-checkbox-label').on('click', function () {
   }
 })
 /*клонировать блок формы */
-$(".btn--clone").on('click', function(){
-  form= $(this).parents('form');
-  cloned=$(this).parents('form').find('.cloned-block')
+$(".btn--clone").on('click', function () {
+  form = $(this).parents('form');
+  cloned = $(this).parents('form').find('.cloned-block')
   $(form).find('.clone-block').clone().appendTo(cloned);
-  
+
 });
 /*удалить фотки из модалки */
-$(".form-add-img").on("click", function(){
+$(".form-add-img").on("click", function () {
   $(this).parent('.col-md-6').remove();
   $(this).remove();
 })
 /*Dropdown Menu*/
 $('.dropdown').on('click', function () {
-   $(this).parents('form').find('.journal-form-hidden').removeClass('hidden')
+  $(this).parents('form').find('.journal-form-hidden').removeClass('hidden')
   if ($(this).hasClass("active")) {
     $(this).removeClass('active');
     var value = '';
@@ -66,7 +66,7 @@ $('.dropdown').on('click', function () {
     $(this).find('.dropdown-menu').slideDown(500);
     if ($('.filter__list input[type="checkbox"]:checked').length) {
       $(this).find('.sort').addClass("sort--active");
-      
+
     }
   }
 }).on('click', ' .filter-reset', function () {
@@ -74,7 +74,9 @@ $('.dropdown').on('click', function () {
   $(this).parents('.dropdown').find('.dropdown-menu').slideUp(500);
   $(this).parents('.dropdown').find(".filter-searsh").prop('value', '')
   $(this).parents('.dropdown').find('.sort').removeClass("sort--active");
-  $(this).parents('.dropdown').find('.filter__list li').css({ 'display': 'block' });
+  $(this).parents('.dropdown').find('.filter__list li').css({
+    'display': 'block'
+  });
 });
 $('.dropdown .select__list li').on('click', function () {
   var txt = $(this).text()
@@ -83,13 +85,13 @@ $('.dropdown .select__list li').on('click', function () {
   $(this).parents('.dropdown').find('.input-select__link .input-select-value').text($(this).text());
   $(this).parents('.dropdown').find('.dropdown-menu').slideUp(500);
   $(this).parents('.dropdown').find('.select-reset').addClass('active')
-  $(this).parents('.dropdown').find('.select-value').prop('value',txt)
+  $(this).parents('.dropdown').find('.select-value').prop('value', txt)
 });
 $('.dropdown .select-reset').on('click', function () {
-  $(this).parents('.dropdown').find('.input-select__link').text($(this).text());
+  $(this).parents('.dropdown').find('.input-select__link .input-select-value').text('');
   $(this).parents('.dropdown').find('.dropdown-menu').slideUp(500);
   $(this).removeClass('active');
-  $(this).parents('.dropdown').find('.select-value').prop('value','');
+  $(this).parents('.dropdown').find('.select-value').prop('value', '');
   $(this).parents('.dropdown').find('.input-select__link').removeClass('active');
   $(this).parents('form').find('.journal-form-hidden').addClass('hidden')
   return false;
@@ -104,10 +106,12 @@ $(".filter-searsh").on("keyup", function () {
 $(document).mouseup(function (e) {
   var parent = $(".dropdown.active");
   var div = $(".dropdown.active").find('.dropdown-menu');
-  if (!div.is(e.target)
-    && div.has(e.target).length === 0) {
+  if (!div.is(e.target) &&
+    div.has(e.target).length === 0) {
     $(div).slideUp(500);
     $(parent).removeClass('active');
+    $(parent).find('.input-select__link').removeClass('active');
+    $(parent).find('.select-reset').removeClass('active');
   }
 });
 
@@ -138,36 +142,38 @@ $('.time-icon').on('blur', function () {
 $('.modal-reset').on('click', function () {
   $(this).parents('.setting-checkbox').find('input[type="checkbox"]').prop("checked", true);
   $(this).parents('form').find('input[type="text"]').prop('value', '');
+  $(this).parents('form').find('.placeholder-container').removeClass('active');
+  $(this).parents('form').find('.placeholder-container').removeClass('active');
 });
 /*раскрываем блоки в модалке */
 $('.form__addlink').on('click', function () {
   var id = $(this).data('link');
-  $('#'+id).removeClass('hidden');
+  $('#' + id).removeClass('hidden');
 });
 
 //стилизация input file
 let inputs = document.querySelectorAll('.input__file');
-    Array.prototype.forEach.call(inputs, function (input) {
-      let label = input.nextElementSibling,
-        labelVal = label.querySelector('.input__file-button-text').innerText;
-  
-      input.addEventListener('change', function (e) {
-        let countFiles = '';
-        if (this.files && this.files.length >= 1)
-          countFiles = this.files.length;
-  
-        if (countFiles)
-          label.querySelector('.input__file-button-text').innerText = 'Выбрано файлов: ' + countFiles;
-        else
-          label.querySelector('.input__file-button-text').innerText = labelVal;
-      });
-    });
+Array.prototype.forEach.call(inputs, function (input) {
+  let label = input.nextElementSibling,
+    labelVal = label.querySelector('.input__file-button-text').innerText;
+
+  input.addEventListener('change', function (e) {
+    let countFiles = '';
+    if (this.files && this.files.length >= 1)
+      countFiles = this.files.length;
+
+    if (countFiles)
+      label.querySelector('.input__file-button-text').innerText = 'Выбрано файлов: ' + countFiles;
+    else
+      label.querySelector('.input__file-button-text').innerText = labelVal;
+  });
+});
 
 
 
 for (let e of document.querySelectorAll('input[type="range"].slider-progress')) {
   e.style.setProperty('--value', e.value);
-  e.style.setProperty('- мин', e.min == ''? '0': e.min);
+  e.style.setProperty('- мин', e.min == '' ? '0' : e.min);
   e.style.setProperty('--max', e.max == '' ? '100' : e.max);
   e.addEventListener('input', () => e.style.setProperty('--value', e.value));
 }
@@ -195,7 +201,7 @@ $('.page-tab-list .tab-link').on('click', function () {
     .addClass('tab-content--active');
 });
 /*вертикально разворачивающийся блок(аккордион) */
-$(".content-gorisontal-tab__link").on('click', function(){
+$(".content-gorisontal-tab__link").on('click', function () {
   $(this).toggleClass('active');
   $(this).parent('.content-gorisontal-tab').find('.content-gorisontal-tab__content').toggleClass('active');
 })
@@ -233,8 +239,8 @@ class HystModal {
       waitTransitions: false,
       catchFocus: true,
       fixedSelectors: '*[data-hystfixed]',
-      beforeOpen: () => { },
-      afterClose: () => { },
+      beforeOpen: () => {},
+      afterClose: () => {},
     };
     this.config = Object.assign(defaultConfig, props);
     if (this.config.linkAttributeName) {
@@ -460,6 +466,3 @@ const myModal = new HystModal({
     }
   },
 });
-
-
-

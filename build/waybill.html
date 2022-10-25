@@ -135,9 +135,11 @@
                                         </div>
                                         <div  class="content-table__filter">Номер</div>
                                         <div  class="content-table__filter">№ документа</div>
-                                        <div  id="select-date" class="content-table__filter">
-                                            <span>Дата</span> 
-                                            <a href="#" class="sort" aria-label="Сортировать по возрастанию"></a>
+                                        <div   class="content-table__filter">
+                                            <div id="select-date" class="row">
+                                                <span>Дата</span> 
+                                                <a href="#" class="sort" aria-label="Сортировать по возрастанию"></a>
+                                            </div>
                                             <!--Внимание! модификатор класса --up для фильтрации по возрастанию.-->
                                             <a href="#" class="sort-arrow" aria-label="Отсортировано по возрастанию"></a>
                                             <div id="calendar-container" class="calendar-container"></div>
@@ -977,9 +979,6 @@
                                                 <div class="dropdown-menu" >
                                                     <ul class="select__list">
                                                         <li>
-                                                            <a href="#" data-hystmodal="#add-worker" aria-label="Добавить организацию">+ Добавить владельца</a>
-                                                        </li>
-                                                        <li>
                                                             <span>Иванов Иван Иванович</span>
                                                         </li>
                                                         <li>
@@ -1040,9 +1039,6 @@
                                                 <div class="dropdown-menu" >
                                                     <ul class="select__list">
                                                         <li>
-                                                            <a href="#" data-hystmodal="#add-worker" aria-label="Добавить водителя">+ Добавить водителя</a>
-                                                        </li>
-                                                        <li>
                                                             <span>Иванов Иван Иванович</span>
                                                         </li>
                                                         <li>
@@ -1064,9 +1060,6 @@
                                                 <div class="dropdown-menu" >
                                                     <ul class="select__list">
                                                         <li>
-                                                            <a href="#" data-hystmodal="#add-worker" aria-label="Добавить транспортное средство">+ Добавить транспортное средство</a>
-                                                        </li>
-                                                        <li>
                                                             <span>Машина</span>
                                                         </li>
                                                         <li>
@@ -1080,6 +1073,13 @@
                                                 <!--скрытый инпут для добавления значения в форму-->
                                                 <input type="hidden" class="select-value" id="" value="">
                                         </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="btn-label">
+                                            <input type="checkbox" name="table1" id="table1" class="checkbox-btn">
+                                            <label for="table1"></label>
+                                        <span>Печатать время медицинского и технического осмотра</span>
+                                    </div>
                                     </div>
                                     <div class="col-12">
                                         <h4>Медицинский контроль</h4>
@@ -1132,6 +1132,40 @@
                                                 <input type="hidden" class="select-value" id="" value="">
                                         </div>
                                     </div>
+                                    <div class="col-md-6 row">
+                                        <div class="col-12">
+                                            <p>Предрейсовый контроль</p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="placeholder-container">
+                                                <input type="data" class="select-form-date1 icon icon-date" placeholder="10.11.2020 - 11.11.2020">
+                                                <label class="label-value">Дата<span class="red">*</span></label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="placeholder-container">
+                                                <input type="time" id="pct" class="icon time-icon" name="pct">
+                                                <span class="placeholder label-value">Время<span class="red">*</span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 row">
+                                        <div class="col-12">
+                                            <p>Послерейсовый контроль</p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="placeholder-container">
+                                                <input type="data" class="select-form-date2 icon icon-date" placeholder="10.11.2020 - 11.11.2020">
+                                                <label class="label-value">Дата<span class="red">*</span></label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="placeholder-container">
+                                                <input type="time" id="pct" class="icon time-icon" name="pct">
+                                                <span class="placeholder label-value">Время<span class="red">*</span></span>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="col-12">
                                         <h4>Технический контроль</h4>
                                     </div>
@@ -1181,6 +1215,25 @@
                                                 </div>
                                                 <!--скрытый инпут для добавления значения в форму-->
                                                 <input type="hidden" class="select-value" id="" value="">
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="col-md-6 row">
+                                            <div class="col-12">
+                                                <p>Послерейсовый контроль</p>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="placeholder-container">
+                                                    <input type="data" class="select-form-date3 icon icon-date" placeholder="10.11.2020 - 11.11.2020">
+                                                    <label class="label-value">Дата<span class="red">*</span></label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="placeholder-container">
+                                                    <input type="time" id="pct" class="icon time-icon" name="pct">
+                                                    <span class="placeholder label-value">Время<span class="red">*</span></span>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-12">
@@ -1438,7 +1491,7 @@
                                         <div class="col-md-6">
                                             <!--Здесь выбираем дату, добавляем контейнер select-form-time-container, чтобы не добавлять падданги родителю, иначе получается неопрятно.-->
                                                 <div class="placeholder-container">
-                                                    <input id="select-form-time2" type="data"  class="select-form-time icon icon-date" placeholder="10.11.2020 - 11.11.2020">
+                                                    <input id="select-form-time2" type="data"  class="select-form-time2 icon icon-date" placeholder="10.11.2020 - 11.11.2020">
                                                     <label>Дата/Время<span class="red">*</span></label>
                                                 </div>
                                                 <div id="select-form-time-container2" class="calendar-container"></div>
@@ -1533,9 +1586,6 @@
                                                 <div class="dropdown-menu" >
                                                     <ul class="select__list">
                                                         <li>
-                                                            <a href="#" data-hystmodal="#add-worker" aria-label="Добавить организацию">+ Добавить владельца</a>
-                                                        </li>
-                                                        <li>
                                                             <span>Иванов Иван Иванович</span>
                                                         </li>
                                                         <li>
@@ -1596,9 +1646,6 @@
                                                 <div class="dropdown-menu" >
                                                     <ul class="select__list">
                                                         <li>
-                                                            <a href="#" data-hystmodal="#add-worker" aria-label="Добавить водителя">+ Добавить водителя</a>
-                                                        </li>
-                                                        <li>
                                                             <span>Иванов Иван Иванович</span>
                                                         </li>
                                                         <li>
@@ -1619,9 +1666,6 @@
                                             <div class="select-reset">Транспортное средство</div>
                                                 <div class="dropdown-menu" >
                                                     <ul class="select__list">
-                                                        <li>
-                                                            <a href="#" data-hystmodal="#add-worker" aria-label="Добавить транспортное средство">+ Добавить транспортное средство</a>
-                                                        </li>
                                                         <li>
                                                             <span>Машина</span>
                                                         </li>
@@ -1647,9 +1691,6 @@
                                                 <div class="dropdown-menu" >
                                                     <ul class="select__list">
                                                         <li>
-                                                            <a href="#" data-hystmodal="#add-worker" aria-label="Добавить организацию">+ Добавить организацию</a>
-                                                        </li>
-                                                        <li>
                                                             <span>ООО "Залечим"</span>
                                                         </li>
                                                         <li>
@@ -1671,7 +1712,7 @@
                                                 <div class="dropdown-menu" >
                                                     <ul class="select__list">
                                                         <li>
-                                                            <a href="#add-worker"  data-hystmodal="#add-worker" aria-label="Добавить контролера">+ Добавить контролера</a>
+                                                            <a href="#add-worker"  data-hystmodal="#add-worker" aria-label="Добавить контролера">+ Добавить сотрудника</a>
                                                         </li>
                                                         <li>
                                                             <span>Младший фельдшер</span>
@@ -1825,7 +1866,7 @@
                                     <div class="col-md-6">
                                         <!--Здесь выбираем дату, добавляем контейнер select-form-time-container, чтобы не добавлять падданги родителю, иначе получается неопрятно.-->
                                             <div class="placeholder-container">
-                                                <input id="select-form-time" type="data"  class="select-form-time icon icon-date" placeholder="10.11.2020 - 11.11.2020">
+                                                <input id="select-form-time4" type="data"  class="select-form-time icon icon-date" placeholder="10.11.2020 - 11.11.2020">
                                                 <label>Выезд с парковки<span class="red">*</span></label>
                                             </div>
                                             <div id="select-form-time-container" class="calendar-container"></div>
@@ -2223,25 +2264,28 @@
                     <div class="hystmodal__styled">
                         <h3>Печать путевых листов</h3>
                         <form action="#" class="modal-form column-form">
-                            <div class="dropdown input-select placeholder-container" >
-                                <div class="input-select__link"><span class="input-select-value"></span><span>Путевой лист</span></div>
-                                    <div class="select-reset">Путевой лист</div>
+                            <div class="dropdown input-select placeholder-container">
+                                <div class="input-select__link">
+                                    <span class="input-select-value"></span>
+                                    <span class="label-value">Тип путевого листа<span class="red">*</span></span>
+                                </div>
+                                <div class="select-reset">Тип путевого листа</div>
                                     <div class="dropdown-menu" >
                                         <ul class="select__list">
                                             <li>
-                                                <span>Тип путевого листа</span>
+                                                <span>Путевой лист</span>
                                             </li>
                                             <li>
-                                                <span>Тип путевого листа</span>
+                                                <span>Путевой лист</span>
                                             </li>
                                             <li>
-                                                <span>Тип путевого листа</span>
+                                                <span>Путевой лист</span>
                                             </li>
-                                            </ul>
+                                        </ul>
                                     </div>
-                                <!--скрытый инпут для добавления значения в форму-->
-                                <input type="hidden" class="select-value" id="" value="">
-                            </div>
+                                    <!--скрытый инпут для добавления значения в форму-->
+                                    <input type="hidden" class="select-value" id="" value="">
+                                </div>
                             <div class="modal__footer" >
                                 <a href="#"  class="modal-reset btn btn--grey" aria-label="Сбросить">Сбросить</a>
                                 <a href="#" class="btn btn--yellow" aria-label="Удалить">Удалить</a>
@@ -2260,8 +2304,11 @@
                         <h3>Печать журналов</h3>
                         <form action="#" class="modal-form column-form journal-form">
                             <div class="dropdown input-select placeholder-container" >
-                                <div class="input-select__link"><span class="input-select-value"></span><span>Тип журнала</span></div>
-                                    <div class="select-reset">Тип журнала</div>
+                                <div class="input-select__link">
+                                    <span class="input-select-value"></span>
+                                    <span class="label-value">Тип журнала</span>
+                                </div>
+                                <div class="select-reset">Тип журнала</div>
                                     <div class="dropdown-menu" >
                                         <ul class="select__list">
                                             <li>

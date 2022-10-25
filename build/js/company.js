@@ -1,3 +1,9 @@
+/*календарь в фильтрах*/
+$('#select-date').dateRangePicker({
+	inline: true,
+	container: '#calendar-container',
+  });
+  
 $('#ooo').on('click', function(){
     $('.of_ul').removeClass('hidden');
     $('.of_ip').addClass('hidden');

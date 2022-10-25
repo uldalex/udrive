@@ -5,6 +5,9 @@ $('#select-date').dateRangePicker({
   });
 /*календарь в формах */
 $('.select-form-date').dateRangePicker({ });
+$('.select-form-date1').dateRangePicker({ });
+$('.select-form-date2').dateRangePicker({ });
+$('.select-form-date3').dateRangePicker({ });
 $('#select-diplom').dateRangePicker({singleDate : true,  });
 /*календарь в формах со временем */
 $('#select-form-time').dateRangePicker({
@@ -47,6 +50,16 @@ $('#select-form-time3').dateRangePicker({
 		enabled: true
 	}
 });
+$('#select-form-time4').dateRangePicker({
+	inline: true,
+	container:'#select-form-time-container3',
+	  separator : ' ~ ',
+	  format: 'DD.MM.YYYY HH:mm',
+	singleDate : true,
+	  time: {
+		  enabled: true
+	  }
+  });
 $('.date-destroy').on('click',function (evt) {
   evt.stopPropagation();
   $('#select-date').data('dateRangePicker').clear();

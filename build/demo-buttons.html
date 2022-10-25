@@ -1,0 +1,240 @@
+
+<!DOCTYPE html>
+<html class="page" lang="ru">
+    <!--head-->
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="format-detection" content="date=no">
+        <meta name="format-detection" content="address=no">
+        <meta name="format-detection" content="email=no">
+        <meta content="notranslate" name="google">
+        <title>Табы</title>
+        <link rel="stylesheet" href="css/daterangepicker.min.css">
+        <link rel="stylesheet" href="css/main.css">
+    </head>
+    <body>
+        <!--шапка-->
+        <header>
+            <div class="container">
+                <div class="row">
+                    <!--логотип-->
+                    <a href="#" class="logo" aria-label="Юдрайв">
+                        <img width="87" height="19" src="img/logo.svg">
+                    </a>
+                    <!--юзерпанель-->
+                    <div  class="user">
+                        <span>Владелец:</span><a  href="#" class="user__name icon" aria-label="Личный кабинет">Александр Иванов</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!--контентная часть-->
+        <div class="page__inner">
+            <!--сайтбар-->
+            <aside>
+                <div class="sitebar">
+                    <h3>Разделы</h3>
+                    <ul id="main-menu" class="main-menu" role="menu">
+                        <li class="main-menu__item">
+                            <a href="company.html" class="main-menu__link" aria-label="Организации">Организации</a>
+                        </li>
+                        <li class="main-menu__item">
+                            <a href="contracts.html" class="main-menu__link" aria-label="Договора">Договора</a>
+                        </li>
+                        <li class="main-menu__item">
+                            <a href="workers.html" class="main-menu__link" aria-label="Сотрудники">Сотрудники</a>
+                        </li>
+                        <li class="main-menu__item">
+                            <a href="transport.html" class="main-menu__link" aria-label="Транспорт">Транспорт</a>
+                        </li>
+                        <li class="main-menu__item">
+                            <a href="trailers.html" class="main-menu__link" aria-label="Прицепы">Прицепы</a>
+                        </li>
+                        <li class="main-menu__item">
+                            <a href="freighter-card.html" class="main-menu__link" aria-label="Карточка фрахтовщика">Карточка фрахтовщика</a>
+                        </li>
+                        <li class="main-menu__item">
+                            <!--у ссылки модификатор active -->
+                            <a href="waybill.html" class="main-menu__link" aria-label="Путевая документация">Путевая документация</a>
+                        </li>
+                        <li class="main-menu__item">
+                            <a href="bdd.html" class="main-menu__link" aria-label="БДД">БДД</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </aside>
+            <main>
+                <!--шапка в main-->
+                <div class="main-header">
+                    <ul class="tab-list main-header__list">
+                        <!--Внимание! Модификатор класса --active и у ссылки и у li-->
+                        <!--Внимание! data-link у ссылки должно совпадать с data-id у таба -->
+                        <li class="main-header__item active">
+                            <a data-link="tab_01" href="#" id="all-list" class="tab-link main-header__link main-header__link--active">Основная вкладка</a>
+                        </li>
+                    </ul>
+                </div>
+                <!--динамический контент в main-->
+                <!--таб -->
+                <div data-id="tab_01" class="tab-content tab-content--active main-content">
+                    <div  class="main-header__title">
+                            <h1>Кнопки, инпуты</h1>
+                    </div>
+                    <div class="content__wrapper">
+                        <!--тело контента-->
+                        <div class="content">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p><b>Общий класс у кнопок .btn</b></p>
+                                    <a href="#" class="btn" aria-label="Создать" role="button">Кнопка</a>
+                                    <p></p>
+                                    <p>Модификатор --yellow</p>
+                                    <a href="#" class="btn btn--yellow" aria-label="Создать" role="button">Кнопка</a>
+                                    <p></p>
+                                    <p>Модификатор --light</p>
+                                    <a href="#" class="btn btn--light" aria-label="Создать" role="button">Кнопка</a>
+                                    <p></p>
+                                    <p>Модификатор --grey</p>
+                                    <a href="#" class="btn btn--grey" aria-label="Создать" role="button">Кнопка</a>
+                                    <p></p>
+                                    <p>Модификатор --red</p>
+                                    <a href="#" class="btn btn--red" aria-label="Создать" role="button">Кнопка</a>
+                                </div>
+                                <div class="col-md-6">
+                                    <p><b>Инпуты</b></p>
+                                    <p>все без исключения инпуты завернуты в блок .placeholder-container. Это нужно для того, чтобы плейсхолдер красиво выпрыгивал наверх, а не скрывался. Важно у инпутов внимательно писать label for иначе может не работать правильно</p>
+                                    <div class="col-12">
+                                        <div class="placeholder-container placeholder-container--left-icon">
+                                            <input type="search" placeholder="Поиск" aria-label="Поиск">
+                                            <label>Поиск</label>
+                                            <span class="error">Текст ошибки</span>
+                                        </div>
+                                    </div>
+                                    <p></p>
+                                    <div class="col-12">
+                                        <div class="placeholder-container">
+                                            <input type="text" placeholder="Текст" aria-label="Поиск">
+                                            <label>input type text</label>
+                                        </div>
+                                    </div>
+                                    <p>Дропдаун тоже имеет класс placeholder-container а так же спан, которй выдвигается наверх и спан, 
+                                    <p></p>
+                                    <div class="col-12">
+                                        <div class="dropdown input-select placeholder-container" >
+                                            <div class="input-select__link"><span class="input-select-value"></span><span class="label-value">Владелец<span class="red">*</span></span></div>
+                                            <div class="select-reset">Владелец</div>
+                                                <div class="dropdown-menu" >
+                                                    <ul class="select__list">
+                                                        <li>
+                                                            <span>Иванов Иван Иванович</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>Петров Петр Сергеевич</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>Сидоров Сидор Сидорович</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <!--скрытый инпут для добавления значения в форму-->
+                                                <input type="hidden" class="select-value" id="" value="">
+                                        </div>
+                                    </div>
+                                    <p></p>
+                                    <div class="col-12">
+                                        <div class="placeholder-container">
+                                            <input type="number" placeholder="Текст" aria-label="Поиск">
+                                            <label>input type number</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p></p>
+                                    <p><b>Инпут типа "файл"</b></p>
+                                    <p>У инпут c типом "файл" маленький скриптик, лежит в main.js</p>
+                                    <div class="col-12">
+                                            <div class="input__wrapper input__wrapper--file">
+                                                    <input name="file" type="file" id="input__file" class="input input__file" multiple="">
+                                                    <label for="input__file" class="input__file-button">
+                                                    <span class="input__file-icon-wrapper"><img class="input__file-icon" src="img/file.svg" alt="Выбрать файл" width="48"></span>
+                                                    <span class="input__file-button-text">Прикрепить фото водительского удостоверения</span>
+                                                    </label>
+                                                </div>
+                                    </div>
+                                    <p></p>
+                                    <p>Еще один инпут типа "файл"</p>
+                                    <div class="col-12">
+                                        <div class="input__wrapper">
+                                            <input name="file" type="file" id="input__file" class="input input__file" multiple="">
+                                            <label for="input__file" class="input__file-button">
+                                            <span class="input__file-icon-wrapper"><img class="input__file-icon" src="img/qr.svg" alt="Выбрать файл" width="48"></span>
+                                            <span class="input__file-button-text">Выберите файл</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <p><b>Чекбоксы</b></b>
+                                    <div class="col-12">
+                                        <label for="setting-num" class="checkbox-label">
+                                            <input type="checkbox" name="setting-num" id="setting-num" class="checkbox" checked="">
+                                            <span>Чекбокс</span>
+                                        </label>
+                                    </div>
+                                    <p></p>
+                                    <p>Еще один чекбокс</p>
+                                    <div class="col-12">
+                                        <div class="btn-label">
+                                            <input type="checkbox" name="table1" id="table1" class="checkbox-btn" checked="">
+                                            <label for="table1"></label>
+                                            <span>Чекбокс</span>
+                                        </div>
+                                    </div>
+                                    <p></p>
+                                    <p><b>Радиокнопка</b></b>
+                                    <div class="col-12 placeholder-container">
+                                        <div class=" btn-label">
+                                            <input type="radio" name="worker" id="worker1" class="checkbox-btn checkbox-btn--radio">
+                                            <label for="worker1"></label>
+                                            <span>Радио</span>
+                                        </div>
+                                    </div>
+                                    <p></p>
+                                    <div class="col-12 placeholder-container">
+                                        <div class=" btn-label">
+                                            <input type="radio" name="worker" id="worker2" class="checkbox-btn checkbox-btn--radio">
+                                            <label for="worker2"></label>
+                                            <span>Радио</span>
+                                        </div>
+                                    </div>
+                                    <p></p>
+                                    <p>Еще одна радиокнопка</p>
+                                    <div class="radio-wrapper">
+                                        <input type="radio" name="sex" id="sex-men">
+                                        <label for="sex-men">радио</label>
+                                    </div>
+                                    <div class="radio-wrapper">
+                                        <input type="radio" name="sex" id="sex-wumen">
+                                        <label for="sex-wumen">радио</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+        <!--подвал-->
+        <footer>
+        </footer>
+        <script type="text/javascript" src="js/jquery-3.6.1.min.js"></script>
+        <script type="text/javascript" src="js/moment.min.js"></script>
+        <script type="text/javascript" src="js/jquery.daterangepicker.min.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
+    </body>
+</html>
