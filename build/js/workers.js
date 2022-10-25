@@ -1,3 +1,4 @@
+/*при клике на среднюю радиокнопку раскрываем список с диалогом диплома*/
 $("input[name='worker']").on('input', function(){
   if($("#worker1").is(":checked")) {
    
@@ -7,8 +8,19 @@ $("input[name='worker']").on('input', function(){
   
   }
 });
+/*при клике на среднюю радиокнопку раскрываем список с диалогом диплома водителя*/
+$("#driver1").on('input', function(){
+  if($(this).is(":checked")) {
+    $('.drivercontrol__wrapper').removeClass('hidden')  
+  }
+})
+/*при клике ссылку раскрываем блок добавления диплома*/
 $(".texcontrol__wrapper .link--blue").on('click', function(){
     $(".texcontrol").removeClass('hidden')
+});
+/*при клике ссылку раскрываем блок добавления диплома водителя*/
+$(".drivercontrol__wrapper .link--blue").on('click', function(){
+  $(".drivercontrol").removeClass('hidden')
 });
 
 $('.select-date').dateRangePicker({  singleDate : true,});

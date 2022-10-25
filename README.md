@@ -6,3 +6,4 @@
 <a href="https://uldalex.github.io/udrive/build/transport.html">Транспорт</a><br>
 <a href="https://uldalex.github.io/udrive/build/company.html">Организации</a><br>
 <a href="https://uldalex.github.io/udrive/build/workers.html">Сотрудники</a><br>
+<a href="https://uldalex.github.io/udrive/build/contracts.html">Договора</a><br>

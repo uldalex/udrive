@@ -39,7 +39,7 @@
                     <h3>Разделы</h3>
                     <ul id="main-menu" class="main-menu" role="menu">
                         <li class="main-menu__item">
-                            <a href="company.html" class="main-menu__link" aria-label="Организации">Организации</a>
+                            <a href="company.html" class="main-menu__link " aria-label="Организации">Организации</a>
                         </li>
                         <li class="main-menu__item">
                             <a href="contracts.html" class="main-menu__link main-menu__link--active" aria-label="Договора">Договора</a>
@@ -73,24 +73,497 @@
                     <ul class="tab-list main-header__list">
                         <!--Внимание! Модификатор класса --active и у ссылки и у li-->
                         <li class="main-header__item active">
-                            <a data-link="tab_01" href="#" id="all-list" class="tab-link main-header__link main-header__link--active">Путевые листы</a>
+                            <a data-link="tab_01" href="#" id="all-list" class="tab-link main-header__link main-header__link--active">Договора</a>
                         </li>
                         <li class="main-header__item">
-                            <a data-link="tab_02" href="#" id="add-list" class="tab-link main-header__link hidden">Создать путевой лист</a><span id="add-list-close" class="icon main-header__link--close hidden"></span>
-                        </li>
-                        <li class="main-header__item">
-                            <a data-link="tab_03" href="#" id="add-group" class="tab-link main-header__link hidden">Создать группу</a><span id="add-group-close" class="icon main-header__link--close hidden"></span>
+                            <a data-link="tab_02" href="#" id="add-list" class="tab-link main-header__link hidden">Создать договор</a><span data-hystmodal="#close-modal"  class="icon main-header__link--close hidden"></span>
                         </li>
                     </ul>
                 </div>
+                <!--динамический контент в main-->
+                <!--таб БДД-->
+                <div data-id="tab_01" class="tab-content tab-content--active main-content">
+                    <div  class="main-header__title">
+                            <h1>Договора</h1>
+                            <div class="main-header__btns">
+                                <a href="#" id="add-list-link" class="btn btn--yellow" aria-label="Создать" role="button">Создать договор</a>
+                            </div>
+                    </div>
+                    <div class="content__wrapper">
+                        <!--шапка контента-->
+                        <div class="content__header content__header--white">
+                            <form action="#" role="" class="form-head">
+                                <div class="placeholder-container placeholder-container--left-icon">
+                                    <input type="search" placeholder="Поиск" aria-label="Поиск">
+                                    <label>Поиск</label>
+                                </div>
+                                <input type="submit" class=" btn btn--light" value="Найти" aria-label="Поиск">
+                                <!--сюда валидацию, у .error сейчас display:none. при ошибке сделать .error  display:block-->
+                                <span class="error">Текст ошибки</span>
+                            </form>
 
-
+                            <div class="content-header__btns">
+                                <a href="#" class="btn btn--red hidden" id="delite-rows" aria-label="Удалить" role="button">Удалить</a>
+                                 <!--для модалок используем дата-атрибут с id модалки: data-hystmodal="id-модалки"-->
+                                <a href="#print-journal" class="btn btn--light" aria-label="Печать договоров" role="button" data-hystmodal="#print-journal">Печать договоров</a>
+                                <a href="#" class="content__header__icon icon-list icon" aria-label="Создать группу" role="button"></a>
+                                <a href="#" id="setting-link" class="setting-link content__header__icon icon-settings icon" aria-label="Создать" role="button"></a>
+                                <div id="setting-menu" class="setting-menu">
+                                    <ul>
+                                        <li><a href="#setting-modal" aria-label="Настройка таблицы" data-hystmodal="#setting-modal">Настройка таблицы</a></li>
+                                        <li><a href="#table-modal" data-hystmodal="#table-modal" aria-label="Настройка путевых листов">Настройка карточек договоров</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!--тело контента-->
+                        <div class="content">
+                            <p>Нет макета</p>
+                        </div>
+                        <div class="table-total">Всего 0</div>
+                    </div>
+                </div>
+                <!--таб создать организацию-->
+                <div data-id="tab_02" class="tab-content  main-content">
+                    <div  class="main-header__title">
+                        <h1>Создание договора</h1>
+                        <div class="content-header__btns">
+                            <a href="#download" id="download" class="btn btn--light  disabled" aria-label="Загрузить" role="button" data-hystmodal="#print-plist">Загрузить</a>
+                            <a href="#download" id="download" class="btn btn--yellow  disabled" aria-label="Сохранить и распечатать" role="button" data-hystmodal="#print-plist">Сохранить и распечатать</a>
+                            <a href="#print-plist" id="print-plink" class="btn btn--yellow  disabled" aria-label="Сохранить" role="button" data-hystmodal="#print-plist">Сохранить</a>
+                        </div>
+                    </div>
+                    <div class="content__wrapper">
+                        <!--тело контента-->
+                        <div class="content">
+                            <form action="#" class="column-form row">
+                                <div class="col-md-6">
+                                    <div class="dropdown input-select placeholder-container">
+                                        <div class="input-select__link"><span class="input-select-value"></span><span class="label-value">Владелец<span class="red">*</span></span></div>
+                                        <div class="select-reset">Владелец</div>
+                                        <div class="dropdown-menu">
+                                            <ul class="select__list">
+                                                <li>
+                                                    <span>ИП Иванов Иван Иванович</span>
+                                                </li>
+                                                <li>
+                                                    <span>ИП Иванов Иван Иванович</span>
+                                                </li>
+                                                <li>
+                                                    <span>ИП Иванов Иван Иванович</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <!--скрытый инпут для добавления значения в форму-->
+                                        <input type="hidden" class="select-value" id="" value="">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="dropdown input-select placeholder-container">
+                                        <div class="input-select__link"><span class="input-select-value"></span><span class="label-value">Тип предоставления услуг<span class="red">*</span></span></div>
+                                        <div class="select-reset">Тип предоставления услуг</div>
+                                        <div class="dropdown-menu">
+                                            <ul class="select__list">
+                                                <li id="texservise-link" class="ul-link">
+                                                    <span>Оказание технических услуг</span>
+                                                </li>
+                                                <li id="medservise-link" class="ul-link">
+                                                    <span>Оказание медицинских услуг</span>
+                                                </li>
+                                                <li id="arenda-link" class="ul-link">
+                                                    <span>Аренда транспортного средства организацией</span>
+                                                </li>
+                                                <li id="fl-link">
+                                                    <span>Аренда транспортного средства физ. лицом</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <!--скрытый инпут для добавления значения в форму-->
+                                        <input type="hidden" class="select-value" id="" value="">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="placeholder-container">
+                                        <input type="text" value="" placeholder="Номер договора">
+                                        <label>Номер договора<span class="red">*</span></label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="placeholder-container">
+                                        <input type="data" class="select-form-date icon icon-date" placeholder="10.11.2020 - 11.11.2020">
+                                        <label class="label-value">Дата договора<span class="red">*</span></label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="placeholder-container">
+                                        <input type="data" class="select-form-date1 icon icon-date" placeholder="10.11.2020 - 11.11.2020">
+                                        <label class="label-value">Действует до<span class="red">*</span></label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 align-center">
+                                            <label for="remember-data" class="checkbox-label">
+                                                <input type="checkbox" name="remember-data" id="remember-data" class="checkbox">
+                                            <span>Срок действия - 1 год</span>
+                                            </label>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="dropdown input-select placeholder-container">
+                                        <div class="input-select__link"><span class="input-select-value"></span><span class="label-value">Заказчик<span class="red">*</span></span></div>
+                                        <div class="select-reset">Заказчик</div>
+                                        <div class="dropdown-menu">
+                                            <ul class="select__list">
+                                                <li>
+                                                    <span>ИП Иванов Иван Иванович</span>
+                                                </li>
+                                                <li>
+                                                    <span>ИП Иванов Иван Иванович</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <!--скрытый инпут для добавления значения в форму-->
+                                        <input type="hidden" class="select-value" id="" value="">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="dropdown input-select placeholder-container">
+                                        <div class="input-select__link"><span class="input-select-value"></span><span class="label-value">Банковские реквизиты заказчика<span class="red">*</span></span></div>
+                                        <div class="select-reset">Банковские реквизиты заказчика</div>
+                                        <div class="dropdown-menu">
+                                            <ul class="select__list">
+                                                <li>
+                                                    <span>Банковские реквизиты заказчика</span>
+                                                </li>
+                                                <li>
+                                                    <span>Банковские реквизиты заказчика</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <!--скрытый инпут для добавления значения в форму-->
+                                        <input type="hidden" class="select-value" id="" value="">
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="col-md-6">
+                                        <div class="dropdown input-select placeholder-container">
+                                            <div class="input-select__link"><span class="input-select-value"></span><span class="label-value">Подписант заказчика<span class="red">*</span></span></div>
+                                            <div class="select-reset">Подписант заказчика</div>
+                                            <div class="dropdown-menu">
+                                                <ul class="select__list">
+                                                    <li>
+                                                        <a href="#" data-hystmodal="#add-worker" aria-label="Добавить организацию">+ Добавить подписанта</a>
+                                                    </li>
+                                                    <li>
+                                                        <span>Наумов Василий Вячеславович, руководитель</span>
+                                                    </li>
+                                                    <li>
+                                                        <span>Жуков Виктор Давидович, доверенное лицо</span>
+                                                        <div class="icons">
+                                                            <a href="#" data-hystmodal="#edit-modal" class="edit"></a>
+                                                            <a href="#" data-hystmodal="#delite-modal"class="delite"></a>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <span>Русаков Алексей Геннадиевич, доверенное лицо</span>
+                                                        <div class="icons">
+                                                            <a href="#" data-hystmodal="#edit-modal" class="edit"></a>
+                                                            <a href="#" data-hystmodal="#delite-modal" class="delite"></a>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <!--скрытый инпут для добавления значения в форму-->
+                                            <input type="hidden" class="select-value" id="" value="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--скрываем, если физическое лицо-->
+                                <div class="ul-block hidden col-md-6">
+                                    <div class="dropdown input-select placeholder-container">
+                                        <div class="input-select__link"><span class="input-select-value"></span><span class="label-value">Исполнитель<span class="red">*</span></span></div>
+                                        <div class="select-reset">Исполнитель</div>
+                                        <div class="dropdown-menu">
+                                            <ul class="select__list">
+                                                <li>
+                                                    <span>ИП Иванов Иван Иванович</span>
+                                                </li>
+                                                <li>
+                                                    <span>ИП Иванов Иван Иванович</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <!--скрытый инпут для добавления значения в форму-->
+                                        <input type="hidden" class="select-value" id="" value="">
+                                    </div>
+                                </div>
+                                <!--скрываем, если юридическое лицо-->
+                                <div class="fl-block hidden col-md-6">
+                                    <div class="dropdown input-select placeholder-container">
+                                        <div class="input-select__link"><span class="input-select-value"></span><span class="label-value">Водитель<span class="red">*</span></span></div>
+                                        <div class="select-reset">Водител</div>
+                                        <div class="dropdown-menu">
+                                            <ul class="select__list">
+                                                <li>
+                                                    <span>Иванов Иван Иванович</span>
+                                                </li>
+                                                <li>
+                                                    <span>Иванов Иван Иванович</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <!--скрытый инпут для добавления значения в форму-->
+                                        <input type="hidden" class="select-value" id="" value="">
+                                    </div>
+                                </div>
+                                <!--скрываем, если физическое лицо-->
+                                <div class="ul-block hidden col-md-6">
+                                    <div class="dropdown input-select placeholder-container">
+                                        <div class="input-select__link"><span class="input-select-value"></span><span class="label-value">Банковские реквизиты исполнителя<span class="red">*</span></span></div>
+                                        <div class="select-reset">Банковские реквизиты исполнителя</div>
+                                        <div class="dropdown-menu">
+                                            <ul class="select__list">
+                                                <li>
+                                                    <span>Банковские реквизиты исполнителя</span>
+                                                </li>
+                                                <li>
+                                                    <span>Банковские реквизиты исполнителя</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <!--скрытый инпут для добавления значения в форму-->
+                                        <input type="hidden" class="select-value" id="" value="">
+                                    </div>
+                                </div>
+                                <!--скрываем, если юридическое лицо лицо-->
+                                <div class="fl-block hidden col-md-6">
+                                    <div class="dropdown input-select placeholder-container">
+                                        <div class="input-select__link"><span class="input-select-value"></span><span class="label-value">Банковские реквизиты водителя<span class="red">*</span></span></div>
+                                        <div class="select-reset">Банковские реквизиты водителя</div>
+                                        <div class="dropdown-menu">
+                                            <ul class="select__list">
+                                                <li>
+                                                    <span>Банковские реквизиты водителя</span>
+                                                </li>
+                                                <li>
+                                                    <span>Банковские реквизиты водителя</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <!--скрытый инпут для добавления значения в форму-->
+                                        <input type="hidden" class="select-value" id="" value="">
+                                    </div>
+                                </div>
+                                <!--скрываем, если физическое лицо-->
+                                <div class="col-12">
+                                    <div class="ul-block hidden col-md-6">
+                                        <div class="dropdown input-select placeholder-container">
+                                            <div class="input-select__link"><span class="input-select-value"></span><span class="label-value">Подписант исполнителя<span class="red">*</span></span></div>
+                                            <div class="select-reset">Подписант исполнителя</div>
+                                            <div class="dropdown-menu">
+                                                <ul class="select__list">
+                                                    <li>
+                                                        <a href="#" data-hystmodal="#add-worker" aria-label="Добавить организацию">+ Добавить подписанта</a>
+                                                    </li>
+                                                    <li>
+                                                        <span>Наумов Василий Вячеславович, руководитель</span>
+                                                    </li>
+                                                    <li>
+                                                        <span>Жуков Виктор Давидович, доверенное лицо</span>
+                                                        <div class="icons">
+                                                            <a href="#" data-hystmodal="#edit-modal" class="edit"></a>
+                                                            <a href="#" data-hystmodal="#delite-modal"class="delite"></a>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <span>Русаков Алексей Геннадиевич, доверенное лицо</span>
+                                                        <div class="icons">
+                                                            <a href="#" data-hystmodal="#edit-modal" class="edit"></a>
+                                                            <a href="#" data-hystmodal="#delite-modal" class="delite"></a>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <!--скрытый инпут для добавления значения в форму-->
+                                            <input type="hidden" class="select-value" id="" value="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="col-md-6">
+                                        <div class="dropdown input-select placeholder-container">
+                                            <div class="input-select__link"><span class="input-select-value"></span><span class="label-value">Адрес оказания услуг<span class="red">*</span></span></div>
+                                            <div class="select-reset">Адрес оказания услуг</div>
+                                            <div class="dropdown-menu">
+                                                <ul class="select__list">
+                                                    <li>
+                                                        <span>Адрес оказания услуг</span>
+                                                    </li>
+                                                    <li>
+                                                        <span>Адрес оказания услуг</span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <!--скрытый инпут для добавления значения в форму-->
+                                            <input type="hidden" class="select-value" id="" value="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="col-md-6">
+                                        <div class="placeholder-container">
+                                            <input type="number" value="" placeholder="Cумма по договору в месяц (руб)">
+                                            <label>Сумма по договору в месяц (руб)<span class="red">*</span></label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--скрытый блок. наскрываем по клику на "Оказание технических услуг"-->
+                                <div id="texservise" class="hidden row">
+                                    <div class="col-12">
+                                        <h4>ПО/БД Предсменного послесменного технического контроля</h4>
+                                    </div>
+                                    <div class="col-md-6">
+                                            <div class="placeholder-container">
+                                                <input type="number" value="" placeholder="Количество">
+                                                <label>Количество<span class="red">*</span></label>
+                                            </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                            <div class="placeholder-container">
+                                                <input type="number" value="" placeholder="Сумма (руб)">
+                                                <label>Сумма (руб)<span class="red">*</span></label>
+                                            </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <h4>ПО/БД Предсменного послесменного медицинского осмотра</h4>
+                                    </div>
+                                    <div class="col-md-6">
+                                            <div class="placeholder-container">
+                                                <input type="number" value="" placeholder="Количество">
+                                                <label>Количество<span class="red">*</span></label>
+                                            </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                            <div class="placeholder-container">
+                                                <input type="number" value="" placeholder="Сумма (руб)">
+                                                <label>Сумма (руб)<span class="red">*</span></label>
+                                            </div>
+                                    </div>
+                                </div>
+                                <!--скрытый блок. раскрываем по клику на "Оказание медицинских услуг"-->
+                                <div id="medservise" class="hidden row">
+                                    <div class="col-12">
+                                        <div class="col-md-6">
+                                            <div class="placeholder-container">
+                                                <input type="text" value="" placeholder="Внеплановый выезд медицинского работника (руб)">
+                                                <label>Внеплановый выезд медицинского работника (руб)<span class="red">*</span></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="col-md-6">
+                                            <div class="placeholder-container">
+                                                <input type="text" value="" placeholder="Комментарий">
+                                                <label>Комментарий<span class="red">*</span></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--скрытый блок. наскрываем по клику на "аренду"-->
+                                <div id="arendaservise" class="hidden row">
+                                    <div class="col-md-6">
+                                        <div class="dropdown input-select placeholder-container">
+                                            <div class="input-select__link"><span class="input-select-value"></span><span class="label-value">Транспортное средство<span class="red">*</span></span></div>
+                                            <div class="select-reset">Транспортное средство</div>
+                                            <div class="dropdown-menu">
+                                                <ul class="select__list">
+                                                    <li>
+                                                        <span>Текст</span>
+                                                    </li>
+                                                    <li>
+                                                        <span>Текст</span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <!--скрытый инпут для добавления значения в форму-->
+                                            <input type="hidden" class="select-value" id="" value="">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="dropdown input-select placeholder-container">
+                                            <div class="input-select__link"><span class="input-select-value"></span><span class="label-value">Водитель<span class="red">*</span></span></div>
+                                            <div class="select-reset">Водитель</div>
+                                            <div class="dropdown-menu">
+                                                <ul class="select__list">
+                                                    <li>
+                                                        <span>Текст</span>
+                                                    </li>
+                                                    <li>
+                                                        <span>Текст</span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <!--скрытый инпут для добавления значения в форму-->
+                                            <input type="hidden" class="select-value" id="" value="">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="placeholder-container">
+                                            <input type="data" class="select-form-date3 icon icon-date" placeholder="10.11.2020 - 11.11.2020">
+                                            <label class="label-value">Срок окончания аренды<span class="red">*</span></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="placeholder-container">
+                                            <input type="text" value="" placeholder="Стоимость транспортного средства (руб)">
+                                            <label>Стоимость транспортного средства (руб)<span class="red">*</span></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="placeholder-container">
+                                            <input type="text" value="" placeholder="Стоимость суток аренды (руб)">
+                                            <label>Стоимость суток аренды (руб)<span class="red">*</span></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="placeholder-container">
+                                            <input type="text" value="" placeholder="Показания одометра">
+                                            <label>Показания одометра<span class="red">*</span></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="placeholder-container">
+                                            <input type="text" value="" placeholder="Место выдачи">
+                                            <label>Место выдачи<span class="red">*</span></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 align-center">
+                                        <label for="adress" class="checkbox-label">
+                                            <input type="checkbox" name="adress" id="adress" class="checkbox">
+                                            <span>Фактический адрес</span>
+                                        </label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="placeholder-container">
+                                            <input type="text" value="" placeholder="Место возврата">
+                                            <label>Место возврата<span class="red">*</span></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 align-center">
+                                        <label for="adress1" class="checkbox-label">
+                                            <input type="checkbox" name="adress1" id="adress1" class="checkbox">
+                                            <span>Фактический адрес</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
         </div>
         <!--подвал-->
         <footer>
         </footer>
     <!--модалки-->
-    <!--настройка таблицы-->
+        <!--настройка таблицы-->
         <div class="hystmodal" id="setting-modal" aria-hidden="true">
             <div class="hystmodal__wrap">
                 <div class="hystmodal__window hystmodal__window--setting" role="dialog" aria-modal="true">
@@ -305,57 +778,37 @@
                 <div class="hystmodal__window " role="dialog" aria-modal="true">
                     <button class="hystmodal__close" data-hystclose>Закрыть</button>
                     <div class="hystmodal__styled">
-                        <h3>Создание сотрудника</h3>
+                        <h3>Добавление подписанта</h3>
                         <form action="#" class="modal-form column-form">
-                            <div class="dropdown input-select placeholder-container" >
-                                <div class="input-select__link"><span class="input-select-value"></span><span>Медицинский контролер</span></div>
-                                    <div class="select-reset">Медицинский контролер</div>
-                                    <div class="dropdown-menu" >
-                                        <ul class="select__list">
-                                            <li>
-                                                <span>Текст</span>
-                                            </li>
-                                            <li>
-                                                <span>Текст</span>
-                                            </li>
-                                            <li>
-                                                <span>Текст</span>
-                                            </li>
-                                            </ul>
-                                    </div>
-                                <!--скрытый инпут для добавления значения в форму-->
-                                <input type="hidden" class="select-value" id="" value="">
-                            </div>
                             <div class="placeholder-container">
                                 <input type="text" placeholder="ФИО">
-                                <label>ФИО<span class"red">*</span></label>
+                                <label>ФИО доверенного лица</label>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="radio-wrapper">
+                                        <input type="radio" name="sex" id="sex-men">
+                                        <label for="sex-men">мужской</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="radio-wrapper">
+                                        <input type="radio" name="sex" id="sex-women">
+                                        <label for="sex-women">женский</label>
+                                    </div>
+                                </div>
                             </div>
                             <div class="placeholder-container">
                                 <input type="text" placeholder="Телефон">
-                                <label>Телефон<span class"red">*</span></label>
+                                <label>Номер доверенности</label>
                             </div>
-                            <a class="link--blue form__addlink" data-link="form-add-diplom" href="#">+ Добавить данные диплома</a>
-                            <div id="form-add-diplom" class="form-add hidden">
-                                <div class="row">
-                                    <h4>Диплом</h4>
-                                    <a href="#" class="delite delite--grey"></a>
-                                </div>
-                                <div class="placeholder-container">
-                                    <input type="text" placeholder="ФИО">
-                                    <label>Номер диплома<span class"red">*</span></label>
-                                </div>
-                                <div class="placeholder-container">
-                                    <input type="text" placeholder="Телефон">
-                                    <label>Серия диплома<span class"red">*</span></label>
-                                </div>
-                                <div class="placeholder-container">
-                                    <input type="data" id="select-diplom" class="select-form-time icon icon-date" placeholder="Дата выдачи диплома">
-                                    <label>Дата выдачи диплома<span class="red">*</span></label>
-                                </div>
-                                <a class="link--blue form__addlink icon file" data-link="form-add-img" href="#">Прикрепить фото диплома</a>
-                                <div id="form-add-img" class="form-add hidden">
-            Здесь добавление файла, в макете путевых листов не отрисован, поискать
-                                </div>
+                            <div class="placeholder-container">
+                                <input type="data" class="select-form-date2 icon icon-date" placeholder="10.11.2020 - 11.11.2020">
+                                <label class="label-value">Период действия</label>
+                            </div>
+                            <div class="placeholder-container">
+                                <input type="text" placeholder="ФИО в родительском падеже">
+                                <label>ФИО в родительском падеже</label>
                             </div>
                             <div class="modal__footer" >
                                 <a href="#"  class="modal-reset btn btn--grey" aria-label="Сбросить">Сбросить</a>
@@ -372,83 +825,27 @@
                 <div class="hystmodal__window " role="dialog" aria-modal="true">
                     <button class="hystmodal__close" data-hystclose>Закрыть</button>
                     <div class="hystmodal__styled">
-                        <h3>Редактирование транспортных данных</h3>
+                        <h3>Редактирование банковского счета</h3>
                             <form action="#" class="modal-form column-form journal-form">
-                                <div class="dropdown input-select placeholder-container">
-                                    <div class="input-select__link"><span class="input-select-value"></span><span class="label-value">Организация</span></div>
-                                        <div class="select-reset">Организация</div>
-                                        <div class="dropdown-menu">
-                                            <ul class="select__list">
-                                                <li>
-                                                    <span>ООО "Желтое такси"</span>
-                                                </li>
-                                                <li>
-                                                    <span>ООО "Желтое такси"</span>
-                                                </li>
-                                                <li>
-                                                    <span>ООО "Желтое такси"</span>
-                                                </li>
-                                                </ul>
-                                        </div>
-                                    <!--скрытый инпут для добавления значения в форму-->
-                                    <input type="hidden" class="select-value" id="" value="">
+                                <div class="placeholder-container active">
+                                    <input type="text"  placeholder="Название счета" value="ИП Иванов Иван Иванович">
+                                    <label>Название счета<span class="red">*</span></label>
                                 </div>
-                                <div class="dropdown input-select placeholder-container">
-                                    <div class="input-select__link"><span class="input-select-value"></span><span class="label-value">Водитель</span></div>
-                                        <div class="select-reset">Водитель</div>
-                                        <div class="dropdown-menu">
-                                            <ul class="select__list">
-                                                <li>
-                                                    <span>Текст</span>
-                                                </li>
-                                                <li>
-                                                    <span>Текст</span>
-                                                </li>
-                                                <li>
-                                                    <span>Текст</span>
-                                                </li>
-                                                </ul>
-                                        </div>
-                                    <!--скрытый инпут для добавления значения в форму-->
-                                    <input type="hidden" class="select-value" id="" value="">
+                                <div class="placeholder-container active">
+                                    <input type="text" placeholder="Банк" value="ОАО “Сбербанк России”">
+                                    <label>Банк<span class="red">*</span></label>
                                 </div>
-                                <div class="dropdown input-select placeholder-container">
-                                    <div class="input-select__link"><span class="input-select-value"></span><span class="label-value">Транспортное средство</span></div>
-                                        <div class="select-reset">Транспортное средство</div>
-                                        <div class="dropdown-menu">
-                                            <ul class="select__list">
-                                                <li>
-                                                    <span>Легковой автомобиль</span>
-                                                </li>
-                                                <li>
-                                                    <span>Легковой автомобиль</span>
-                                                </li>
-                                                <li>
-                                                    <span>Легковой автомобиль</span>
-                                                </li>
-                                                </ul>
-                                        </div>
-                                    <!--скрытый инпут для добавления значения в форму-->
-                                    <input type="hidden" class="select-value" id="" value="">
+                                <div class="placeholder-container active">
+                                    <input type="text"  placeholder="Номер счета" value="404023109991119000856">
+                                    <label>Номер счета<span class="red">*</span></label>
                                 </div>
-                                <div class="dropdown input-select placeholder-container">
-                                    <div class="input-select__link"><span class="input-select-value"></span><span class="label-value">Прицеп</span></div>
-                                        <div class="select-reset">Прицеп</div>
-                                        <div class="dropdown-menu">
-                                            <ul class="select__list">
-                                                <li>
-                                                    <span>ТН-4521</span>
-                                                </li>
-                                                <li>
-                                                    <span>ТН-4521</span>
-                                                </li>
-                                                <li>
-                                                    <span>ТН-4521</span>
-                                                </li>
-                                                </ul>
-                                        </div>
-                                    <!--скрытый инпут для добавления значения в форму-->
-                                    <input type="hidden" class="select-value" id="" value="">
+                                <div class="placeholder-container active">
+                                    <input type="text" placeholder="БИК" value="047501711">
+                                    <label>БИК<span class="red">*</span></label>
+                                </div>
+                                <div class="placeholder-container active">
+                                    <input type="text"  placeholder="Расчетный счет" value="30101810400000000711">
+                                    <label>Расчетный счет<span class="red">*</span></label>
                                 </div>
                             <div class="modal__footer">
                                 <a href="#" class="modal-reset btn btn--grey" aria-label="Сбросить">Сбросить</a>
@@ -465,11 +862,27 @@
                 <div class="hystmodal__window " role="dialog" aria-modal="true">
                     <button class="hystmodal__close" data-hystclose>Закрыть</button>
                     <div class="hystmodal__styled">
-                        <h3>Удалить данные о транспорте?</h3>
-                        <p>Данные транспортного средства будут удалены из таблицы.</p>
+                        <h3>Удалить подписанта?</h3>
+                        <p>Вы действительно хотите удалить запись? Данные будут утеряны!</p>
                         <div class="modal__footer">
                                 <a href="#" class="modal-reset btn btn--grey" aria-label="Сбросить">Отмена</a>
                                 <a href="#" class="btn btn--red" aria-label="Удалить">Удалить</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Закрыть создание организации. Какое событие на открытие модалки?????-->
+        <div class="hystmodal" id="close-modal" aria-hidden="true">
+            <div class="hystmodal__wrap">
+                <div class="hystmodal__window " role="dialog" aria-modal="true">
+                    <button class="hystmodal__close" data-hystclose>Закрыть</button>
+                    <div class="hystmodal__styled">
+                        <h3>Закрыть “Создание организации”?</h3>
+                        <p>Вы действительно хотите закрыть страницу “Создание организации”? Все данные будут утеряны!</p>
+                        <div class="modal__footer">
+                                <a href="#" class="modal-reset btn btn--grey" aria-label="Сбросить" data-hystclose>Отмена</a>
+                                <a href="#" id="add-list-close" class="btn btn--red" aria-label="Закрыть" data-hystclose>Закрыть</a>
                         </div>
                     </div>
                 </div>
@@ -479,5 +892,6 @@
         <script type="text/javascript" src="js/moment.min.js"></script>
         <script type="text/javascript" src="js/jquery.daterangepicker.min.js"></script>
         <script type="text/javascript" src="js/main.js"></script>
+        <script type="text/javascript" src="js/contracts.js"></script>
     </body>
 </html>

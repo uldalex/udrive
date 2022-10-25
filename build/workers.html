@@ -744,21 +744,106 @@
                                 <form action="#" class="column-form row">
                                     <div class="col-12 mb-20">
                                         <div class="btn-label">
-                                            <input type="checkbox" name="table1" id="medcontrol" class="checkbox-btn">
+                                            <input type="checkbox" name="driver" id="driver" class="checkbox-btn">
                                             <label for="medcontrol"></label>
                                             <span>Медицинский контролер</span>
                                         </div>
                                     </div>
                                     <div class="col-12 mb-20">
                                         <div class="btn-label">
-                                            <input type="checkbox" name="table1" id="texcontrol" class="checkbox-btn">
+                                            <input type="checkbox" name="driver1" id="driver1" class="checkbox-btn">
                                             <label for="texcontrol"></label>
                                             <span>Технический контролер</span>
                                         </div>
                                     </div>
+                                    <div id="drivercontrol__wrapper" class="col-12 mb-20 drivercontrol__wrapper texcontrol row hidden">
+                                        <a href="#" class="link--blue" >+ Добавить данные диплома</a>
+                                        <div id="drivercontrol" class="drivercontrol row hidden">
+                                            <div class="row">
+                                                <div class="col-md-11">
+                                                    <h4>Диплом</h4>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <a href="#" class="icon delite delite--grey"></a>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="placeholder-container active">
+                                                    <input type="text" value="12-345-678" placeholder="Номер диплома">
+                                                <label>Номер диплома<span class="red">*</span></label>
+                                            </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="placeholder-container active">
+                                                    <input type="text" value="КЕ" placeholder="Серия диплома">
+                                                    <label>Серия диплома<span class="red">*</span></label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="placeholder-container active">
+                                                    <input type="data" value="13.07.2015" class="select-date icon icon-date" placeholder="10.11.2020 - 11.11.2020">
+                                                    <label class="label-value">Срок действия<span class="red">*</span></label>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="input__wrapper input__wrapper--file">
+                                                    <input name="file" type="file" id="input__file" class="input input__file" multiple="">
+                                                    <label for="input__file" class="input__file-button">
+                                                    <span class="input__file-icon-wrapper"><img class="input__file-icon" src="img/file.svg" alt="Выбрать файл" width="48"></span>
+                                                    <span class="input__file-button-text">Добавить фото диплома</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div id="form-add-img" class="form-add">
+                                                    <div class="form-add-img">
+                                                        <img src="img/diplom.png">
+                                                        <a href="#" class="delite delite--white"></a>
+                                                    </div>
+                                                    <div class="form-add-img">
+                                                        <img src="img/diplom1.png">
+                                                        <a href="#" class="delite delite--white"></a>
+                                                    </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-11">
+                                                    <h4>Диплом</h4>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <a href="#" class="icon delite delite--grey"></a>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="placeholder-container">
+                                                    <input type="text"  placeholder="Номер диплома">
+                                                <label>Номер диплома<span class="red">*</span></label>
+                                            </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="placeholder-container">
+                                                    <input type="text"  placeholder="Серия диплома">
+                                                    <label>Серия диплома<span class="red">*</span></label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="placeholder-container ">
+                                                    <input type="data"  class="select-date icon icon-date" placeholder="10.11.2020 - 11.11.2020">
+                                                    <label class="label-value">Срок действия<span class="red">*</span></label>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="input__wrapper input__wrapper--file">
+                                                    <input name="file" type="file" id="input__file" class="input input__file" multiple="">
+                                                    <label for="input__file" class="input__file-button">
+                                                    <span class="input__file-icon-wrapper"><img class="input__file-icon" src="img/file.svg" alt="Выбрать файл" width="48"></span>
+                                                    <span class="input__file-button-text">Добавить фото диплома</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="col-12 mb-20">
                                         <div class="btn-label">
-                                            <input type="checkbox" name="table1" id="bdd" class="checkbox-btn">
+                                            <input type="checkbox" name="driver2" id="driver2" class="checkbox-btn">
                                             <label for="bdd"></label>
                                             <span>БДД</span>
                                         </div>
@@ -777,9 +862,6 @@
                         </div>
                     </div>
                     <div class="content__wrapper">
-                        <!--шапка контента-->
-                        <div class="content__header">
-                        </div>
                         <div class="content">
                             <form action="#" class="column-form row">
                                 <div class="col-12">
@@ -1206,17 +1288,17 @@
                                     </label>
                                 </div>
                                 <div id="form-add-img" class="form-add row">
-            
-                                <div class="col-md-6">
-                                    <div class="form-add-img">
-                                        <img src="img/diplom.png">
-                                        <a href="#" class="delite delite--white"></a>
+                                    <div class="col-md-6">
+                                        <div class="form-add-img">
+                                            <img src="img/diplom.png">
+                                            <a href="#" class="delite delite--white"></a>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-add-img">
-                                        <img src="img/diplom1.png">
-                                        <a href="#" class="delite delite--white"></a>
+                                    <div class="col-md-6">
+                                        <div class="form-add-img">
+                                            <img src="img/diplom1.png">
+                                            <a href="#" class="delite delite--white"></a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
