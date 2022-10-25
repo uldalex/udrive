@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html class="page" lang="ru">
+    <!--head-->
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="format-detection" content="date=no">
+        <meta name="format-detection" content="address=no">
+        <meta name="format-detection" content="email=no">
+        <meta content="notranslate" name="google">
+        <title>Таблицы</title>
+        <link rel="stylesheet" href="css/daterangepicker.min.css">
+        <link rel="stylesheet" href="css/main.css">
+        <style>
+            .content-table__header {
+                display: grid;
+                grid-template-columns: 200px 500px 200px;
+            }
+            .content-table__header div {
+                border 1px solid black
+            }
+        </style>
+    </head>
+    <body>
+        <!--шапка-->
+        <header>
+            <div class="container">
+                <div class="row">
+                    <!--логотип-->
+                    <a href="#" class="logo" aria-label="Юдрайв">
+                        <img width="87" height="19" src="img/logo.svg">
+                    </a>
+                    <!--юзерпанель-->
+                    <div  class="user">
+                        <span>Владелец:</span><a  href="#" class="user__name icon" aria-label="Личный кабинет">Александр Иванов</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!--контентная часть-->
+        <div class="page__inner">
+            <!--сайтбар-->
+            <aside>
+                <div class="sitebar">
+                    <h3>Разделы</h3>
+                    <ul id="main-menu" class="main-menu" role="menu">
+                        <li class="main-menu__item">
+                            <a href="company.html" class="main-menu__link" aria-label="Организации">Организации</a>
+                        </li>
+                        <li class="main-menu__item">
+                            <a href="contracts.html" class="main-menu__link" aria-label="Договора">Договора</a>
+                        </li>
+                        <li class="main-menu__item">
+                            <a href="workers.html" class="main-menu__link" aria-label="Сотрудники">Сотрудники</a>
+                        </li>
+                        <li class="main-menu__item">
+                            <a href="transport.html" class="main-menu__link" aria-label="Транспорт">Транспорт</a>
+                        </li>
+                        <li class="main-menu__item">
+                            <a href="trailers.html" class="main-menu__link" aria-label="Прицепы">Прицепы</a>
+                        </li>
+                        <li class="main-menu__item">
+                            <a href="freighter-card.html" class="main-menu__link" aria-label="Карточка фрахтовщика">Карточка фрахтовщика</a>
+                        </li>
+                        <li class="main-menu__item">
+                            <!--у ссылки модификатор active -->
+                            <a href="waybill.html" class="main-menu__link" aria-label="Путевая документация">Путевая документация</a>
+                        </li>
+                        <li class="main-menu__item">
+                            <a href="bdd.html" class="main-menu__link" aria-label="БДД">БДД</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </aside>
+            <main>
+                <!--шапка в main-->
+                <div class="main-header">
+                    <ul class="tab-list main-header__list">
+                        <!--Внимание! Модификатор класса --active и у ссылки и у li-->
+                        <!--Внимание! data-link у ссылки должно совпадать с data-id у таба -->
+                        <li class="main-header__item active">
+                            <a data-link="tab_01" href="#" id="all-list" class="tab-link main-header__link main-header__link--active">Основная вкладка</a>
+                        </li>
+                    </ul>
+                </div>
+                <!--динамический контент в main-->
+                <!--таб -->
+                <div data-id="tab_01" class="tab-content tab-content--active main-content">
+                    <div  class="main-header__title">
+                            <h1>Таблицы</h1>
+                    </div>
+                    <div class="content__wrapper">
+                        <!--тело контента-->
+                        <div class="content">
+                                <p>Все таблицы имеют стиль display:grid</p>
+                                <p>Разница только в grid-template-columns</p>
+                                <p>Например имеем &lt;/div class="content-table__header"&gt;</p>
+                                <p>и стиль: grid-template-columns: 200px 500px 200px</p>
+                                </p>получим:</p>
+
+                                <div class="content-table__header">
+                                    <div class="content-table__filter">столбец 200px</div>
+                                    <div class="content-table__filter">столбец 500px</div>
+                                    <div class="content-table__filter">столбец 200px</div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+        <!--подвал-->
+        <footer>
+        </footer>
+        <script type="text/javascript" src="js/jquery-3.6.1.min.js"></script>
+        <script type="text/javascript" src="js/moment.min.js"></script>
+        <script type="text/javascript" src="js/jquery.daterangepicker.min.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
+    </body>
+</html>
