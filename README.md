@@ -8,7 +8,7 @@
 <a href="https://uldalex.github.io/udrive/build/workers.html">Сотрудники</a><br>
 <a href="https://uldalex.github.io/udrive/build/contracts.html">Договора</a><br>
 <p><b>Демки</b></p>
-<a href="https://uldalex.github.io/udrive/build/demo-tabs.html">Табы/a><br>
+<a href="https://uldalex.github.io/udrive/build/demo-tabs.html">Табы</a><br>
 <a href="https://uldalex.github.io/udrive/build/demo-buttons.html">Кнопки, инпуты</a><br>
 <a href="https://uldalex.github.io/udrive/build/demo-icon.html">Иконки</a><br>
 <a href="https://uldalex.github.io/udrive/build/demo-modal.html">Модальные</a><br>
