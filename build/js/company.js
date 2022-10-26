@@ -22,9 +22,7 @@ $('.select-reset-of').on('click', function(){
     $('.medusl, texusl').prop('checked', false);
     $(".med-form-hidden, tex-form-hidden").addClass('hidden');
 });
-$('.select-form-date').dateRangePicker({
-    singleDate : true,
- });
+$('.select-form-date').dateRangePicker({inline: true,  singleDate : true, container: '#select-form-date-container', });
  $('.medusl').on('input', function(){
     if($(this).is(":checked")) {
    $(".med-form-hidden").removeClass('hidden');

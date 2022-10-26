@@ -41,6 +41,7 @@ $(".btn--clone").on('click', function () {
   form = $(this).parents('form');
   cloned = $(this).parents('form').find('.cloned-block')
   $(form).find('.clone-block').clone().appendTo(cloned);
+  DropDown('dropdown')
 
 });
 /*удалить фотки из модалки */
@@ -49,36 +50,37 @@ $(".form-add-img").on("click", function () {
   $(this).remove();
 })
 /*Dropdown Menu*/
-$('.dropdown').on('click', function () {
-  $(this).parents('form').find('.journal-form-hidden').removeClass('hidden')
-  if ($(this).hasClass("active")) {
-    $(this).removeClass('active');
-    var value = '';
-    $(".filter__list li .checkbox-label").filter(function () {
-      let item = $(this).text().toLowerCase().indexOf(value) > -1;
-      $(this).parents('.filter__list li').toggle(item);
-    });
-    $(this).find('.sort').removeClass("sort--active");
-  } else {
-    $(this).addClass('active');
-    $(this).find('.select-reset').addClass('active');
-    $(this).find('.input-select__link').addClass('active');
-    $(this).find('.dropdown-menu').slideDown(500);
-    if ($('.filter__list input[type="checkbox"]:checked').length) {
-      $(this).find('.sort').addClass("sort--active");
-
+ function DropDown(){
+  $('.dropdown').on('click', function () {
+    $(this).parents('form').find('.journal-form-hidden').removeClass('hidden')
+    if ($(this).hasClass("active")) {
+      $(this).removeClass('active');
+      var value = '';
+      $(".filter__list li .checkbox-label").filter(function () {
+        let item = $(this).text().toLowerCase().indexOf(value) > -1;
+        $(this).parents('.filter__list li').toggle(item);
+      });
+      $(this).find('.sort').removeClass("sort--active");
+    } else {
+      $(this).find('.select-reset').addClass('active');
+      $(this).find('.input-select__link').addClass('active');
+      $(this).find('.dropdown-menu').slideDown(500);
+      if ($('.filter__list input[type="checkbox"]:checked').length) {
+        $(this).find('.sort').addClass("sort--active");
+  
+      }
     }
-  }
-}).on('click', ' .filter-reset', function () {
-  $(this).parents('.dropdown').find('input[type="checkbox"]').prop("checked", false);
-  $(this).parents('.dropdown').find('.dropdown-menu').slideUp(500);
-  $(this).parents('.dropdown').find(".filter-searsh").prop('value', '')
-  $(this).parents('.dropdown').find('.sort').removeClass("sort--active");
-  $(this).parents('.dropdown').find('.filter__list li').css({
-    'display': 'block'
+  }).on('click', ' .filter-reset', function () {
+    $(this).parents('.dropdown').find('input[type="checkbox"]').prop("checked", false);
+    $(this).parents('.dropdown').find('.dropdown-menu').slideUp(500);
+    $(this).parents('.dropdown').find(".filter-searsh").prop('value', '')
+    $(this).parents('.dropdown').find('.sort').removeClass("sort--active");
+    $(this).parents('.dropdown').find('.filter__list li').css({
+      'display': 'block'
+    });
   });
-});
-$('.dropdown .select__list li').on('click', function () {
+
+$('.dropdown .select__list li span').on('click', function () {
   var txt = $(this).text()
   $('.dropdown .select__list li').removeClass('active')
   $(this).addClass('active');
@@ -86,7 +88,9 @@ $('.dropdown .select__list li').on('click', function () {
   $(this).parents('.dropdown').find('.dropdown-menu').slideUp(500);
   $(this).parents('.dropdown').find('.select-reset').addClass('active')
   $(this).parents('.dropdown').find('.select-value').prop('value', txt)
+  return false;
 });
+
 $('.dropdown .select-reset').on('click', function () {
   $(this).parents('.dropdown').find('.input-select__link .input-select-value').text('');
   $(this).parents('.dropdown').find('.dropdown-menu').slideUp(500);
@@ -114,7 +118,8 @@ $(document).mouseup(function (e) {
     $(parent).find('.select-reset').removeClass('active');
   }
 });
-
+ }
+  DropDown()
 /*сортировка по возрастанию.убыванию */
 $(".sort-arrow").on('click', function () {
   $(this).toggleClass('sort-arrow--up');
@@ -226,7 +231,11 @@ $(' #add-group-close').on('click', function () {
   $("#add-group").addClass('hidden');
   $("#all-list").trigger('click');
 });
-
+/*Адаптивка */
+$('.burger').on('click', function(){
+  $(this).toggleClass('open')
+  $('aside').toggleClass('open');
+})
 /*модалки */
 class HystModal {
   constructor(props) {

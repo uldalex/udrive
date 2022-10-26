@@ -1000,9 +1000,6 @@
                                                 <div class="dropdown-menu" >
                                                     <ul class="select__list">
                                                         <li>
-                                                            <a href="#" data-hystmodal="#add-worker" aria-label="Добавить организацию">+ Добавить организацию</a>
-                                                        </li>
-                                                        <li>
                                                             <span>Текст</span>
                                                         </li>
                                                         <li>
@@ -1024,6 +1021,7 @@
                                         <div class="placeholder-container">
                                             <input type="data" class="select-form-date icon icon-date" placeholder="10.11.2020 - 11.11.2020">
                                             <label class="label-value">Срок действия<span class="red">*</span></label>
+                                            <div id="select-form-date-container" class="form-data-container"></div>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -1091,9 +1089,6 @@
                                                 <div class="dropdown-menu" >
                                                     <ul class="select__list">
                                                         <li>
-                                                            <a href="#" data-hystmodal="#add-worker" aria-label="Добавить организацию">+ Добавить организацию</a>
-                                                        </li>
-                                                        <li>
                                                             <span>ООО "Залечим"</span>
                                                         </li>
                                                         <li>
@@ -1115,7 +1110,7 @@
                                                 <div class="dropdown-menu" >
                                                     <ul class="select__list">
                                                         <li>
-                                                            <a href="#add-worker"  data-hystmodal="#add-worker" aria-label="Добавить контролера">+ Добавить контролера</a>
+                                                            <a href="#add-worker"  data-hystmodal="#add-worker" aria-label="Добавить контролера">+ Добавить сотрудника</a>
                                                         </li>
                                                         <li>
                                                             <span>Младший фельдшер</span>
@@ -1140,6 +1135,7 @@
                                             <div class="placeholder-container">
                                                 <input type="data" class="select-form-date1 icon icon-date" placeholder="10.11.2020 - 11.11.2020">
                                                 <label class="label-value">Дата<span class="red">*</span></label>
+                                                <div id="select-form-date-container1" class="form-data-container"></div>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
@@ -1157,6 +1153,7 @@
                                             <div class="placeholder-container">
                                                 <input type="data" class="select-form-date2 icon icon-date" placeholder="10.11.2020 - 11.11.2020">
                                                 <label class="label-value">Дата<span class="red">*</span></label>
+                                                 <div id="select-form-date-container2" class="form-data-container"></div>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
@@ -1226,6 +1223,7 @@
                                                 <div class="placeholder-container">
                                                     <input type="data" class="select-form-date3 icon icon-date" placeholder="10.11.2020 - 11.11.2020">
                                                     <label class="label-value">Дата<span class="red">*</span></label>
+                                                     <div id="select-form-date-container3" class="form-data-container"></div>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
@@ -1324,8 +1322,8 @@
                                             <div class="placeholder-container">
                                                 <input id="select-form-time" type="data"  class="select-form-time icon icon-date" placeholder="10.11.2020 - 11.11.2020">
                                                 <label>Выезд с парковки<span class="red">*</span></label>
-                                            </div>
-                                            <div id="select-form-time-container" class="calendar-container"></div>
+                                            </div> 
+                                            <div id="select-form-time-container" class="calendar-container form-data-container"></div>
                                     </div>
                                     <div class="col-md-6">
                                         <!--Здесь выбираем дату, добавляем контейнер select-form-time-container, чтобы не добавлять падданги родителю, иначе получается неопрятно.-->
@@ -1333,7 +1331,7 @@
                                                 <input id="select-form-time1" type="data"  class="select-form-time icon icon-date" placeholder="10.11.2020 - 11.11.2020">
                                                 <label>Возвращение на парковку<span class="red">*</span></label>
                                             </div>
-                                            <div id="select-form-time-container1" class="calendar-container"></div>
+                                            <div id="select-form-time-container1" class="calendar-container form-data-container"></div>
                                     </div>
                                 </form>
                             </div>
@@ -1401,7 +1399,7 @@
                                         <div>Москва, ул. Беломорская 125</div>
                                         <div>5</div>
                                         <div>Техника</div>
-                                        <div><a href="#" class="delite"></a></div>
+                                        <div><a href="#" data-hystmodal="#delite-modal" class="delite"></a></div>
                                     </div>
                                     <div class="content-table__row content-table__row--adress">
                                         <div>1</div>
@@ -1530,12 +1528,12 @@
                                                     <input type="checkbox" name="caregory-cargo" id="caregory-cargo" class="checkbox">
                                                     <span>Междугороный</span>
                                         </label>
-                                        <label for="caregory-cargo" class="checkbox-label">
-                                                    <input type="checkbox" name="caregory-cargo" id="caregory-cargo" class="checkbox">
+                                        <label for="caregory-cargo1" class="checkbox-label">
+                                                    <input type="checkbox" name="caregory-cargo" id="caregory-cargo1" class="checkbox">
                                                     <span>Международный</span>
                                         </label>
-                                        <label for="caregory-cargo" class="checkbox-label">
-                                                    <input type="checkbox" name="caregory-cargo" id="caregory-cargo" class="checkbox">
+                                        <label for="caregory-cargo2" class="checkbox-label">
+                                                    <input type="checkbox" name="caregory-cargo" id="caregory-cargo2" class="checkbox">
                                                     <span>Опасный груз</span>
                                         </label>
                                         
@@ -1629,8 +1627,9 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="placeholder-container">
-                                            <input type="data" class="select-form-date icon icon-date" placeholder="10.11.2020 - 11.11.2020">
+                                            <input type="data" class="select-form-date4 icon icon-date" placeholder="10.11.2020 - 11.11.2020">
                                             <label class="label-value">Срок действия<span class="red">*</span></label>
+                                            <div id="select-form-date-container4" class="calendar-container form-data-container"></div>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -1869,15 +1868,15 @@
                                                 <input id="select-form-time4" type="data"  class="select-form-time icon icon-date" placeholder="10.11.2020 - 11.11.2020">
                                                 <label>Выезд с парковки<span class="red">*</span></label>
                                             </div>
-                                            <div id="select-form-time-container" class="calendar-container"></div>
+                                            <div id="select-form-time-container4" class="calendar-container"></div>
                                     </div>
                                     <div class="col-md-6">
                                         <!--Здесь выбираем дату, добавляем контейнер select-form-time-container, чтобы не добавлять падданги родителю, иначе получается неопрятно.-->
                                             <div class="placeholder-container">
-                                                <input id="select-form-time1" type="data"  class="select-form-time icon icon-date" placeholder="10.11.2020 - 11.11.2020">
+                                                <input id="select-form-time5" type="data"  class="select-form-time icon icon-date" placeholder="10.11.2020 - 11.11.2020">
                                                 <label>Возвращение на парковку<span class="red">*</span></label>
                                             </div>
-                                            <div id="select-form-time-container1" class="calendar-container"></div>
+                                            <div id="select-form-time-container5" class="calendar-container"></div>
                                     </div>
                                 </form>
                             </div>
@@ -1891,9 +1890,6 @@
                                             <div class="select-reset">Организация</div>
                                             <div class="dropdown-menu" >
                                                 <ul class="select__list">
-                                                    <li>
-                                                        <a href="#" data-hystmodal="#add-worker" aria-label="Добавить организацию">+ Добавить Организация</a>
-                                                    </li>
                                                     <li>
                                                         <span>Иванов Иван Иванович</span>
                                                     </li>
@@ -1923,9 +1919,6 @@
                                                     <div class="dropdown-menu" >
                                                         <ul class="select__list">
                                                             <li>
-                                                                <a href="#" data-hystmodal="#add-worker" aria-label="Добавить организацию">+ Добавить водителя</a>
-                                                            </li>
-                                                            <li>
                                                                 <span>Иванов Иван Иванович</span>
                                                             </li>
                                                             <li>
@@ -1948,9 +1941,6 @@
                                             <div class="dropdown-menu" >
                                                 <ul class="select__list">
                                                     <li>
-                                                        <a href="#" data-hystmodal="#add-worker" aria-label="Добавить транспортное средство">+ Добавить транспортное средство *</a>
-                                                    </li>
-                                                    <li>
                                                         <span>Иванов Иван Иванович</span>
                                                     </li>
                                                     <li>
@@ -1971,9 +1961,6 @@
                                             <div class="select-reset">Прицеп</div>
                                             <div class="dropdown-menu" >
                                                 <ul class="select__list">
-                                                    <li>
-                                                        <a href="#" data-hystmodal="#add-worker" aria-label="Добавить Прицеп">+ Добавить прицеп</a>
-                                                    </li>
                                                     <li>
                                                         <span>Иванов Иван Иванович</span>
                                                     </li>
@@ -2193,7 +2180,7 @@
                             </li>
                         </ul>
                         <div class="modal__footer" >
-                            <a href="#"  class="modal-reset dropdown__close btn btn--grey" aria-label="Сбросить">Сбросить</a>
+                            <a href="#"  class="modal-reset dropdown__close btn btn--grey" data-hystclose aria-label="Сбросить">Сбросить</a>
                             <a href="#" class="btn btn--yellow" aria-label="Удалить">Удалить</a>
                         </div>
                     </div>
@@ -2248,7 +2235,7 @@
                                 </li>
                             </ul>
                             <div class="modal__footer" >
-                                <a href="#"  class="modal-reset dropdown__close btn btn--grey" aria-label="Сбросить">Сбросить</a>
+                                <a href="#"  class="modal-reset dropdown__close btn btn--grey" data-hystclose aria-label="Сбросить">Сбросить</a>
                                 <a href="#" class="btn btn--yellow" aria-label="Удалить">Удалить</a>
                             </div>
                         </div>
@@ -2287,7 +2274,7 @@
                                     <input type="hidden" class="select-value" id="" value="">
                                 </div>
                             <div class="modal__footer" >
-                                <a href="#"  class="modal-reset btn btn--grey" aria-label="Сбросить">Сбросить</a>
+                                <a href="#"  class="modal-reset btn btn--grey" data-hystclose aria-label="Сбросить">Сбросить</a>
                                 <a href="#" class="btn btn--yellow" aria-label="Удалить">Удалить</a>
                             </div>
                         </form>
@@ -2341,7 +2328,7 @@
 
                             </div>
                             <div class="modal__footer" >
-                                <a href="#" class="modal-reset btn btn--grey" aria-label="Сбросить">Сбросить</a>
+                                <a href="#" class="modal-reset btn btn--grey" data-hystclose aria-label="Сбросить">Сбросить</a>
                                 <a href="#" class="btn btn--yellow" aria-label="Удалить">Удалить</a>
                             </div>
                         </form>
@@ -2425,7 +2412,7 @@
                                 </div>
                             </div>
                             <div class="modal__footer" >
-                                <a href="#"  class="modal-reset btn btn--grey" aria-label="Сбросить">Сбросить</a>
+                                <a href="#"  class="modal-reset btn btn--grey" data-hystclose aria-label="Сбросить">Сбросить</a>
                                 <a href="#" class="btn btn--yellow" aria-label="Удалить">Удалить</a>
                             </div>
                         </form>
@@ -2518,7 +2505,7 @@
                                     <input type="hidden" class="select-value" id="" value="">
                                 </div>
                             <div class="modal__footer">
-                                <a href="#" class="modal-reset btn btn--grey" aria-label="Сбросить">Сбросить</a>
+                                <a href="#" class="modal-reset btn btn--grey" data-hystclose aria-label="Сбросить">Сбросить</a>
                                 <a href="#" class="btn btn--yellow" aria-label="Удалить">Удалить</a>
                             </div>
                         </form>
@@ -2535,7 +2522,7 @@
                         <h3>Удалить данные о транспорте?</h3>
                         <p>Данные транспортного средства будут удалены из таблицы.</p>
                         <div class="modal__footer">
-                                <a href="#" class="modal-reset btn btn--grey" aria-label="Сбросить">Отмена</a>
+                                <a href="#" class="modal-reset btn btn--grey"data-hystclose  aria-label="Сбросить">Отмена</a>
                                 <a href="#" class="btn btn--red" aria-label="Удалить">Удалить</a>
                         </div>
                     </div>

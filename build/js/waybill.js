@@ -4,10 +4,11 @@ $('#select-date').dateRangePicker({
 	container: '#calendar-container',
   });
 /*календарь в формах */
-$('.select-form-date').dateRangePicker({ });
-$('.select-form-date1').dateRangePicker({ });
-$('.select-form-date2').dateRangePicker({ });
-$('.select-form-date3').dateRangePicker({ });
+$('.select-form-date').dateRangePicker({inline: true,  container: '#select-form-date-container', });
+$('.select-form-date1').dateRangePicker({inline: true, singleDate : true, container: '#select-form-date-container1', });
+$('.select-form-date2').dateRangePicker({inline: true, singleDate : true, container: '#select-form-date-container2', });
+$('.select-form-date3').dateRangePicker({inline: true, singleDate : true, container: '#select-form-date-container3', });
+$('.select-form-date4').dateRangePicker({inline: true, container: '#select-form-date-container4', });
 $('#select-diplom').dateRangePicker({singleDate : true,  });
 /*календарь в формах со временем */
 $('#select-form-time').dateRangePicker({
@@ -52,7 +53,7 @@ $('#select-form-time3').dateRangePicker({
 });
 $('#select-form-time4').dateRangePicker({
 	inline: true,
-	container:'#select-form-time-container3',
+	container:'#select-form-time-container4',
 	  separator : ' ~ ',
 	  format: 'DD.MM.YYYY HH:mm',
 	singleDate : true,
@@ -60,10 +61,13 @@ $('#select-form-time4').dateRangePicker({
 		  enabled: true
 	  }
   });
-$('.date-destroy').on('click',function (evt) {
-  evt.stopPropagation();
-  $('#select-date').data('dateRangePicker').clear();
-  $('#select-date').data('dateRangePicker').close();
-  $('.select-form-date').data('dateRangePicker').clear();
-  $('.select-form-date').data('dateRangePicker').close();
-});
+  $('#select-form-time5').dateRangePicker({
+	inline: true,
+	container:'#select-form-time-container5',
+	  separator : ' ~ ',
+	  format: 'DD.MM.YYYY HH:mm',
+	singleDate : true,
+	  time: {
+		  enabled: true
+	  }
+  });
