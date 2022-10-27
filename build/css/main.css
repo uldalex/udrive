@@ -1909,6 +1909,55 @@ display:none;
 .texcontrol__wrapper .link--blue, .texcontrol {
     margin-bottom: 24px;
 }
+.login__wrapper {
+    position:fixed;
+    left:0;
+    top:0;
+    right:0;
+    bottom:0;
+    display:flex;
+    align-items:center;
+    justify-content: center;
+   
+}
+.login {
+     margin: auto;
+    display:flex;
+}
+.login h3 {
+    display:block;
+    width: 100%;
+    margin-bottom:48px;
+    text-align: center;
+}
+.login__left-part {
+    width:336px;
+    height:437px;
+    background-color:#222831;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    color:#BDC3C7;
+    font-size:14px;
+    padding:26px 32px;
+}
+.login__left-part a {
+    margin-right:auto;
+}
+.login__right-part {
+    width:336px;
+    height:437px;
+    background-color:#ffffff;
+    padding:0 32px;
+    display:flex;
+    align-items: center;
+
+}
+.login-footer {
+    width:100%;
+    justify-content: space-between;
+}
 @media all and (max-width:820px) {
     .hystmodal__close {
         top: 10px;
