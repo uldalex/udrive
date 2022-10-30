@@ -10,14 +10,14 @@
         <meta name="format-detection" content="address=no">
         <meta name="format-detection" content="email=no">
         <meta content="notranslate" name="google">
-        <title>Логин</title>
+        <title>Восстановить пароль</title>
         <link rel="stylesheet" href="css/daterangepicker.min.css">
         <link rel="stylesheet" href="css/main.css">
         
     </head>
     <body>
         <div class="login__wrapper">
-            <div class="login">
+            <div class="login login--remember">
                 <div class="login__left-part">
                     <a href="#" aria-label="Юдрайв">
                         <img src="img/logo-big.svg">
@@ -26,26 +26,20 @@
                 </div>
                 <div class="login__right-part">
                     <form action="#"  class="column-form row">
-                        <h3>Авторизация в системе</h3>
+                        <h3>Напомнить пароль</h3>
                         <div class="col-12">
                             <div class="placeholder-container">
-                                <input type="text" name="name" placeholder="Логин">
-                                <label>Логин</label>
+                                <input type="email" name="name" placeholder="Email">
+                                <label>Email</label>
                             </div>
                         </div>
                         <div class="col-12">
-                            <!--Внимание! Здесь скрипт на "глаз" и показ пароля по клику-->
-                            <div class="placeholder-container password">
-            				    <input placeholder="Пароль" required="required" id="password-input" name="PASSWORD" value="" type="password" autocomplete="off">
-                                <label>Пароль</label>
-            				    <a href="#" onclick="return show_hide_password(this);" class="password-control"></a>
-                                
-                            </div>
+                            <p>На указанную почту, придет письмо с инструкциями для восстановления</p>
                         </div>
 
                         <div class="login-footer row">
-                                <a href="#" aria-label="Напомнить пароль?">Напомнить пароль?</a>
-                                <a href="#" class="btn btn--yellow">Войти</a>
+                                <a href="#" class="btn btn--light">Назад</a>
+                                <a href="#" class="btn btn--yellow">Восстановить пароль</a>
                         </div>
                     </form>
                 </div>

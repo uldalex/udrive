@@ -10,7 +10,7 @@
         <meta name="format-detection" content="address=no">
         <meta name="format-detection" content="email=no">
         <meta content="notranslate" name="google">
-        <title>Логин</title>
+        <title>Логин ошибка</title>
         <link rel="stylesheet" href="css/daterangepicker.min.css">
         <link rel="stylesheet" href="css/main.css">
         
@@ -34,12 +34,11 @@
                             </div>
                         </div>
                         <div class="col-12">
-                            <!--Внимание! Здесь скрипт на "глаз" и показ пароля по клику-->
-                            <div class="placeholder-container password">
-            				    <input placeholder="Пароль" required="required" id="password-input" name="PASSWORD" value="" type="password" autocomplete="off">
+                            <div class=" password">
+            				    <input class="error" placeholder="Пароль" required="required" id="password-input" name="PASSWORD" value="" type="password" autocomplete="off">
                                 <label>Пароль</label>
             				    <a href="#" onclick="return show_hide_password(this);" class="password-control"></a>
-                                
+                                <span style="display:block" class="error">Логин или пароль указан неверно</span>
                             </div>
                         </div>
 

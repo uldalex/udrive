@@ -75,9 +75,8 @@ $(".form-add-img").on("click", function () {
     $(this).parents('.dropdown').find('.dropdown-menu').slideUp(500);
     $(this).parents('.dropdown').find(".filter-searsh").prop('value', '')
     $(this).parents('.dropdown').find('.sort').removeClass("sort--active");
-    $(this).parents('.dropdown').find('.filter__list li').css({
-      'display': 'block'
-    });
+    $(this).parents('.dropdown').find('.filter__list li').css({'display': 'block'});
+    return false;
   });
 
 $('.dropdown .select__list li span').on('click', function () {
@@ -87,7 +86,19 @@ $('.dropdown .select__list li span').on('click', function () {
   $(this).parents('.dropdown').find('.input-select__link .input-select-value').text($(this).text());
   $(this).parents('.dropdown').find('.dropdown-menu').slideUp(500);
   $(this).parents('.dropdown').find('.select-reset').addClass('active')
-  $(this).parents('.dropdown').find('.select-value').prop('value', txt)
+  $(this).parents('.dropdown').find('.select-value').prop('value', txt);
+  if($(this).hasClass('forbidden')){
+   $(this).parents('.dropdown').find('.input-select-value').removeClass('allowed').removeClass('confirm');
+   $(this).parents('.dropdown').find('.input-select-value').addClass('forbidden')
+  }
+  if($(this).hasClass('allowed')){
+    $(this).parents('.dropdown').find('.input-select-value').removeClass('forbidden').removeClass('confirm');
+    $(this).parents('.dropdown').find('.input-select-value').addClass('allowed')
+  }
+  if($(this).hasClass('confirm')){
+    $(this).parents('.dropdown').find('.input-select-value').removeClass('forbidden').removeClass('allowed');
+    $(this).parents('.dropdown').find('.input-select-value').addClass('confirm')
+  }
   return false;
 });
 
@@ -108,8 +119,8 @@ $(".filter-searsh").on("keyup", function () {
   });
 });
 $(document).mouseup(function (e) {
-  var parent = $(".dropdown.active");
-  var div = $(".dropdown.active").find('.dropdown-menu');
+  var parent = $(".dropdown");
+  var div = $(".dropdown").find('.dropdown-menu');
   if (!div.is(e.target) &&
     div.has(e.target).length === 0) {
     $(div).slideUp(500);
@@ -231,6 +242,7 @@ $(' #add-group-close').on('click', function () {
   $("#add-group").addClass('hidden');
   $("#all-list").trigger('click');
 });
+
 /*Адаптивка */
 $('.burger').on('click', function(){
   $(this).toggleClass('open')
