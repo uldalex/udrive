@@ -44,7 +44,8 @@ code, pre {
 }
 
 .btn, .text-center {
-    text-align: center
+    text-align: center;
+    justify-content: center;
 }
 
 .btn, [role=button] {
@@ -307,7 +308,9 @@ body {
     width: 0;
     height: 0;
 }
-
+.content-table {
+max-height: calc(100vh - 330px);
+}
 .subtitle {
     display: inline-block;
     color: #8E969B;
@@ -806,7 +809,9 @@ footer {
     max-height: 300px;
     overflow: scroll;
 }
-
+.content-table--f .checkbox-label {
+    margin:2px 0;
+}
 .content-table__header {
     display: grid;
     grid-template-columns: 52px 100px 140px 108px 220px 220px 248px 240px 204px;
@@ -849,6 +854,14 @@ footer {
 .content-table__row--owner {
     display: grid;
     grid-template-columns: 108px 250px 248px 164px 180px 200px 200px 230px 240px 32px 32px
+}
+.content-table__header--users {
+    display: grid;
+    grid-template-columns:220px 234px 200px 180px 264px 
+}
+.content-table__row--users {
+    display: grid;
+    grid-template-columns: 220px 234px 200px 180px 200px 32px 32px
 }
 .content-table__row--company {
     display: grid;
