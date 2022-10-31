@@ -445,7 +445,7 @@
                    <div class="content__wrapper">
                         <!--тело контента-->
                         <div class="content">
-                            <form action="#" class="column-form row">
+                            <form action="#" id="addform" name="addform" class="column-form row">
                                 <div class="col-12">
                                     <h3>Данные пользователя</h3>
                                 </div>
@@ -469,10 +469,10 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="placeholder-container">
-                                        <input type="text" placeholder="Телефон">
+                                        <input name="code" id="code" type="text" placeholder="Телефон">
                                         <label>Пароль<span class="red">*</span></label>
                                     </div>
-                                    <a class="password-generate link--blue" href="#" aria-label="Сгенерировать пароль">Сгенерировать пароль</a>
+                                    <a class="password-generate link--blue" href="#" onclick="generateCode()" aria-label="Сгенерировать пароль">Сгенерировать пароль</a>
                                 </div>
                                 <div class="col-12">
                                     <div class="col-md-6 d-flex">
