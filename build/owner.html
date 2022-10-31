@@ -516,27 +516,28 @@
                             </form>
                             <div class="hr"></div>
                             <div class="content__header content__header--white">
-                            <h3>Права пользователя</h3>
-                            <div class="content-header__btns">
-                                <div class="dropdown input-select placeholder-container" >
-                                            <div class="input-select__link"><span class="input-select-value"></span><span class="label-value">Тип владельца организации<span class="red">*</span></span></div>
-                                            <div class="select-reset">Тип владельца организации</div>
-                                                <div class="dropdown-menu" >
-                                                    <ul class="select__list">
-                                                        <li>
-                                                            <span>Такси</span>
-                                                        </li>
-                                                        <li>
-                                                            <span>Такси</span>
-                                                        </li>
-                                                        <li>
-                                                            <span>Такси</span>
-                                                        </li>
-                                                    </ul>
-                                                </div>
+                                <h3>Права пользователя</h3>
+                                <div class="content-header__btns">
+                                    <div class="dropdown input-select placeholder-container" >
+                                        <div class="input-select__link"><span class="input-select-value"></span><span class="label-value">Тип владельца организации<span class="red">*</span></span></div>
+                                        <div class="select-reset">Тип владельца организации</div>
+                                            <div class="dropdown-menu" >
+                                                <ul class="select__list">
+                                                    <li>
+                                                        <span>Такси</span>
+                                                    </li>
+                                                    <li>
+                                                        <span>Такси</span>
+                                                    </li>
+                                                    <li>
+                                                        <span>Такси</span>
+                                                    </li>
+                                                </ul>
+                                            </div>
                                                 <!--скрытый инпут для добавления значения в форму-->
-                                                <input type="hidden" class="select-value" id="" value="">
-                                        </div>
+                                            <input type="hidden" class="select-value" id="" value="">
+                                    </div>
+                                </div>
                             </div>
                              <div class="content-table">
                                 <div class="content-table__header content-table__header--user">
@@ -545,7 +546,6 @@
                                     <div class="content-table__filter">Изменение обязательных данных</div>
                                     <div class="content-table__filter">Изменение не обязательных данных</div>
                                     <div class="content-table__filter">Удаление</div>
-
                                 </div>
                                 <div class="content-table--f">
                                     <div class="content-table__row content-table__row--user">
@@ -1193,7 +1193,52 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                            <div class="hr"></div>
+                            <form action="#" class="column-form row">
+                                <div class="col-12">
+                                    <h3>Настройка путевых листов</h3>
+                                </div>
+                                <div class="setting-checkbox">
+                                    <ul>
+                                        <li>
+                                            <!--Внимание на классы! Другой тип чекбокса-->
+                                            <div class="btn-label">
+                                                <input type="checkbox" name="table1" id="table1" class="checkbox-btn" >
+                                                <label for="table1"></label>
+                                                <span>Печатать штамп мед. работника и тех. контролера</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="btn-label">
+                                                    <input type="checkbox" name="table2" id="table2" class="checkbox-btn" >
+                                                    <label for="table2"></label>
+                                                    <span>Не использовать номера путевых листов</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="btn-label">
+                                                <input type="checkbox" name="table3" id="table3" class="checkbox-btn" >
+                                                <label for="table3"></label>
+                                                <span>Не использовать данные медицинского работника</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="btn-label">
+                                                <input type="checkbox" name="table4" id="table4" class="checkbox-btn">
+                                                <label for="table4"></label>
+                                                <span>Не использовать данные технического контролера</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="btn-label">
+                                                <input type="checkbox" name="table5" id="table5" class="checkbox-btn">
+                                                <label for="table5"></label>
+                                                <span>Не использовать данные должностного лица</span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>

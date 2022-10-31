@@ -80,6 +80,15 @@ $(".form-add-img").on("click", function () {
   });
 
 $('.dropdown .select__list li span').on('click', function () {
+  if($(this).hasClass('forbidden')){
+    $(this).parents('.dropdown').find('.input-select-value').css({"color": "#DD3D19"});
+   }
+   if($(this).hasClass('allowed')){
+    $(this).parents('.dropdown').find('.input-select-value').css({"color": "#088C45"});
+   }
+   if($(this).hasClass('confirm')){
+     $(this).parents('.dropdown').find('.input-select-value').css({"color": "#DEA308"});
+  }
   var txt = $(this).text()
   $('.dropdown .select__list li').removeClass('active')
   $(this).addClass('active');
@@ -87,18 +96,7 @@ $('.dropdown .select__list li span').on('click', function () {
   $(this).parents('.dropdown').find('.dropdown-menu').slideUp(500);
   $(this).parents('.dropdown').find('.select-reset').addClass('active')
   $(this).parents('.dropdown').find('.select-value').prop('value', txt);
-  if($(this).hasClass('forbidden')){
-   $(this).parents('.dropdown').find('.input-select-value').removeClass('allowed').removeClass('confirm');
-   $(this).parents('.dropdown').find('.input-select-value').addClass('forbidden')
-  }
-  if($(this).hasClass('allowed')){
-    $(this).parents('.dropdown').find('.input-select-value').removeClass('forbidden').removeClass('confirm');
-    $(this).parents('.dropdown').find('.input-select-value').addClass('allowed')
-  }
-  if($(this).hasClass('confirm')){
-    $(this).parents('.dropdown').find('.input-select-value').removeClass('forbidden').removeClass('allowed');
-    $(this).parents('.dropdown').find('.input-select-value').addClass('confirm')
-  }
+  
   return false;
 });
 

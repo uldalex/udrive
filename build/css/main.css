@@ -702,7 +702,9 @@ footer {
     justify-content: space-between;
     align-items: center;
     z-index:101;
-    min-width:309px;
+}
+.content-header__btns .dropdown {
+    width: 309px;
 }
 
 .setting-menu {
@@ -787,7 +789,9 @@ footer {
     padding: 24px 16px;
     background-color: #ffffff;
 }
-
+.content-table{
+    border-radius:6px;
+}
 .content-table--g {
     max-height: calc(100vh - 330px);
     overflow: scroll;
@@ -1631,8 +1635,8 @@ input.error {
 .input-select__link span.label-value {
     transition: all 0.3s linear;
 }
-.input-select__link--table, .input-select__link--table.active {
-    border: none;
+.input-select__link--table {
+   border:1px solid transparent;
     box-shadow:none;
     min-height: 12px;
     line-height: 14px;
@@ -1640,7 +1644,9 @@ input.error {
     background-position: right 12px top 10px;
 
 }
-
+.input-select__link--table.active {
+     border: 1px solid #FFCA3D;
+}
 .input-select__link.active span.label-value {
     position: absolute;
     top: -9px;
